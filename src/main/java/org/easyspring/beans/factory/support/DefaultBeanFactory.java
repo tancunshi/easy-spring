@@ -4,6 +4,8 @@ import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.easyspring.beans.factory.BeanCreationException;
+import org.easyspring.beans.factory.BeanDefinitionStoreException;
 import org.easyspring.beans.factory.BeanFactory;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.util.ClassUtil;
@@ -41,13 +43,13 @@ public class DefaultBeanFactory implements BeanFactory {
                 BeanDefinition bd = new GenericBeanDefinition(id,beanClassName);
                 this.beanDefinitionMap.put(id,bd);
             }
-        }catch (DocumentException e){
-            e.printStackTrace();
+        }catch (Exception e){
+            throw new BeanDefinitionStoreException("IOException parsing XML document wrong");
         }finally {
             if (is != null){
                 try {
                     is.close();
-                }catch (IOException e){
+                }catch (Exception e){
                     e.printStackTrace();
                 }
             }
@@ -60,7 +62,7 @@ public class DefaultBeanFactory implements BeanFactory {
 
     public Object getBean(String beanId) {
         BeanDefinition bd = this.beanDefinitionMap.get(beanId);
-        if (bd == null) return null;
+        if (bd == null) throw new BeanCreationException("Bean Definition not exist");
         ClassLoader cl = ClassUtil.getDefaultClassLoader();
         String beanClassName = bd.getBeanClassName();
 
@@ -68,8 +70,7 @@ public class DefaultBeanFactory implements BeanFactory {
             Class<?> clazz = cl.loadClass(beanClassName);
             return clazz.newInstance();
         }catch (Exception e){
-
+            throw new BeanCreationException("Bean Definition not exist");
         }
-        return null;
     }
 }
