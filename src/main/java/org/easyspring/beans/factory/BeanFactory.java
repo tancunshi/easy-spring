@@ -1,6 +1,6 @@
-package org.easyspring;
+package org.easyspring.beans.factory;
 
-import org.easyspring.support.BeanDefinition;
+import org.easyspring.beans.BeanDefinition;
 
 public interface BeanFactory {
     BeanDefinition getBeanDefinition(String beanId);
