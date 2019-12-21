@@ -15,7 +15,14 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class DefaultBeanFactory implements BeanFactory {
+/**
+ *  接口的实现是一个赋能的过程；
+ *  按照面向对象的设计要求，一个类应该遵循单一职责原则，而履行一个职责需要不同的能力；
+ *  比如DefaultBeanFactory 需要加载xml配置，解析bean节点，反射创建bean实例等能力；
+ *  将这些能力划分到不同的接口上，比如BeanFactory，BeanDefinitionRegistry，
+ *  对于BeanFactory的使用者而言，无需知道BeanDefinition的存在，也无需知道DefaultBeanFactory的其它能力；
+ */
+public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
 
     public static final String  ID_ATTRIBUTE = "id";
     public static final String CLASS_ATTRIBUTE = "class";
