@@ -25,4 +25,24 @@ public class BeanFactoryTest {
         assertNotNull(service);
     }
 
+    @Test
+    public void testInvalidBean(){
+        BeanFactory factory = new DefaultBeanFactory("petstore-v1.xml");
+        try {
+            factory.getBean("notExist");
+        }catch (BeanCreationException e){
+            return;
+        }
+        fail("expect BeanCreateException");
+    }
+
+    @Test
+    public void testInvalidXML(){
+        try {
+            new DefaultBeanFactory("xxx.xml");
+        }catch (BeanDefinitionStoreException e){
+            return;
+        }
+        fail("expect BeanDefinitionException");
+    }
 }

@@ -8,6 +8,7 @@ import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.factory.BeanDefinitionStoreException;
 import org.easyspring.beans.factory.BeanFactory;
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.easyspring.util.ClassUtil;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,51 +17,24 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- *  接口的实现是一个赋能的过程；
- *  按照面向对象的设计要求，一个类应该遵循单一职责原则，而履行一个职责需要不同的能力；
- *  比如DefaultBeanFactory 需要加载xml配置，解析bean节点，反射创建bean实例等能力；
- *  将这些能力划分到不同的接口上，比如BeanFactory，BeanDefinitionRegistry，
+ *  按照面向对象的设计要求，一个类应该遵循单一职责原则；
+ *  拆分DefaultBeanFactory解析配置的职责，解析配置由XmlBeanDefinitionReader完成；
+ *  DefaultBeanFactory只提供创建Bean实例的职责；
+ *
+ *  而创建Bean实例需要不同的能力，比如registerBeanDefinition，反射创建Bean;
+ *  将这些能力划分到不同的接口上，通过实现接口的方式赋能，比如BeanFactory，BeanDefinitionRegistry，
  *  对于BeanFactory的使用者而言，无需知道BeanDefinition的存在，也无需知道DefaultBeanFactory的其它能力；
  */
 public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
 
-    public static final String  ID_ATTRIBUTE = "id";
-    public static final String CLASS_ATTRIBUTE = "class";
     private final Map<String,BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
 
     public DefaultBeanFactory(String configFile) {
-        loadBeanDefinition(configFile);
+        new XmlBeanDefinitionReader(this).loadBeanDefinition(configFile);
     }
 
-    private void loadBeanDefinition(String configFile){
-        InputStream is = null;
-        try {
-            ClassLoader cl = ClassUtil.getDefaultClassLoader();
-            is = cl.getResourceAsStream(configFile);
-
-            SAXReader reader = new SAXReader();
-            Document doc = reader.read(is);
-
-            Element root = doc.getRootElement();
-            Iterator<Element> iter = root.elementIterator();
-            while (iter.hasNext()){
-                Element ele = iter.next();
-                String id = ele.attributeValue(ID_ATTRIBUTE);
-                String beanClassName = ele.attributeValue(CLASS_ATTRIBUTE);
-                BeanDefinition bd = new GenericBeanDefinition(id,beanClassName);
-                this.beanDefinitionMap.put(id,bd);
-            }
-        }catch (Exception e){
-            throw new BeanDefinitionStoreException("IOException parsing XML document wrong");
-        }finally {
-            if (is != null){
-                try {
-                    is.close();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        }
+    public void registerBeanDefinition(String beanId,BeanDefinition bd){
+        this.beanDefinitionMap.put(beanId,bd);
     }
 
     public BeanDefinition getBeanDefinition(String beanId) {
