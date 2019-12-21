@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="167f5e66-bf58-4a13-8e84-bb83716329e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/ApplicationContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/ClassPathApplicationContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v1/AllTestCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v1/ApplicationContextTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v1/BeanFactoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v1/BeanFactoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/xml/XmlBeanDefinitionReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/xml/XmlBeanDefinitionReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v1/BeanFactoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v1/BeanFactoryTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/ClassPathApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/ClassPathApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/ClassPathApplicationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/ClassPathApplicationContext.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +73,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="BeanFactoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="AllTestCase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="easy.spring" />
       <extension name="coverage">
         <pattern>
@@ -85,7 +82,7 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="org.easyspring.test.v1" />
-      <option name="MAIN_CLASS_NAME" value="org.easyspring.test.v1.BeanFactoryTest" />
+      <option name="MAIN_CLASS_NAME" value="org.easyspring.test.v1.AllTestCase" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -93,7 +90,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BeanFactoryTest" />
+        <item itemvalue="JUnit.AllTestCase" />
       </list>
     </recent_temporary>
   </component>
@@ -112,7 +109,7 @@
       <workItem from="1576762719756" duration="8317000" />
       <workItem from="1576906406961" duration="959000" />
       <workItem from="1576908682788" duration="9090000" />
-      <workItem from="1576929355162" duration="3256000" />
+      <workItem from="1576929355162" duration="5984000" />
     </task>
     <servers />
   </component>
