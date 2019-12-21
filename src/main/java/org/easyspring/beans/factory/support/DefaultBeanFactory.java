@@ -17,6 +17,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ *  重构是一个职能剥离的过程
  *  按照面向对象的设计要求，一个类应该遵循单一职责原则；
  *  拆分DefaultBeanFactory解析配置的职责，解析配置由XmlBeanDefinitionReader完成；
  *  DefaultBeanFactory只提供创建Bean实例的职责；
