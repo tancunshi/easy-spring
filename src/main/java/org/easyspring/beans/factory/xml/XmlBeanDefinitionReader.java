@@ -7,6 +7,7 @@ import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.BeanDefinitionStoreException;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.support.GenericBeanDefinition;
+import org.easyspring.core.io.Resource;
 import org.easyspring.util.ClassUtil;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,11 +21,10 @@ public class XmlBeanDefinitionReader {
         this.registry = registry;
     }
 
-    public void loadBeanDefinition(String configFile){
+    public void loadBeanDefinition(Resource resource){
         InputStream is = null;
         try {
-            ClassLoader classLoader = ClassUtil.getDefaultClassLoader();
-            is = classLoader.getResourceAsStream(configFile);
+            is = resource.getInputStream();
             SAXReader reader = new SAXReader();
             Document document = reader.read(is);
             Element root = document.getRootElement();

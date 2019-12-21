@@ -5,6 +5,8 @@ import org.easyspring.beans.factory.BeanDefinitionStoreException;
 import org.easyspring.beans.factory.BeanFactory;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.xml.XmlBeanDefinitionReader;
+import org.easyspring.core.io.ClassPathResource;
+import org.easyspring.core.io.Resource;
 import org.easyspring.service.PetStoreService;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.support.DefaultBeanFactory;
@@ -27,7 +29,7 @@ public class BeanFactoryTest {
 
     @Test
     public void testGetBean(){
-        reader.loadBeanDefinition("petstore-v1.xml");
+        reader.loadBeanDefinition(new ClassPathResource("petstore-v1.xml"));
         BeanDefinition bd = factory.getBeanDefinition("petStore");
         assertEquals("org.easyspring.service.PetStoreService",bd.getBeanClassName());
 
@@ -37,7 +39,7 @@ public class BeanFactoryTest {
 
     @Test
     public void testInvalidBean(){
-        reader.loadBeanDefinition("petstore-v1.xml");
+        reader.loadBeanDefinition(new ClassPathResource("petstore-v1.xml"));
         try {
             factory.getBean("notExist");
         }catch (BeanCreationException e){
@@ -49,7 +51,7 @@ public class BeanFactoryTest {
     @Test
     public void testInvalidXML(){
         try {
-            reader.loadBeanDefinition("xxx.xml");
+            reader.loadBeanDefinition(new ClassPathResource("xxx.xml"));
         }catch (BeanDefinitionStoreException e){
             return;
         }
