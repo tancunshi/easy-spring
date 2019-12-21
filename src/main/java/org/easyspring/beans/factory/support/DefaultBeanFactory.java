@@ -29,9 +29,7 @@ public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
 
     private final Map<String,BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
 
-    public DefaultBeanFactory(String configFile) {
-        new XmlBeanDefinitionReader(this).loadBeanDefinition(configFile);
-    }
+    public DefaultBeanFactory() { }
 
     public void registerBeanDefinition(String beanId,BeanDefinition bd){
         this.beanDefinitionMap.put(beanId,bd);
