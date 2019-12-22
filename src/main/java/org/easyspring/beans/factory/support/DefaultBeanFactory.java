@@ -8,6 +8,7 @@ import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.factory.BeanDefinitionStoreException;
 import org.easyspring.beans.factory.BeanFactory;
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
 import org.easyspring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.easyspring.util.ClassUtil;
 import java.io.IOException;
@@ -26,9 +27,10 @@ import java.util.concurrent.ConcurrentHashMap;
  *  将这些能力划分到不同的接口上，通过实现接口的方式赋能，比如BeanFactory，BeanDefinitionRegistry，
  *  对于BeanFactory的使用者而言，无需知道BeanDefinition的存在，也无需知道DefaultBeanFactory的其它能力；
  */
-public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
+public class DefaultBeanFactory implements ConfigurableBeanFactory, BeanDefinitionRegistry{
 
     private final Map<String,BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
+    private ClassLoader classLoader = null;
 
     public DefaultBeanFactory() { }
 
@@ -43,7 +45,7 @@ public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
     public Object getBean(String beanId) {
         BeanDefinition bd = this.beanDefinitionMap.get(beanId);
         if (bd == null) throw new BeanCreationException("Bean Definition not exist");
-        ClassLoader cl = ClassUtil.getDefaultClassLoader();
+        ClassLoader cl = getClassLoader();
         String beanClassName = bd.getBeanClassName();
 
         try {
@@ -52,5 +54,13 @@ public class DefaultBeanFactory implements BeanFactory , BeanDefinitionRegistry{
         }catch (Exception e){
             throw new BeanCreationException("Bean Definition not exist");
         }
+    }
+
+    public void setClassLoader(ClassLoader classLoader) {
+        this.classLoader = classLoader;
+    }
+
+    public ClassLoader getClassLoader() {
+        return classLoader == null ? ClassUtil.getDefaultClassLoader() : this.classLoader;
     }
 }

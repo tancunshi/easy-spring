@@ -1,6 +1,6 @@
 package org.easyspring.context;
 
-import org.easyspring.beans.factory.BeanFactory;
+import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
 
-public interface ApplicationContext extends BeanFactory {
+public interface ApplicationContext extends ConfigurableBeanFactory {
 }
