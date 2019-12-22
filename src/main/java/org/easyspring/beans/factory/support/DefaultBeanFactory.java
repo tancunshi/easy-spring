@@ -27,7 +27,8 @@ import java.util.concurrent.ConcurrentHashMap;
  *  将这些能力划分到不同的接口上，通过实现接口的方式赋能，比如BeanFactory，BeanDefinitionRegistry，
  *  对于BeanFactory的使用者而言，无需知道BeanDefinition的存在，也无需知道DefaultBeanFactory的其它能力；
  */
-public class DefaultBeanFactory implements ConfigurableBeanFactory, BeanDefinitionRegistry{
+public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
+        implements ConfigurableBeanFactory, BeanDefinitionRegistry{
 
     private final Map<String,BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
     private ClassLoader classLoader = null;
@@ -44,10 +45,25 @@ public class DefaultBeanFactory implements ConfigurableBeanFactory, BeanDefiniti
 
     public Object getBean(String beanId) {
         BeanDefinition bd = this.beanDefinitionMap.get(beanId);
-        if (bd == null) throw new BeanCreationException("Bean Definition not exist");
-        ClassLoader cl = getClassLoader();
+        if (bd == null) {
+            throw new BeanCreationException("Bean Definition not exist");
+        }
+
+        if (bd.isSingleton()){
+            Object bean = this.getSingletonBean(beanId);
+            if (bean == null){
+                bean = createBean(bd);
+                this.registerSingletonBean(beanId,bean);
+            }
+            return bean;
+        }
+        return this.createBean(bd);
+    }
+
+    private Object createBean(BeanDefinition bd){
         String beanClassName = bd.getBeanClassName();
 
+        ClassLoader cl = this.getClassLoader();
         try {
             Class<?> clazz = cl.loadClass(beanClassName);
             return clazz.newInstance();

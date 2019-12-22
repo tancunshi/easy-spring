@@ -33,8 +33,10 @@ public class BeanFactoryTest {
         BeanDefinition bd = factory.getBeanDefinition("petStore");
         assertEquals("org.easyspring.service.PetStoreService",bd.getBeanClassName());
 
-        PetStoreService service = (PetStoreService) factory.getBean("petStore");
-        assertNotNull(service);
+        Object o1 = factory.getBean("petStore");
+        Object o2 = factory.getBean("petStore");
+        assertNotNull(o1);
+        assertEquals(o1,o2);
     }
 
     @Test
