@@ -6,6 +6,7 @@
 
     <bean id="zoo" class="org.easyspring.entity.Zoo">
         <property name="dog" ref="dog"/>
+        <property name="zooName" value="crazy"/>
     </bean>
     <bean id="dog" class="org.easyspring.entity.Dog"/>
 </beans>

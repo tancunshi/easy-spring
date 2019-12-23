@@ -1,6 +1,9 @@
 package org.easyspring.beans.factory.support;
 
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.PropertyValue;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericBeanDefinition implements BeanDefinition {
 
@@ -9,6 +12,7 @@ public class GenericBeanDefinition implements BeanDefinition {
     private String scope = SCOPE_DEFAULT;
     private boolean isSingleton = true;
     private boolean isPrototype = false;
+    private List<PropertyValue> properties = new ArrayList<PropertyValue>();
 
     public GenericBeanDefinition(String id, String beanClassName) {
         this.id = id;
@@ -35,5 +39,13 @@ public class GenericBeanDefinition implements BeanDefinition {
 
     public String getScope() {
         return this.scope;
+    }
+
+    public void addProperty(PropertyValue property){
+        properties.add(property);
+    }
+
+    public List<PropertyValue> getPropertyValues() {
+        return this.properties;
     }
 }
