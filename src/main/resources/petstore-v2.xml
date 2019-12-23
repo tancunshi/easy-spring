@@ -4,5 +4,8 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="petStore" class="org.easyspring.entity.PetStore"/>
+    <bean id="zoo" class="org.easyspring.entity.Zoo">
+        <property name="dog" ref="dog"/>
+    </bean>
+    <bean id="dog" class="org.easyspring.entity.Dog"/>
 </beans>

@@ -2,12 +2,8 @@ package org.easyspring.test.v1;
 
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.factory.BeanDefinitionStoreException;
-import org.easyspring.beans.factory.BeanFactory;
-import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.easyspring.core.io.ClassPathResource;
-import org.easyspring.core.io.Resource;
-import org.easyspring.service.PetStoreService;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.support.DefaultBeanFactory;
 import org.junit.Before;
@@ -31,7 +27,7 @@ public class BeanFactoryTest {
     public void testGetBean(){
         reader.loadBeanDefinition(new ClassPathResource("petstore-v1.xml"));
         BeanDefinition bd = factory.getBeanDefinition("petStore");
-        assertEquals("org.easyspring.service.PetStoreService",bd.getBeanClassName());
+        assertEquals("org.easyspring.entity.PetStore",bd.getBeanClassName());
 
         Object o1 = factory.getBean("petStore");
         Object o2 = factory.getBean("petStore");

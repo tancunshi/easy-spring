@@ -8,6 +8,5 @@ import org.junit.runners.Suite;
         ApplicationContextTest.class,
         BeanFactoryTest.class
 })
-public class AllTestCase {
-
+public class AllTestCaseRunner {
 }
