@@ -72,6 +72,9 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         }
     }
 
+    /**
+     *  这里还可以直接使用common-beanutils下的BeanUtils.setProperty(bean,propertyName,propertyValue)进行property注入s
+     */
     private void populateBean(BeanDefinition bd,Object bean) {
         List<PropertyValue> pvs = bd.getPropertyValues();
         if (pvs == null || pvs.isEmpty()) {
