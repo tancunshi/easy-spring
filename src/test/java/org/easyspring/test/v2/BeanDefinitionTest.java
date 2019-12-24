@@ -2,7 +2,6 @@ package org.easyspring.test.v2;
 
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.PropertyValue;
-import org.easyspring.beans.factory.BeanFactory;
 import org.easyspring.beans.factory.config.RuntimeBeanReference;
 import org.easyspring.beans.factory.config.TypedStringValue;
 import org.easyspring.beans.factory.support.DefaultBeanFactory;
@@ -15,7 +14,6 @@ import org.easyspring.entity.Dog;
 import org.easyspring.entity.Zoo;
 import org.junit.Test;
 
-import java.util.Date;
 import java.util.List;
 import static junit.framework.TestCase.*;
 

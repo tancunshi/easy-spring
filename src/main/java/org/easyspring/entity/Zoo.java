@@ -7,6 +7,13 @@ public class Zoo {
     private String zooName;
     private Dog dog;
 
+    public Zoo(){}
+
+    public Zoo(String zooName,Dog dog){
+        this.zooName = zooName;
+        this.dog = dog;
+    }
+
     public Dog getDog() {
         return dog;
     }
