@@ -1,14 +1,14 @@
 package org.easyspring.beans.factory.support;
 
 import org.easyspring.beans.PropertyValue;
+import org.easyspring.beans.SimpleTypeConverter;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
-import org.easyspring.beans.factory.config.RuntimeBeanReference;
-import org.easyspring.beans.factory.config.TypedStringValue;
 import org.easyspring.util.ClassUtils;
-
-import java.lang.reflect.Field;
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -74,31 +74,26 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 
     private void populateBean(BeanDefinition bd,Object bean) {
         List<PropertyValue> pvs = bd.getPropertyValues();
-
-        if (pvs == null || pvs.isEmpty()){
+        if (pvs == null || pvs.isEmpty()) {
             return;
         }
 
+        BeanDefinitionValueResolver valueResolver = new BeanDefinitionValueResolver(this);
+        SimpleTypeConverter converter = new SimpleTypeConverter();
         try{
             for (PropertyValue pv: pvs){
                 String propName = pv.getName();
-                Object value = pv.getValue();
-                Class<?> clazz = bean.getClass();
-                Field field = clazz.getDeclaredField(propName);
-                field.setAccessible(true);
-                if (value instanceof TypedStringValue){
-                    TypedStringValue strVal = (TypedStringValue) value;
-                    field.set(bean,strVal.getValue());
-                }
+                Object originalVal = pv.getValue();
+                Object resolveVal = valueResolver.resolveValueIfNecessary(originalVal);
 
-                if (value instanceof RuntimeBeanReference){
-                    RuntimeBeanReference refVal = (RuntimeBeanReference) value;
-                    if (!pv.isConverted()){
-                        Object refBean = this.getBean(refVal.getBeanName());
-                        pv.setConvertedValue(refBean);
+                BeanInfo beanInfo = Introspector.getBeanInfo(bean.getClass());
+                PropertyDescriptor[] pds = beanInfo.getPropertyDescriptors();
+                for (PropertyDescriptor pd: pds){
+                    if (pd.getName().equals(propName)){
+                        Object convertedValue = converter.convertIfNecessary(resolveVal, pd.getPropertyType());
+                        pd.getWriteMethod().invoke(bean,convertedValue);
+                        break;
                     }
-                    Object conVal = pv.getConvertedValue();
-                    field.set(bean,conVal);
                 }
             }
         }catch (Exception e){

@@ -1,7 +1,7 @@
 package org.easyspring.util;
 
 /**
- * @author tancunshi
+ * @author spring source code
  */
 public class Assert {
     public static void notNull(Object path, String msg) {

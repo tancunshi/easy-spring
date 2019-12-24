@@ -1,11 +1,11 @@
 package org.easyspring.beans.factory;
 
-import org.easyspring.beans.BeanException;
+import org.easyspring.beans.BeansException;
 
 /**
  * @author tancunshi
  */
-public class BeanDefinitionStoreException extends BeanException {
+public class BeanDefinitionStoreException extends BeansException {
     public BeanDefinitionStoreException(String msg) {
         super(msg);
     }

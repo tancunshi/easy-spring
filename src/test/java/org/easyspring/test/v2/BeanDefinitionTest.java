@@ -29,6 +29,7 @@ public class BeanDefinitionTest {
         assertNotNull(dog);
         assertEquals(dog.getDogName(),"puppy");
         assertEquals(dog,context.getBean("dog"));
+        assertEquals(dog.getDogAge(),new Integer(6));
     }
 
     @Test
