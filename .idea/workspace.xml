@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="167f5e66-bf58-4a13-8e84-bb83716329e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/util/StringUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/smartfox_info.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/xml/XmlBeanDefinitionReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/xml/XmlBeanDefinitionReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/AbstractApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/AbstractApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/ClassPathResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/ClassPathResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/util/ClassUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/util/ClassUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/xml/XmlBeanDefinitionReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/xml/XmlBeanDefinitionReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/AbstractApplicationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/AbstractApplicationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/ClassPathResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/ClassPathResource.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/util/ClassUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v2/BeanDefinitionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v2/BeanDefinitionTest.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,10 +21,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="169">
-              <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
+            <state relative-caret-position="376">
+              <caret line="97" column="54" lean-forward="true" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
               <folding>
-                <element signature="e#3854#3855#0" expanded="true" />
+                <element signature="e#3818#3819#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -287,7 +273,7 @@
       <workItem from="1577117098245" duration="249000" />
       <workItem from="1577154456487" duration="376000" />
       <workItem from="1577154859232" duration="1034000" />
-      <workItem from="1577155927035" duration="11946000" />
+      <workItem from="1577155927035" duration="12643000" />
     </task>
     <servers />
   </component>
@@ -324,10 +310,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13356000" />
+    <option name="totallyTimeSpent" value="14053000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.25340393" />
@@ -746,10 +732,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="81" column="12" lean-forward="true" selection-start-line="81" selection-start-column="12" selection-end-line="81" selection-end-column="12" />
+        <state relative-caret-position="376">
+          <caret line="97" column="54" lean-forward="true" selection-start-line="97" selection-start-column="54" selection-end-line="97" selection-end-column="54" />
           <folding>
-            <element signature="e#3854#3855#0" expanded="true" />
+            <element signature="e#3818#3819#0" expanded="true" />
           </folding>
         </state>
       </provider>

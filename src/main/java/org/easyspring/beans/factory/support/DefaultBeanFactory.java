@@ -71,8 +71,8 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
             throw new BeanCreationException("create bean for "+ beanClassName +" failed",e);
         }
     }
-    
-    private void populateBean(BeanDefinition bd,Object o) {
+
+    private void populateBean(BeanDefinition bd,Object bean) {
         List<PropertyValue> pvs = bd.getPropertyValues();
 
         if (pvs == null || pvs.isEmpty()){
@@ -80,25 +80,25 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         }
 
         try{
-            for (PropertyValue property: pvs){
-                String propName = property.getName();
-                Object value = property.getValue();
-                Class<?> clazz = o.getClass();
+            for (PropertyValue pv: pvs){
+                String propName = pv.getName();
+                Object value = pv.getValue();
+                Class<?> clazz = bean.getClass();
                 Field field = clazz.getDeclaredField(propName);
                 field.setAccessible(true);
                 if (value instanceof TypedStringValue){
                     TypedStringValue strVal = (TypedStringValue) value;
-                    field.set(o,strVal.getValue());
+                    field.set(bean,strVal.getValue());
                 }
 
                 if (value instanceof RuntimeBeanReference){
                     RuntimeBeanReference refVal = (RuntimeBeanReference) value;
-                    if (!property.isConverted()){
+                    if (!pv.isConverted()){
                         Object refBean = this.getBean(refVal.getBeanName());
-                        property.setConvertedValue(refBean);
+                        pv.setConvertedValue(refBean);
                     }
-                    Object convertedVal = property.getConvertedValue();
-                    field.set(o,convertedVal);
+                    Object conVal = pv.getConvertedValue();
+                    field.set(bean,conVal);
                 }
             }
         }catch (Exception e){
