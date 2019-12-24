@@ -5,6 +5,9 @@ import org.easyspring.beans.PropertyValue;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author tancunshi
+ */
 public class GenericBeanDefinition implements BeanDefinition {
 
     private String id;
@@ -42,7 +45,7 @@ public class GenericBeanDefinition implements BeanDefinition {
     }
 
     public void addProperty(PropertyValue property){
-        properties.add(property);
+        this.properties.add(property);
     }
 
     public List<PropertyValue> getPropertyValues() {

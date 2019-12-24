@@ -4,6 +4,9 @@ import org.easyspring.util.Assert;
 
 import java.io.*;
 
+/**
+ * @author tancunshi
+ */
 public class FileSystemResource implements Resource{
     private String path;
     private File file;

@@ -4,6 +4,9 @@ import org.easyspring.context.ApplicationContext;
 import org.easyspring.core.io.ClassPathResource;
 import org.easyspring.core.io.Resource;
 
+/**
+ * @author tancunshi
+ */
 public class ClassPathXmlApplicationContext extends AbstractApplicationContext
         implements ApplicationContext{
 

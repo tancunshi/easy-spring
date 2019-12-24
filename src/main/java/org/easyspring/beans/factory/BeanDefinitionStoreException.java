@@ -3,7 +3,7 @@ package org.easyspring.beans.factory;
 import org.easyspring.beans.BeanException;
 
 /**
- *  读取xml出错时抛出
+ * @author tancunshi
  */
 public class BeanDefinitionStoreException extends BeanException {
     public BeanDefinitionStoreException(String msg) {

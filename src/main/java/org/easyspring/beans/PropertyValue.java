@@ -1,5 +1,8 @@
 package org.easyspring.beans;
 
+/**
+ * @author tancunshi
+ */
 public class PropertyValue {
     private String name;
     private Object value;

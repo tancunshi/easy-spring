@@ -7,7 +7,7 @@ import org.easyspring.core.io.Resource;
 import org.easyspring.util.ClassUtil;
 
 /**
- *  使用模板方法，消除重复代码
+ * @author tancunshi
  */
 public abstract class AbstractApplicationContext implements ApplicationContext {
     private DefaultBeanFactory factory = null;

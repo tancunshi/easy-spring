@@ -3,7 +3,7 @@ package org.easyspring.beans;
 import java.util.List;
 
 /**
- * BeanDefinition 用于描述 Bean
+ * @author tancunshi
  */
 public interface BeanDefinition {
     String SCOPE_SINGLETON = "singleton";

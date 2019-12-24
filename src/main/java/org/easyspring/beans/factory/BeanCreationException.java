@@ -3,7 +3,7 @@ package org.easyspring.beans.factory;
 import org.easyspring.beans.BeanException;
 
 /**
- *  Bean创建时出错抛出
+ * @author tancunshi
  */
 public class BeanCreationException extends BeanException {
     public BeanCreationException(String msg) {

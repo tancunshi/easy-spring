@@ -5,6 +5,9 @@ import org.easyspring.util.Assert;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * @author tancunshi
+ */
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
     private final Map<String,Object> singletonObjects = new ConcurrentHashMap<String, Object>(64);

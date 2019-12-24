@@ -1,10 +1,13 @@
 package org.easyspring.util;
 
-public abstract class ClassUtil {
-    public static ClassLoader getDefaultClassLoader(){//获取系统类加载器
+/**
+ * @author tancunshi
+ */
+public class ClassUtil {
+    public static ClassLoader getDefaultClassLoader(){
         ClassLoader cl = null;
         try{
-            cl = cl = Thread.currentThread().getContextClassLoader();//Java默认在线程中加入系统类加载器，用于破坏双亲委派模式
+            cl = cl = Thread.currentThread().getContextClassLoader();
         }catch (Throwable ex){
 
         }

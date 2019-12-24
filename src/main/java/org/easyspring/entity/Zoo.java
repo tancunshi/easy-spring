@@ -1,7 +1,8 @@
 package org.easyspring.entity;
 
-import org.easyspring.entity.Dog;
-
+/**
+ * @author tancunshi
+ */
 public class Zoo {
     private String zooName;
     private Dog dog;
