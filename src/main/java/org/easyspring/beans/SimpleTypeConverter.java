@@ -4,6 +4,8 @@ import org.easyspring.beans.propertyeditors.CustomBooleanEditor;
 import org.easyspring.beans.propertyeditors.CustomNumberEditor;
 import org.easyspring.util.ClassUtils;
 import java.beans.PropertyEditor;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,20 +62,20 @@ public class SimpleTypeConverter implements TypeConverter {
 
         // The JDK does not contain default editors for number wrapper types!
         // Override JDK primitive number editors with our own CustomNumberEditor.
-		/*this.defaultEditors.put(byte.class, new CustomNumberEditor(Byte.class, false));
+		this.defaultEditors.put(byte.class, new CustomNumberEditor(Byte.class, false));
 		this.defaultEditors.put(Byte.class, new CustomNumberEditor(Byte.class, true));
 		this.defaultEditors.put(short.class, new CustomNumberEditor(Short.class, false));
-		this.defaultEditors.put(Short.class, new CustomNumberEditor(Short.class, true));*/
+		this.defaultEditors.put(Short.class, new CustomNumberEditor(Short.class, true));
         this.defaultEditors.put(int.class, new CustomNumberEditor(Integer.class, false));
         this.defaultEditors.put(Integer.class, new CustomNumberEditor(Integer.class, true));
-		/*this.defaultEditors.put(long.class, new CustomNumberEditor(Long.class, false));
+		this.defaultEditors.put(long.class, new CustomNumberEditor(Long.class, false));
 		this.defaultEditors.put(Long.class, new CustomNumberEditor(Long.class, true));
 		this.defaultEditors.put(float.class, new CustomNumberEditor(Float.class, false));
 		this.defaultEditors.put(Float.class, new CustomNumberEditor(Float.class, true));
 		this.defaultEditors.put(double.class, new CustomNumberEditor(Double.class, false));
 		this.defaultEditors.put(Double.class, new CustomNumberEditor(Double.class, true));
 		this.defaultEditors.put(BigDecimal.class, new CustomNumberEditor(BigDecimal.class, true));
-		this.defaultEditors.put(BigInteger.class, new CustomNumberEditor(BigInteger.class, true));*/
+		this.defaultEditors.put(BigInteger.class, new CustomNumberEditor(BigInteger.class, true));
     }
 
 }

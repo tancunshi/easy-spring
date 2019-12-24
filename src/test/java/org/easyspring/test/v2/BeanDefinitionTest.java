@@ -14,6 +14,8 @@ import org.easyspring.core.io.Resource;
 import org.easyspring.entity.Dog;
 import org.easyspring.entity.Zoo;
 import org.junit.Test;
+
+import java.util.Date;
 import java.util.List;
 import static junit.framework.TestCase.*;
 
@@ -30,6 +32,8 @@ public class BeanDefinitionTest {
         assertEquals(dog.getDogName(),"puppy");
         assertEquals(dog,context.getBean("dog"));
         assertEquals(dog.getDogAge(),new Integer(6));
+        assertEquals(dog.getWeight(),new Double(1024.0));
+        assertEquals(dog.isFemale(),true);
     }
 
     @Test

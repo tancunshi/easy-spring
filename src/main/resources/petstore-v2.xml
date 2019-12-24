@@ -11,5 +11,7 @@
     <bean id="dog" class="org.easyspring.entity.Dog">
         <property name="dogName" value="puppy"/>
         <property name="dogAge" value="6"/>
+        <property name="weight" value="1024.0"/>
+        <property name="female" value="true"/>
     </bean>
 </beans>
