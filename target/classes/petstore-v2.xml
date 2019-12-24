@@ -8,5 +8,7 @@
         <property name="dog" ref="dog"/>
         <property name="zooName" value="crazy"/>
     </bean>
-    <bean id="dog" class="org.easyspring.entity.Dog"/>
+    <bean id="dog" class="org.easyspring.entity.Dog">
+        <property name="dogName" value="puppy"/>
+    </bean>
 </beans>

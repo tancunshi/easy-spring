@@ -7,6 +7,7 @@ import org.easyspring.beans.factory.config.RuntimeBeanReference;
 import org.easyspring.beans.factory.config.TypedStringValue;
 import org.easyspring.beans.factory.support.DefaultBeanFactory;
 import org.easyspring.beans.factory.xml.XmlBeanDefinitionReader;
+import org.easyspring.context.ApplicationContext;
 import org.easyspring.context.support.ClassPathXmlApplicationContext;
 import org.easyspring.core.io.ClassPathResource;
 import org.easyspring.core.io.Resource;
@@ -17,33 +18,34 @@ import java.util.List;
 import static junit.framework.TestCase.*;
 
 public class BeanDefinitionTest {
-    @Test
-    public void propertyValueTest(){
-        BeanFactory context = new ClassPathXmlApplicationContext("petstore-v2.xml");
-        Zoo zoo =(Zoo) context.getBean("zoo");
-        assertNotNull(zoo);
 
+    @Test
+    public void iocApplicationContext(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("petstore-v2.xml");
+        Zoo zoo = (Zoo) context.getBean("zoo");
+        assertNotNull(zoo);
+        assertEquals(zoo.getZooName(),"crazy");
         Dog dog = zoo.getDog();
         assertNotNull(dog);
-
-        String zooName = zoo.getZooName();
-        assertEquals(zooName,"Crazy");
+        assertEquals(dog.getDogName(),"puppy");
+        assertEquals(dog,context.getBean("dog"));
     }
+
     @Test
     public void propertyValueGet(){
         DefaultBeanFactory factory = new DefaultBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
         Resource resource = new ClassPathResource("petstore-v2.xml");
         reader.loadBeanDefinition(resource);
-        BeanDefinition zoo = factory.getBeanDefinition("zoo");
-        List<PropertyValue> properties = zoo.getPropertyValues();
+        BeanDefinition bd = factory.getBeanDefinition("zoo");
+        List<PropertyValue> properties = bd.getPropertyValues();
         assertEquals(properties.size(),2);
 
-        Object o1 = this.getPropertyValue("dog",properties);
-        assertTrue(o1 instanceof  RuntimeBeanReference);
+        PropertyValue pv1 = this.getPropertyValue("dog",properties);
+        assertTrue(pv1.getValue() instanceof  RuntimeBeanReference);
 
-        Object o2 = this.getPropertyValue("zooName",properties);
-        assertTrue(o2 instanceof  TypedStringValue);
+        PropertyValue pv2 = this.getPropertyValue("zooName",properties);
+        assertTrue(pv2.getValue() instanceof  TypedStringValue);
     }
 
     private PropertyValue getPropertyValue(String name,List<PropertyValue> pvs){

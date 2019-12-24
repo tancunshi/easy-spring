@@ -1,9 +1,15 @@
 package org.easyspring.beans.factory.support;
 
+import org.easyspring.beans.PropertyValue;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
+import org.easyspring.beans.factory.config.RuntimeBeanReference;
+import org.easyspring.beans.factory.config.TypedStringValue;
 import org.easyspring.util.ClassUtil;
+
+import java.lang.reflect.Field;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -49,9 +55,34 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         ClassLoader cl = this.getClassLoader();
         try {
             Class<?> clazz = cl.loadClass(beanClassName);
-            return clazz.newInstance();
+            Object o = clazz.newInstance();
+            this.fillBeanProperty(o,bd.getPropertyValues());
+            return o;
         }catch (Exception e){
             throw new BeanCreationException("Bean Definition not exist");
+        }
+    }
+
+    private void fillBeanProperty(Object o,List<PropertyValue> properties) throws Exception{
+        for (PropertyValue property: properties){
+            String propName = property.getName();
+            Object value = property.getValue();
+            Class<?> clazz = o.getClass();
+            Field field = clazz.getDeclaredField(propName);
+            field.setAccessible(true);
+            if (value instanceof TypedStringValue){
+                TypedStringValue strVal = (TypedStringValue) value;
+                field.set(o,strVal.getValue());
+            }
+
+            if (value instanceof RuntimeBeanReference){
+                RuntimeBeanReference refVal = (RuntimeBeanReference) value;
+                if (!property.isConverted()){
+                    Object refBean = this.getBean(refVal.getBeanName());
+                    property.setConvertedValue(refBean);
+                }
+                field.set(o,property.getConvertedValue());
+            }
         }
     }
 

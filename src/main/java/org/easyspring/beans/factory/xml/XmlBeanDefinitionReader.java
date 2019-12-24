@@ -4,7 +4,10 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.PropertyValue;
 import org.easyspring.beans.factory.BeanDefinitionStoreException;
+import org.easyspring.beans.factory.config.RuntimeBeanReference;
+import org.easyspring.beans.factory.config.TypedStringValue;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.support.GenericBeanDefinition;
 import org.easyspring.core.io.Resource;
@@ -19,6 +22,9 @@ public class XmlBeanDefinitionReader {
     private static final String ID_ATTRIBUTE = "id";
     private static final String CLASS_ATTRIBUTE = "class";
     private static final String SCOPE_ATTRIBUTE = "scope";
+    private static final String REF_ATTRIBUTE = "ref";
+    private static final String VALUE_ATTRIBUTE = "value";
+    private static final String PROPERTY_NAME_ATTRIBUTE = "name";
 
     private BeanDefinitionRegistry registry;
     public XmlBeanDefinitionReader(BeanDefinitionRegistry registry){
@@ -35,13 +41,14 @@ public class XmlBeanDefinitionReader {
 
             Iterator<Element> iter = root.elementIterator();
             while (iter.hasNext()){
-                Element element = iter.next();
-                String beanId = element.attributeValue(ID_ATTRIBUTE);
-                String beanClassName = element.attributeValue(CLASS_ATTRIBUTE);
+                Element ele = iter.next();
+                String beanId = ele.attributeValue(ID_ATTRIBUTE);
+                String beanClassName = ele.attributeValue(CLASS_ATTRIBUTE);
                 BeanDefinition bd = new GenericBeanDefinition(beanId,beanClassName);
-                if (element.attributeValue(SCOPE_ATTRIBUTE) != null){
-                    bd.setScope(element.attributeValue(SCOPE_ATTRIBUTE));
+                if (ele.attributeValue(SCOPE_ATTRIBUTE) != null){
+                    bd.setScope(ele.attributeValue(SCOPE_ATTRIBUTE));
                 }
+                this.parsePropertyElement(ele,bd);
                 this.registry.registerBeanDefinition(beanId,bd);
             }
         }catch (Exception e){
@@ -54,6 +61,23 @@ public class XmlBeanDefinitionReader {
                     e.printStackTrace();
                 }
             }
+        }
+    }
+
+    private void parsePropertyElement(Element beanElem,BeanDefinition bd){
+        Iterator iter = beanElem.elementIterator();
+        while (iter.hasNext()){
+             Element propElem = (Element) iter.next();
+             String name = propElem.attributeValue(PROPERTY_NAME_ATTRIBUTE);
+             PropertyValue property = null;
+             if (propElem.attributeValue(VALUE_ATTRIBUTE) != null){
+                 TypedStringValue value = new TypedStringValue(propElem.attributeValue(VALUE_ATTRIBUTE));
+                 property = new PropertyValue(name,value);
+             }else if (propElem.attributeValue(REF_ATTRIBUTE) != null){
+                 RuntimeBeanReference ref = new RuntimeBeanReference(propElem.attributeValue(REF_ATTRIBUTE));
+                 property = new PropertyValue(name,ref);
+             }
+             bd.addProperty(property);
         }
     }
 }

@@ -17,7 +17,7 @@ public class PropertyValue {
         return this.value;
     }
 
-    public Object getName() {
+    public String getName() {
         return this.name;
     }
 
