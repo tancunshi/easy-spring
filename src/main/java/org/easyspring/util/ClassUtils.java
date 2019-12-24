@@ -3,7 +3,7 @@ package org.easyspring.util;
 /**
  * @author tancunshi
  */
-public class ClassUtil {
+public class ClassUtils {
     public static ClassLoader getDefaultClassLoader(){
         ClassLoader cl = null;
         try{
@@ -12,7 +12,7 @@ public class ClassUtil {
 
         }
         if (cl == null){
-            cl = ClassUtil.class.getClassLoader();
+            cl = ClassUtils.class.getClassLoader();
             if (cl == null){
                 try {
                     cl = ClassLoader.getSystemClassLoader();

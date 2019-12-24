@@ -4,7 +4,7 @@ import org.easyspring.beans.factory.support.DefaultBeanFactory;
 import org.easyspring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.easyspring.context.ApplicationContext;
 import org.easyspring.core.io.Resource;
-import org.easyspring.util.ClassUtil;
+import org.easyspring.util.ClassUtils;
 
 /**
  * @author tancunshi
@@ -32,6 +32,6 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     }
 
     public ClassLoader getClassLoader() {
-        return this.classLoader == null ? ClassUtil.getDefaultClassLoader() : this.classLoader;
+        return this.classLoader == null ? ClassUtils.getDefaultClassLoader() : this.classLoader;
     }
 }

@@ -6,7 +6,7 @@ import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
 import org.easyspring.beans.factory.config.RuntimeBeanReference;
 import org.easyspring.beans.factory.config.TypedStringValue;
-import org.easyspring.util.ClassUtil;
+import org.easyspring.util.ClassUtils;
 
 import java.lang.reflect.Field;
 import java.util.List;
@@ -46,43 +46,63 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
             }
             return bean;
         }
-        return this.createBean(bd);
+        return createBean(bd);
     }
 
+    /**
+     *  原先的createBean只是简单的反射创建Bean，
+     *  现在额外多了一个设置属性值得功能，
+     *  所以重构了createBean，
+     *  拆解成两个方法
+     */
     private Object createBean(BeanDefinition bd){
-        String beanClassName = bd.getBeanClassName();
+        Object bean = this.instantiateBean(bd);
+        this.populateBean(bd,bean);
+        return bean;
+    }
 
+    private Object instantiateBean(BeanDefinition bd){
         ClassLoader cl = this.getClassLoader();
+        String beanClassName = bd.getBeanClassName();
         try {
             Class<?> clazz = cl.loadClass(beanClassName);
-            Object o = clazz.newInstance();
-            this.fillBeanProperty(o,bd.getPropertyValues());
-            return o;
+            return clazz.newInstance();
         }catch (Exception e){
-            throw new BeanCreationException("Bean Definition not exist");
+            throw new BeanCreationException("create bean for "+ beanClassName +" failed",e);
         }
     }
+    
+    private void populateBean(BeanDefinition bd,Object o) {
+        List<PropertyValue> pvs = bd.getPropertyValues();
 
-    private void fillBeanProperty(Object o,List<PropertyValue> properties) throws Exception{
-        for (PropertyValue property: properties){
-            String propName = property.getName();
-            Object value = property.getValue();
-            Class<?> clazz = o.getClass();
-            Field field = clazz.getDeclaredField(propName);
-            field.setAccessible(true);
-            if (value instanceof TypedStringValue){
-                TypedStringValue strVal = (TypedStringValue) value;
-                field.set(o,strVal.getValue());
-            }
+        if (pvs == null || pvs.isEmpty()){
+            return;
+        }
 
-            if (value instanceof RuntimeBeanReference){
-                RuntimeBeanReference refVal = (RuntimeBeanReference) value;
-                if (!property.isConverted()){
-                    Object refBean = this.getBean(refVal.getBeanName());
-                    property.setConvertedValue(refBean);
+        try{
+            for (PropertyValue property: pvs){
+                String propName = property.getName();
+                Object value = property.getValue();
+                Class<?> clazz = o.getClass();
+                Field field = clazz.getDeclaredField(propName);
+                field.setAccessible(true);
+                if (value instanceof TypedStringValue){
+                    TypedStringValue strVal = (TypedStringValue) value;
+                    field.set(o,strVal.getValue());
                 }
-                field.set(o,property.getConvertedValue());
+
+                if (value instanceof RuntimeBeanReference){
+                    RuntimeBeanReference refVal = (RuntimeBeanReference) value;
+                    if (!property.isConverted()){
+                        Object refBean = this.getBean(refVal.getBeanName());
+                        property.setConvertedValue(refBean);
+                    }
+                    Object convertedVal = property.getConvertedValue();
+                    field.set(o,convertedVal);
+                }
             }
+        }catch (Exception e){
+            throw new BeanCreationException("Failed to obtain BeanInfo for class [" + bd.getBeanClassName() + "]", e);
         }
     }
 
@@ -91,6 +111,6 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
     }
 
     public ClassLoader getClassLoader() {
-        return classLoader == null ? ClassUtil.getDefaultClassLoader() : this.classLoader;
+        return classLoader == null ? ClassUtils.getDefaultClassLoader() : this.classLoader;
     }
 }

@@ -1,6 +1,6 @@
 package org.easyspring.core.io;
 
-import org.easyspring.util.ClassUtil;
+import org.easyspring.util.ClassUtils;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +18,7 @@ public class ClassPathResource implements Resource {
 
     public ClassPathResource(String path, ClassLoader classLoader){
         this.path = path;
-        this.classLoader = (classLoader != null ? classLoader : ClassUtil.getDefaultClassLoader());
+        this.classLoader = (classLoader != null ? classLoader : ClassUtils.getDefaultClassLoader());
     }
 
     public InputStream getInputStream() throws IOException {

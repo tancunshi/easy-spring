@@ -11,6 +11,8 @@ import org.easyspring.beans.factory.config.TypedStringValue;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.support.GenericBeanDefinition;
 import org.easyspring.core.io.Resource;
+import org.easyspring.util.StringUtils;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
@@ -22,6 +24,7 @@ public class XmlBeanDefinitionReader {
     private static final String ID_ATTRIBUTE = "id";
     private static final String CLASS_ATTRIBUTE = "class";
     private static final String SCOPE_ATTRIBUTE = "scope";
+    private static final String PROPERTY_ELEMENT = "property";
     private static final String REF_ATTRIBUTE = "ref";
     private static final String VALUE_ATTRIBUTE = "value";
     private static final String PROPERTY_NAME_ATTRIBUTE = "name";
@@ -65,19 +68,37 @@ public class XmlBeanDefinitionReader {
     }
 
     private void parsePropertyElement(Element beanElem,BeanDefinition bd){
-        Iterator iter = beanElem.elementIterator();
+        Iterator iter = beanElem.elementIterator(PROPERTY_ELEMENT);
         while (iter.hasNext()){
              Element propElem = (Element) iter.next();
-             String name = propElem.attributeValue(PROPERTY_NAME_ATTRIBUTE);
-             PropertyValue property = null;
-             if (propElem.attributeValue(VALUE_ATTRIBUTE) != null){
-                 TypedStringValue value = new TypedStringValue(propElem.attributeValue(VALUE_ATTRIBUTE));
-                 property = new PropertyValue(name,value);
-             }else if (propElem.attributeValue(REF_ATTRIBUTE) != null){
-                 RuntimeBeanReference ref = new RuntimeBeanReference(propElem.attributeValue(REF_ATTRIBUTE));
-                 property = new PropertyValue(name,ref);
+             String propertyName = propElem.attributeValue(PROPERTY_NAME_ATTRIBUTE);
+             if (!StringUtils.hasLength(propertyName)){
+                 return;
              }
-             bd.addProperty(property);
+
+             Object val = parsePropertyValue(propElem,bd,propertyName);
+             PropertyValue pv = new PropertyValue(propertyName,val);
+
+             bd.addProperty(pv);
+        }
+    }
+
+    private Object parsePropertyValue(Element ele,BeanDefinition bd,String propertyName){
+        String elementName = (propertyName != null) ?
+                "<property> element for property '" + propertyName + "'" :
+                "<constructor-arg> element";
+        boolean hasRefAttribute = (ele.attribute(REF_ATTRIBUTE)!= null);
+        boolean hasValAttribute = (ele.attribute(VALUE_ATTRIBUTE)!= null);
+
+        if (hasRefAttribute){
+            String refName = ele.attributeValue(REF_ATTRIBUTE);
+            RuntimeBeanReference ref = new RuntimeBeanReference(refName);
+            return ref;
+        }else if (hasValAttribute) {
+            TypedStringValue strVal = new TypedStringValue(ele.attributeValue(VALUE_ATTRIBUTE));
+            return strVal;
+        } else {
+            throw new RuntimeException(elementName + " must specify a ref or value");
         }
     }
 }
