@@ -14,4 +14,7 @@
         <property name="weight" value="1024.0"/>
         <property name="female" value="true"/>
     </bean>
+    <bean id="zoo2" class="org.easyspring.entity.Zoo">
+        <constructor-arg value="国家"/>
+    </bean>
 </beans>

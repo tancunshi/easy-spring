@@ -19,4 +19,6 @@ public interface BeanDefinition {
     void addProperty(PropertyValue property);
     ConstructorArgument getConstructorArgument();
     boolean hasConstructorArgumentValues();
+
+    String getID();
 }

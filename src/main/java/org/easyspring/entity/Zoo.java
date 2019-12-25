@@ -9,6 +9,10 @@ public class Zoo {
 
     public Zoo(){}
 
+    public Zoo(String zooName){
+        this.zooName = zooName;
+    }
+
     public Zoo(String zooName,Dog dog){
         this.zooName = zooName;
         this.dog = dog;
