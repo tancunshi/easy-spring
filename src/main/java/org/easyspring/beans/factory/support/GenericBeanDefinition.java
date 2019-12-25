@@ -1,6 +1,7 @@
 package org.easyspring.beans.factory.support;
 
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.ConstructorArgument;
 import org.easyspring.beans.PropertyValue;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ public class GenericBeanDefinition implements BeanDefinition {
     private boolean isSingleton = true;
     private boolean isPrototype = false;
     private List<PropertyValue> properties = new ArrayList<PropertyValue>();
+    private ConstructorArgument consArgument = new ConstructorArgument();
 
     public GenericBeanDefinition(String id, String beanClassName) {
         this.id = id;
@@ -50,5 +52,13 @@ public class GenericBeanDefinition implements BeanDefinition {
 
     public List<PropertyValue> getPropertyValues() {
         return this.properties;
+    }
+
+    public ConstructorArgument getConstructorArgument() {
+        return consArgument;
+    }
+
+    public boolean hasConstructorArgumentValues(){
+        return this.consArgument.isEmpty() == false;
     }
 }

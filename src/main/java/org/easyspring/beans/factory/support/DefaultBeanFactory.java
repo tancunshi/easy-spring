@@ -62,18 +62,26 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
     }
 
     private Object instantiateBean(BeanDefinition bd){
-        ClassLoader cl = this.getClassLoader();
-        String beanClassName = bd.getBeanClassName();
-        try {
-            Class<?> clazz = cl.loadClass(beanClassName);
-            return clazz.newInstance();
-        }catch (Exception e){
-            throw new BeanCreationException("create bean for "+ beanClassName +" failed",e);
+
+        if(bd.hasConstructorArgumentValues()){
+            ConstructorResolver resolver = new ConstructorResolver(this);
+            return resolver.autowireConstructor(bd);
+        }
+        else{
+            ClassLoader cl = this.getClassLoader();
+            String beanClassName = bd.getBeanClassName();
+            try {
+                Class<?> clazz = cl.loadClass(beanClassName);
+                return clazz.newInstance();
+            }catch (Exception e){
+                throw new BeanCreationException("create bean for "+ beanClassName +" failed",e);
+            }
         }
     }
 
     /**
-     *  这里还可以直接使用common-beanutils下的BeanUtils.setProperty(bean,propertyName,propertyValue)进行property注入s
+     *  这里还可以直接使用common-beanutils下的
+     *  BeanUtils.setProperty进行注入
      */
     private void populateBean(BeanDefinition bd,Object bean) {
         List<PropertyValue> pvs = bd.getPropertyValues();

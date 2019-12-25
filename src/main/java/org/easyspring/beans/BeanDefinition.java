@@ -16,5 +16,7 @@ public interface BeanDefinition {
     void setScope(String scope);
     String getScope();
     List<PropertyValue> getPropertyValues();
-    public void addProperty(PropertyValue property);
+    void addProperty(PropertyValue property);
+    ConstructorArgument getConstructorArgument();
+    boolean hasConstructorArgumentValues();
 }

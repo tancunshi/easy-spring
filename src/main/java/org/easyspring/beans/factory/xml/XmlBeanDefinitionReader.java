@@ -12,7 +12,7 @@ import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.support.GenericBeanDefinition;
 import org.easyspring.core.io.Resource;
 import org.easyspring.util.StringUtils;
-
+import org.easyspring.beans.ConstructorArgument.ValueHolder;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
@@ -28,6 +28,7 @@ public class XmlBeanDefinitionReader {
     private static final String REF_ATTRIBUTE = "ref";
     private static final String VALUE_ATTRIBUTE = "value";
     private static final String PROPERTY_NAME_ATTRIBUTE = "name";
+    private static final String CONSTRUCTOR_ARGS_ELEMENT = "constructor-arg";
 
     private BeanDefinitionRegistry registry;
     public XmlBeanDefinitionReader(BeanDefinitionRegistry registry){
@@ -51,6 +52,7 @@ public class XmlBeanDefinitionReader {
                 if (ele.attributeValue(SCOPE_ATTRIBUTE) != null){
                     bd.setScope(ele.attributeValue(SCOPE_ATTRIBUTE));
                 }
+                this.parseConstructorElement(ele,bd);
                 this.parsePropertyElement(ele,bd);
                 this.registry.registerBeanDefinition(beanId,bd);
             }
@@ -67,6 +69,17 @@ public class XmlBeanDefinitionReader {
         }
     }
 
+    private void parseConstructorElement(Element beanElem,BeanDefinition bd){
+        Iterator iter = beanElem.elementIterator(CONSTRUCTOR_ARGS_ELEMENT);
+
+        while (iter.hasNext()){
+            Element consElem = (Element) iter.next();
+            Object consValue = this.parsePropertyValue(consElem,null);
+            ValueHolder vh = new ValueHolder(consValue);
+            bd.getConstructorArgument().addArgumentValues(vh);
+        }
+    }
+
     private void parsePropertyElement(Element beanElem,BeanDefinition bd){
         Iterator iter = beanElem.elementIterator(PROPERTY_ELEMENT);
         while (iter.hasNext()){
@@ -76,14 +89,14 @@ public class XmlBeanDefinitionReader {
                  return;
              }
 
-             Object val = parsePropertyValue(propElem,bd,propertyName);
+             Object val = parsePropertyValue(propElem,propertyName);
              PropertyValue pv = new PropertyValue(propertyName,val);
 
              bd.addProperty(pv);
         }
     }
 
-    private Object parsePropertyValue(Element ele,BeanDefinition bd,String propertyName){
+    private Object parsePropertyValue(Element ele,String propertyName){
         String elementName = (propertyName != null) ?
                 "<property> element for property '" + propertyName + "'" :
                 "<constructor-arg> element";
