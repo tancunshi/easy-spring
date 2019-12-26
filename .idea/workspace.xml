@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="167f5e66-bf58-4a13-8e84-bb83716329e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/entity/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/entity/School.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/stereotype/Component.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/petstore-v4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/support/PackageResourceLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/LoadPackageTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/ClassPathResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/ClassPathResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/Resource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/Resource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v0/AllTestCaseRunnerV0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v0/AllTestCaseRunnerV0.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v3/ApplicationContextTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v3/ApplicationContextTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v0/AllTestCaseRunnerV0.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v0/AllTestCaseRunnerV0.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v3/ApplicationContextTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v3/ApplicationContextTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/FileSystemResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/FileSystemResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/util/ClassUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/util/ClassUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/ClassPathResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/ClassPathResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/FileSystemResource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/FileSystemResource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/entity/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/entity/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/entity/School.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/entity/School.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/util/ClassUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/util/ClassUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/AllTestCaseRunnerV4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/AllTestCaseRunnerV4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/ApplicationContextTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/ApplicationContextTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,23 +45,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/ApplicationContextTest.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/support/PackageResourceLoader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            <state relative-caret-position="146">
+              <caret line="41" column="69" lean-forward="true" selection-start-line="41" selection-start-column="69" selection-end-line="41" selection-end-column="69" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#474#475#0" expanded="true" />
+                <element signature="e#520#521#0" expanded="true" />
+                <element signature="e#1027#1033#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/ClassPathResource.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+            <state relative-caret-position="233">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/LoadPackageTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
               <folding>
-                <element signature="e#897#898#0" expanded="true" />
-                <element signature="e#929#930#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,8 +87,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="AnnotationType" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -99,15 +115,19 @@
         <option value="$PROJECT_DIR$/src/main/resources/petstore-v4.xml" />
         <option value="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV3.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/easyspring/entity/Company.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV4.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/easyspring/test/v3/ApplicationContextTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/org/easyspring/test/v0/AllTestCaseRunnerV0.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/easyspring/stereotype/Component.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/easyspring/entity/School.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/easyspring/entity/Person.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/ApplicationContextTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/Resource.java" />
         <option value="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/ClassPathResource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/easyspring/util/ClassUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/FileSystemResource.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/ApplicationContextTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV4.java" />
+        <option value="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/LoadPackageTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/easyspring/core/io/support/PackageResourceLoader.java" />
       </list>
     </option>
   </component>
@@ -119,10 +139,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="82" />
+    <option name="y" value="115" />
+    <option name="width" value="1280" />
+    <option name="height" value="694" />
   </component>
   <component name="ProjectId" id="1VNwjqplVY2Y2JF6VHIBZqqGzsr" />
   <component name="ProjectView">
@@ -163,6 +183,27 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="easyspring" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyspring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easy-spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyspring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easy-spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="easyspring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="easy-spring" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -276,50 +317,50 @@
       <workItem from="1577180544106" duration="4470000" />
       <workItem from="1577193546719" duration="5044000" />
       <workItem from="1577238873956" duration="13407000" />
-      <workItem from="1577327915530" duration="3589000" />
+      <workItem from="1577327915530" duration="10803000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ApplicationContextTest_testGetBeanProperty - 2019.12.25 at 11h 35m 07s.xml">
-      <configuration name="ApplicationContextTest.testGetBeanProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplicationContextTest_testGetBeanProperty - 2019.12.25 at 11h 35m 44s.xml">
-      <configuration name="ApplicationContextTest.testGetBeanProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplicationContextTest_testGetBeanProperty - 2019.12.25 at 11h 36m 06s.xml">
-      <configuration name="ApplicationContextTest.testGetBeanProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplicationContextTest_testGetBeanProperty - 2019.12.25 at 11h 36m 27s.xml">
-      <configuration name="ApplicationContextTest.testGetBeanProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplicationContextTest_testGetBeanProperty - 2019.12.25 at 11h 37m 14s.xml">
-      <configuration name="ApplicationContextTest.testGetBeanProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplicationContextTest_testGetBeanProperty - 2019.12.25 at 11h 40m 19s.xml">
-      <configuration name="ApplicationContextTest.testGetBeanProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplicationContextTest_testGetBeanProperty - 2019.12.25 at 11h 45m 55s.xml">
-      <configuration name="ApplicationContextTest.testGetBeanProperty" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ApplicationContextTest_testGetBeanProperty - 2019.12.25 at 17h 17m 12s.xml">
-      <configuration name="ApplicationContextTest.testGetBeanProperty" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 10h 57m 29s.xml">
       <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
     </history-entry>
     <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 10h 57m 51s.xml">
       <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 16h 32m 48s.xml">
+      <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 16h 33m 23s.xml">
+      <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 16h 35m 00s.xml">
+      <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 16h 37m 20s.xml">
+      <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 16h 43m 04s.xml">
+      <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 16h 43m 39s.xml">
+      <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 16h 48m 32s.xml">
+      <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AllTestCaseRunnerV0 - 2019.12.26 at 16h 48m 49s.xml">
+      <configuration name="AllTestCaseRunnerV0" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16996000" />
+    <option name="totallyTimeSpent" value="24210000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25340393" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -328,7 +369,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.43442622" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.40983605" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -437,13 +478,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="96" column="51" lean-forward="true" selection-start-line="96" selection-start-column="51" selection-end-line="96" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/beans/SimpleTypeConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="261">
@@ -522,13 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/entity/Dog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/petstore-v4.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
@@ -554,16 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
           <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV4.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -611,34 +628,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/Resource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/ClassPathResource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
+        <state relative-caret-position="667">
+          <caret line="34" column="1" lean-forward="true" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="e#897#898#0" expanded="true" />
+            <element signature="e#929#930#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/FileSystemResource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/entity/Dog.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        <state relative-caret-position="69">
+          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Java/jdk1.8.0_181/src.zip!/com/sun/org/apache/bcel/internal/util/ClassLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/petstore-v1.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/util/ClassUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="102" column="55" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="55" />
+          <folding>
+            <element signature="e#811#831#0" expanded="true" />
+            <element signature="e#1068#1088#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="119" column="47" selection-start-line="119" selection-start-column="37" selection-end-line="119" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/ApplicationContextTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="207">
+          <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/ClassPathResource.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV4.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        <state relative-caret-position="161">
+          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
           <folding>
-            <element signature="e#897#898#0" expanded="true" />
-            <element signature="e#929#930#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/Resource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/FileSystemResource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#647#648#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/LoadPackageTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/easyspring/core/io/support/PackageResourceLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="41" column="69" lean-forward="true" selection-start-line="41" selection-start-column="69" selection-end-line="41" selection-end-column="69" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#474#475#0" expanded="true" />
+            <element signature="e#520#521#0" expanded="true" />
+            <element signature="e#1027#1033#0" expanded="true" />
           </folding>
         </state>
       </provider>
