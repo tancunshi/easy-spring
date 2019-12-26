@@ -9,8 +9,8 @@ import java.io.InputStream;
  * @author tancunshi
  */
 public class ClassPathResource implements Resource {
-    private ClassLoader classLoader;
     private String path;
+    private ClassLoader classLoader;
 
     public ClassPathResource(String path){
         this(path,(ClassLoader) null);

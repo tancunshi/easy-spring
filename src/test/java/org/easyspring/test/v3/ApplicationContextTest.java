@@ -1,10 +1,8 @@
 package org.easyspring.test.v3;
 
-import junit.framework.Assert;
 import org.easyspring.context.support.ClassPathXmlApplicationContext;
 import org.easyspring.entity.Zoo;
 import org.junit.Test;
-
 import static junit.framework.TestCase.*;
 
 public class ApplicationContextTest {
