@@ -9,13 +9,14 @@ import java.util.List;
 public class ConstructorArgument {
     private final List<ValueHolder> argumentValues = new ArrayList<ValueHolder>();
 
-    public ConstructorArgument(){}
+    public ConstructorArgument() {
+    }
 
     public List<ValueHolder> getArgumentValues() {
         return argumentValues;
     }
 
-    public void addArgumentValues(ValueHolder vh){
+    public void addArgumentValues(ValueHolder vh) {
         argumentValues.add(vh);
     }
 
@@ -28,12 +29,12 @@ public class ConstructorArgument {
     }
 
     /**
-     *  简易版构造器注入，constructor-arg暂时只支持value和ref
+     * 简易版构造器注入，constructor-arg暂时只支持value和ref
      */
-    public static class ValueHolder{
+    public static class ValueHolder {
         private Object value;
 
-        public ValueHolder(Object value){
+        public ValueHolder(Object value) {
             this.value = value;
         }
 

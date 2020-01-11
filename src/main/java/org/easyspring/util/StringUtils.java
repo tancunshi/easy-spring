@@ -7,12 +7,15 @@ public abstract class StringUtils {
     public static boolean hasLength(String str) {
         return hasLength((CharSequence) str);
     }
+
     public static boolean hasLength(CharSequence str) {
         return (str != null && str.length() > 0);
     }
+
     public static boolean hasText(String str) {
         return hasText((CharSequence) str);
     }
+
     public static boolean hasText(CharSequence str) {
         if (!hasLength(str)) {
             return false;
@@ -25,6 +28,7 @@ public abstract class StringUtils {
         }
         return false;
     }
+
     public static String trimAllWhitespace(String str) {
         if (!hasLength(str)) {
             return str;
@@ -34,8 +38,7 @@ public abstract class StringUtils {
         while (sb.length() > index) {
             if (Character.isWhitespace(sb.charAt(index))) {
                 sb.deleteCharAt(index);
-            }
-            else {
+            } else {
                 index++;
             }
         }

@@ -17,29 +17,21 @@ public abstract class NumberUtils {
 
         if (targetClass.equals(Byte.class)) {
             return (T) (isHexNumber(trimmed) ? Byte.decode(trimmed) : Byte.valueOf(trimmed));
-        }
-        else if (targetClass.equals(Short.class)) {
+        } else if (targetClass.equals(Short.class)) {
             return (T) (isHexNumber(trimmed) ? Short.decode(trimmed) : Short.valueOf(trimmed));
-        }
-        else if (targetClass.equals(Integer.class)) {
+        } else if (targetClass.equals(Integer.class)) {
             return (T) (isHexNumber(trimmed) ? Integer.decode(trimmed) : Integer.valueOf(trimmed));
-        }
-        else if (targetClass.equals(Long.class)) {
+        } else if (targetClass.equals(Long.class)) {
             return (T) (isHexNumber(trimmed) ? Long.decode(trimmed) : Long.valueOf(trimmed));
-        }
-        else if (targetClass.equals(BigInteger.class)) {
+        } else if (targetClass.equals(BigInteger.class)) {
             return (T) (isHexNumber(trimmed) ? decodeBigInteger(trimmed) : new BigInteger(trimmed));
-        }
-        else if (targetClass.equals(Float.class)) {
+        } else if (targetClass.equals(Float.class)) {
             return (T) Float.valueOf(trimmed);
-        }
-        else if (targetClass.equals(Double.class)) {
+        } else if (targetClass.equals(Double.class)) {
             return (T) Double.valueOf(trimmed);
-        }
-        else if (targetClass.equals(BigDecimal.class) || targetClass.equals(Number.class)) {
+        } else if (targetClass.equals(BigDecimal.class) || targetClass.equals(Number.class)) {
             return (T) new BigDecimal(trimmed);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException(
                     "Cannot convert String [" + text + "] to target class [" + targetClass.getName() + "]");
         }
@@ -61,20 +53,18 @@ public abstract class NumberUtils {
             try {
                 Number number = numberFormat.parse(StringUtils.trimAllWhitespace(text));
                 return convertNumberToTargetClass(number, targetClass);
-            }
-            catch (ParseException ex) {
+            } catch (ParseException ex) {
                 throw new IllegalArgumentException("Could not parse number: " + ex.getMessage());
-            }
-            finally {
+            } finally {
                 if (resetBigDecimal) {
                     decimalFormat.setParseBigDecimal(false);
                 }
             }
-        }
-        else {
+        } else {
             return parseNumber(text, targetClass);
         }
     }
+
     public static <T extends Number> T convertNumberToTargetClass(Number number, Class<T> targetClass)
             throws IllegalArgumentException {
 
@@ -83,65 +73,58 @@ public abstract class NumberUtils {
 
         if (targetClass.isInstance(number)) {
             return (T) number;
-        }
-        else if (targetClass.equals(Byte.class)) {
+        } else if (targetClass.equals(Byte.class)) {
             long value = number.longValue();
             if (value < Byte.MIN_VALUE || value > Byte.MAX_VALUE) {
                 raiseOverflowException(number, targetClass);
             }
             return (T) new Byte(number.byteValue());
-        }
-        else if (targetClass.equals(Short.class)) {
+        } else if (targetClass.equals(Short.class)) {
             long value = number.longValue();
             if (value < Short.MIN_VALUE || value > Short.MAX_VALUE) {
                 raiseOverflowException(number, targetClass);
             }
             return (T) new Short(number.shortValue());
-        }
-        else if (targetClass.equals(Integer.class)) {
+        } else if (targetClass.equals(Integer.class)) {
             long value = number.longValue();
             if (value < Integer.MIN_VALUE || value > Integer.MAX_VALUE) {
                 raiseOverflowException(number, targetClass);
             }
             return (T) new Integer(number.intValue());
-        }
-        else if (targetClass.equals(Long.class)) {
+        } else if (targetClass.equals(Long.class)) {
             return (T) new Long(number.longValue());
-        }
-        else if (targetClass.equals(BigInteger.class)) {
+        } else if (targetClass.equals(BigInteger.class)) {
             if (number instanceof BigDecimal) {
                 // do not lose precision - use BigDecimal's own conversion
                 return (T) ((BigDecimal) number).toBigInteger();
-            }
-            else {
+            } else {
                 // original value is not a Big* number - use standard long conversion
                 return (T) BigInteger.valueOf(number.longValue());
             }
-        }
-        else if (targetClass.equals(Float.class)) {
+        } else if (targetClass.equals(Float.class)) {
             return (T) new Float(number.floatValue());
-        }
-        else if (targetClass.equals(Double.class)) {
+        } else if (targetClass.equals(Double.class)) {
             return (T) new Double(number.doubleValue());
-        }
-        else if (targetClass.equals(BigDecimal.class)) {
+        } else if (targetClass.equals(BigDecimal.class)) {
             // always use BigDecimal(String) here to avoid unpredictability of BigDecimal(double)
             // (see BigDecimal javadoc for details)
             return (T) new BigDecimal(number.toString());
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Could not convert number [" + number + "] of type [" +
                     number.getClass().getName() + "] to unknown target class [" + targetClass.getName() + "]");
         }
     }
+
     private static void raiseOverflowException(Number number, Class targetClass) {
         throw new IllegalArgumentException("Could not convert number [" + number + "] of type [" +
                 number.getClass().getName() + "] to target class [" + targetClass.getName() + "]: overflow");
     }
+
     private static boolean isHexNumber(String value) {
         int index = (value.startsWith("-") ? 1 : 0);
         return (value.startsWith("0x", index) || value.startsWith("0X", index) || value.startsWith("#", index));
     }
+
     private static BigInteger decodeBigInteger(String value) {
         int radix = 10;
         int index = 0;
@@ -157,12 +140,10 @@ public abstract class NumberUtils {
         if (value.startsWith("0x", index) || value.startsWith("0X", index)) {
             index += 2;
             radix = 16;
-        }
-        else if (value.startsWith("#", index)) {
+        } else if (value.startsWith("#", index)) {
             index++;
             radix = 16;
-        }
-        else if (value.startsWith("0", index) && value.length() > 1 + index) {
+        } else if (value.startsWith("0", index) && value.length() > 1 + index) {
             index++;
             radix = 8;
         }

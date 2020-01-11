@@ -5,7 +5,9 @@ import org.easyspring.beans.ConstructorArgument;
 import org.easyspring.beans.SimpleTypeConverter;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.factory.BeanFactory;
+
 import java.lang.reflect.Constructor;
+
 import org.easyspring.beans.ConstructorArgument.ValueHolder;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
 
@@ -23,7 +25,7 @@ public class ConstructorResolver {
         this.factory = factory;
     }
 
-    public Object autowireConstructor(final BeanDefinition bd){
+    public Object autowireConstructor(final BeanDefinition bd) {
         Constructor<?> constructorToUse = null;
         Class<?> clazz = null;
         Object[] argsToUse = null;
@@ -31,16 +33,15 @@ public class ConstructorResolver {
         ClassLoader cl = factory.getClassLoader();
         try {
             clazz = cl.loadClass(bd.getBeanClassName());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             throw new BeanCreationException("Instantiation of bean failed, can't resolve class", e);
         }
         Constructor[] condidates = clazz.getConstructors();
         ConstructorArgument cags = bd.getConstructorArgument();
 
-        for (int i=0;i<condidates.length;i++){
+        for (int i = 0; i < condidates.length; i++) {
             Class<?>[] parameterTypes = condidates[i].getParameterTypes();
-            if (parameterTypes.length != cags.getArgumentCount()){
+            if (parameterTypes.length != cags.getArgumentCount()) {
                 continue;
             }
 
@@ -53,19 +54,19 @@ public class ConstructorResolver {
                     converter,
                     argsToUse);
 
-            if (result){
+            if (result) {
                 constructorToUse = condidates[i];
             }
         }
 
-        if(constructorToUse == null){
-            throw new BeanCreationException( bd.getID() + "can't find a apporiate constructor");
+        if (constructorToUse == null) {
+            throw new BeanCreationException(bd.getID() + "can't find a apporiate constructor");
         }
 
         try {
             return constructorToUse.newInstance(argsToUse);
         } catch (Exception e) {
-            throw new BeanCreationException( bd.getID() + "can't find a create instance using "+constructorToUse);
+            throw new BeanCreationException(bd.getID() + "can't find a create instance using " + constructorToUse);
         }
     }
 
@@ -73,17 +74,16 @@ public class ConstructorResolver {
                                   Class<?>[] parameterTypes,
                                   BeanDefinitionValueResolver resolver,
                                   SimpleTypeConverter converter,
-                                  Object[] argsToUse){
+                                  Object[] argsToUse) {
 
-        for (int i  = 0;i < parameterTypes.length;i ++){
+        for (int i = 0; i < parameterTypes.length; i++) {
             Class type = parameterTypes[i];
             Object originValue = valueHolders.get(i).getValue();
             try {
-                Object resolvedValue  = resolver.resolveValueIfNecessary(originValue);
-                Object convertedValue  = converter.convertIfNecessary(resolvedValue,type);
-                argsToUse[i] = convertedValue ;
-            }
-            catch (Exception e){
+                Object resolvedValue = resolver.resolveValueIfNecessary(originValue);
+                Object convertedValue = converter.convertIfNecessary(resolvedValue, type);
+                argsToUse[i] = convertedValue;
+            } catch (Exception e) {
                 return false;
             }
         }

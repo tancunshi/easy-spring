@@ -7,5 +7,6 @@ import org.easyspring.beans.BeanDefinition;
  */
 public interface BeanDefinitionRegistry {
     public BeanDefinition getBeanDefinition(String beanId);
-    public void registerBeanDefinition(String beanId,BeanDefinition bd);
+
+    public void registerBeanDefinition(String beanId, BeanDefinition bd);
 }

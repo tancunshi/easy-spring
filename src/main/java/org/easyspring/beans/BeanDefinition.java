@@ -11,13 +11,21 @@ public interface BeanDefinition {
     String SCOPE_DEFAULT = "";
 
     String getBeanClassName();
+
     boolean isPrototype();
+
     boolean isSingleton();
+
     void setScope(String scope);
+
     String getScope();
+
     List<PropertyValue> getPropertyValues();
+
     void addProperty(PropertyValue property);
+
     ConstructorArgument getConstructorArgument();
+
     boolean hasConstructorArgumentValues();
 
     String getID();

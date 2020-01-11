@@ -3,6 +3,7 @@ package org.easyspring.beans.factory.support;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.ConstructorArgument;
 import org.easyspring.beans.PropertyValue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class GenericBeanDefinition implements BeanDefinition {
         return this.scope;
     }
 
-    public void addProperty(PropertyValue property){
+    public void addProperty(PropertyValue property) {
         this.properties.add(property);
     }
 
@@ -58,7 +59,7 @@ public class GenericBeanDefinition implements BeanDefinition {
         return consArgument;
     }
 
-    public boolean hasConstructorArgumentValues(){
+    public boolean hasConstructorArgumentValues() {
         return this.consArgument.isEmpty() == false;
     }
 

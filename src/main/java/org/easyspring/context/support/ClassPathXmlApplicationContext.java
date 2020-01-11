@@ -8,14 +8,14 @@ import org.easyspring.core.io.Resource;
  * @author tancunshi
  */
 public class ClassPathXmlApplicationContext extends AbstractApplicationContext
-        implements ApplicationContext{
+        implements ApplicationContext {
 
-    public ClassPathXmlApplicationContext(String configFile){
+    public ClassPathXmlApplicationContext(String configFile) {
         super(configFile);
     }
 
     @Override
     protected Resource getResourceByPath(String path) {
-        return new ClassPathResource(path,this.getClassLoader());
+        return new ClassPathResource(path, this.getClassLoader());
     }
 }

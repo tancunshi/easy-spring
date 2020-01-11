@@ -10,7 +10,7 @@ import org.easyspring.core.io.Resource;
 public class FileSystemXmlApplicationContext extends AbstractApplicationContext
         implements BeanFactory {
 
-    public FileSystemXmlApplicationContext(String configFile){
+    public FileSystemXmlApplicationContext(String configFile) {
         super(configFile);
     }
 

@@ -3,12 +3,12 @@ package org.easyspring.beans;
 /**
  * @author tancunshi
  */
-public class BeansException extends RuntimeException{
-    public BeansException(String msg){
+public class BeansException extends RuntimeException {
+    public BeansException(String msg) {
         super(msg);
     }
 
-    public BeansException(String msg, Throwable cause){
-        super(msg,cause);
+    public BeansException(String msg, Throwable cause) {
+        super(msg, cause);
     }
 }

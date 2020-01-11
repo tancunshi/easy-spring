@@ -1,6 +1,7 @@
 package org.easyspring.beans.propertyeditors;
 
 import org.easyspring.util.StringUtils;
+
 import java.beans.PropertyEditorSupport;
 
 /**
@@ -35,16 +36,13 @@ public class CustomBooleanEditor extends PropertyEditorSupport {
         if (this.allowEmpty && !StringUtils.hasLength(input)) {
             // Treat empty String as null value.
             setValue(null);
-        }
-        else if ((VALUE_TRUE.equalsIgnoreCase(input) || VALUE_ON.equalsIgnoreCase(input) ||
+        } else if ((VALUE_TRUE.equalsIgnoreCase(input) || VALUE_ON.equalsIgnoreCase(input) ||
                 VALUE_YES.equalsIgnoreCase(input) || VALUE_1.equals(input))) {
             setValue(Boolean.TRUE);
-        }
-        else if ((VALUE_FALSE.equalsIgnoreCase(input) || VALUE_OFF.equalsIgnoreCase(input) ||
+        } else if ((VALUE_FALSE.equalsIgnoreCase(input) || VALUE_OFF.equalsIgnoreCase(input) ||
                 VALUE_NO.equalsIgnoreCase(input) || VALUE_0.equals(input))) {
             setValue(Boolean.FALSE);
-        }
-        else {
+        } else {
             throw new IllegalArgumentException("Invalid boolean value [" + text + "]");
         }
     }
@@ -53,11 +51,9 @@ public class CustomBooleanEditor extends PropertyEditorSupport {
     public String getAsText() {
         if (Boolean.TRUE.equals(getValue())) {
             return VALUE_TRUE;
-        }
-        else if (Boolean.FALSE.equals(getValue())) {
+        } else if (Boolean.FALSE.equals(getValue())) {
             return VALUE_FALSE;
-        }
-        else {
+        } else {
             return "";
         }
     }

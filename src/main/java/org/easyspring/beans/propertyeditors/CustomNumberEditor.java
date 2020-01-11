@@ -2,6 +2,7 @@ package org.easyspring.beans.propertyeditors;
 
 import org.easyspring.util.NumberUtils;
 import org.easyspring.util.StringUtils;
+
 import java.beans.PropertyEditorSupport;
 import java.text.NumberFormat;
 
@@ -37,12 +38,10 @@ public class CustomNumberEditor extends PropertyEditorSupport {
         if (this.allowEmpty && !StringUtils.hasText(text)) {
             // Treat empty String as null value.
             setValue(null);
-        }
-        else if (this.numberFormat != null) {
+        } else if (this.numberFormat != null) {
             // Use given NumberFormat for parsing text.
             setValue(NumberUtils.parseNumber(text, this.numberClass, this.numberFormat));
-        }
-        else {
+        } else {
             // Use default valueOf methods for parsing text.
             setValue(NumberUtils.parseNumber(text, this.numberClass));
         }
@@ -52,8 +51,7 @@ public class CustomNumberEditor extends PropertyEditorSupport {
     public void setValue(Object value) {
         if (value instanceof Number) {
             super.setValue(NumberUtils.convertNumberToTargetClass((Number) value, this.numberClass));
-        }
-        else {
+        } else {
             super.setValue(value);
         }
     }
@@ -68,8 +66,7 @@ public class CustomNumberEditor extends PropertyEditorSupport {
         if (this.numberFormat != null) {
             // Use NumberFormat for rendering value.
             return this.numberFormat.format(value);
-        }
-        else {
+        } else {
             // Use toString method for rendering value.
             return value.toString();
         }

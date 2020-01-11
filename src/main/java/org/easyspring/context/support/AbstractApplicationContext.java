@@ -13,7 +13,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     private DefaultBeanFactory factory = null;
     private ClassLoader classLoader = null;
 
-    public AbstractApplicationContext(String configFile){
+    public AbstractApplicationContext(String configFile) {
         factory = new DefaultBeanFactory();
         factory.setClassLoader(this.getClassLoader());
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);

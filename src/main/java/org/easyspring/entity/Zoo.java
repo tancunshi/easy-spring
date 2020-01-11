@@ -7,13 +7,14 @@ public class Zoo {
     private String zooName;
     private Dog dog;
 
-    public Zoo(){}
+    public Zoo() {
+    }
 
-    public Zoo(String zooName){
+    public Zoo(String zooName) {
         this.zooName = zooName;
     }
 
-    public Zoo(String zooName,Dog dog){
+    public Zoo(String zooName, Dog dog) {
         this.zooName = zooName;
         this.dog = dog;
     }
