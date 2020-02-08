@@ -4,6 +4,9 @@ import org.easyspring.core.annotation.AnnotationAttributes;
 import org.easyspring.core.type.asm.AbstractAnnotationVisitor;
 import java.util.Map;
 
+/**
+ * @author tancunshi
+ */
 public class AnnotationAttributesReadingVisitor extends AbstractAnnotationVisitor {
 
     private final String annotationName;

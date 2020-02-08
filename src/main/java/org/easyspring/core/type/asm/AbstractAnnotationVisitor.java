@@ -2,6 +2,9 @@ package org.easyspring.core.type.asm;
 
 import org.springframework.asm.AnnotationVisitor;
 
+/**
+ * @author tancunshi
+ */
 public abstract class AbstractAnnotationVisitor implements AnnotationVisitor {
 
     public void visit(String s, Object o) {

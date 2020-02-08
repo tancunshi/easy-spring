@@ -2,6 +2,9 @@ package org.easyspring.core.type.asm;
 
 import org.springframework.asm.*;
 
+/**
+ * @author tancunshi
+ */
 public abstract class AbstractClassVisitor implements ClassVisitor {
 
     public void visit(int i, int i1, String s, String s1, String s2, String[] strings) {
