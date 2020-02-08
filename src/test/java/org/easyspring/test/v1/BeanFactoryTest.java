@@ -28,7 +28,7 @@ public class BeanFactoryTest {
     public void testGetBean() {
         reader.loadBeanDefinition(new ClassPathResource("petstore-v1.xml"));
         BeanDefinition bd = factory.getBeanDefinition("petStore");
-        assertEquals("org.easyspring.entity.PetStore", bd.getBeanClassName());
+        assertEquals("org.easyspring.test.entity.PetStore", bd.getBeanClassName());
 
         Object o1 = factory.getBean("petStore");
         Object o2 = factory.getBean("petStore");

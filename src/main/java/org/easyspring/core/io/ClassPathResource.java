@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * 类路径下的 File Resource
  * @author tancunshi
  */
 public class ClassPathResource implements Resource {
@@ -14,7 +15,7 @@ public class ClassPathResource implements Resource {
     private ClassLoader classLoader;
 
     public ClassPathResource(String path) {
-        this(path, (ClassLoader) null);
+        this(path, null);
     }
 
     public ClassPathResource(String path, ClassLoader classLoader) {

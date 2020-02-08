@@ -18,7 +18,7 @@ public class AnnotationAttributes extends LinkedHashMap {
     }
 
     public String getString(String attributeName){
-        return null;
+        return this.doGet(attributeName,String.class);
     }
 
     public String[] getStringArray(String attributeName){

@@ -1,9 +1,9 @@
 package org.easyspring.test.v4;
 
 import org.easyspring.context.support.ClassPathXmlApplicationContext;
-import org.easyspring.entity.Person;
-import org.easyspring.entity.School;
-import org.easyspring.entity.Zoo;
+import org.easyspring.test.entity.Person;
+import org.easyspring.test.entity.School;
+import org.easyspring.test.entity.Zoo;
 import org.junit.Test;
 
 import static junit.framework.TestCase.*;

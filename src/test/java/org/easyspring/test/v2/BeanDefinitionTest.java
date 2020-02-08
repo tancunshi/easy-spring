@@ -10,8 +10,8 @@ import org.easyspring.context.ApplicationContext;
 import org.easyspring.context.support.ClassPathXmlApplicationContext;
 import org.easyspring.core.io.ClassPathResource;
 import org.easyspring.core.io.Resource;
-import org.easyspring.entity.Dog;
-import org.easyspring.entity.Zoo;
+import org.easyspring.test.entity.Dog;
+import org.easyspring.test.entity.Zoo;
 import org.junit.Test;
 
 import java.util.List;

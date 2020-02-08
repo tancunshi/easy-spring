@@ -4,11 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="zoo" class="org.easyspring.entity.Zoo">
+    <bean id="zoo" class="org.easyspring.test.entity.Zoo">
         <property name="dog" ref="dog"/>
         <property name="zooName" value="crazy"/>
     </bean>
-    <bean id="dog" class="org.easyspring.entity.Dog">
+    <bean id="dog" class="org.easyspring.test.entity.Dog">
         <property name="dogName" value="puppy"/>
         <property name="dogAge" value="6"/>
         <property name="weight" value="1024.0"/>

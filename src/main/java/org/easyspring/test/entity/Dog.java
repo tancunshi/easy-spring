@@ -1,4 +1,4 @@
-package org.easyspring.entity;
+package org.easyspring.test.entity;
 
 /**
  * @author tancunshi

@@ -2,7 +2,7 @@ package org.easyspring.test.v1;
 
 import org.easyspring.context.support.ClassPathXmlApplicationContext;
 import org.easyspring.context.support.FileSystemXmlApplicationContext;
-import org.easyspring.entity.PetStore;
+import org.easyspring.test.entity.PetStore;
 
 import static junit.framework.TestCase.assertNotNull;
 

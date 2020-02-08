@@ -1,11 +1,11 @@
-package org.easyspring.entity;
+package org.easyspring.test.entity;
 
 import org.easyspring.stereotype.Component;
 
 /**
  * @author tancunshi
  */
-@Component
+@Component(value = "user")
 public class Person {
     private String name;
     private School school;

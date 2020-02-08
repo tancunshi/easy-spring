@@ -1,7 +1,7 @@
 package org.easyspring.test.v3;
 
 import org.easyspring.context.support.ClassPathXmlApplicationContext;
-import org.easyspring.entity.Zoo;
+import org.easyspring.test.entity.Zoo;
 import org.junit.Test;
 
 import static junit.framework.TestCase.*;

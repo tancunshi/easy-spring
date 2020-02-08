@@ -12,7 +12,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
 //        ApplicationContextTest.class,
         LoadPackageTest.class,
-        AnnotationAttributeTest.class
+        AnnotationAttributeTest.class,
+        ClassReaderTest.class
 })
 public class AllTestCaseRunnerV4 {
 
