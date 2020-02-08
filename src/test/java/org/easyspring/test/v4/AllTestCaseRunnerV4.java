@@ -10,7 +10,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-//        ApplicationContextTest.class,
+        ApplicationContextTest.class,
         LoadPackageTest.class,
         AnnotationAttributeTest.class,
         ClassReaderTest.class

@@ -16,7 +16,6 @@ public class AnnotationAttributeTest {
         try {
             attr.getBoolean("not exist");
         }catch (IllegalArgumentException e){
-            System.out.println(e.getMessage());
             return;
         }
         fail();

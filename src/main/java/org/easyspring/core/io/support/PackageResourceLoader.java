@@ -24,7 +24,7 @@ public class PackageResourceLoader {
         this.classLoader = classLoader;
     }
 
-    public Resource[] getResources(String basePackage) throws IOException {
+    public Resource[] getResources(String basePackage) {
         try {
             String location = ClassUtils.convertClassPathToResourcePath(basePackage);
             ClassLoader cl = getClassLoader();
@@ -40,7 +40,7 @@ public class PackageResourceLoader {
 
             return resources;
         } catch (Exception e) {
-            throw new IOException("Fail to get resource of package");
+            throw new RuntimeException("Fail to get resource of package");
         }
     }
 

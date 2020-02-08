@@ -16,12 +16,10 @@ public class ApplicationContextTest {
     @Test
     public void componentScanTest() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("petstore-v4.xml");
-        Person person = (Person) context.getBean("person");
+        Person person = (Person) context.getBean("user");
         assertNotNull(person);
-        School school = (School) context.getBean("school");
+        School school = (School) context.getBean("School");
         assertNotNull(school);
-        Zoo zoo = (Zoo) context.getBean("zoo");
-        assertTrue(zoo == null);
     }
 }
  

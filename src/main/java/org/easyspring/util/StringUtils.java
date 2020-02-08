@@ -1,5 +1,7 @@
 package org.easyspring.util;
 
+import java.util.ArrayList;
+
 /**
  * @author spring source code
  */
@@ -43,5 +45,10 @@ public abstract class StringUtils {
             }
         }
         return sb.toString();
+    }
+
+    public static String[] tokenizeToStringArray(String str,String token){
+        String[] spiltStr = str.split(token);
+        return spiltStr;
     }
 }

@@ -51,7 +51,7 @@ public class BeanFactoryTest {
     public void testInvalidXML() {
         try {
             reader.loadBeanDefinition(new ClassPathResource("xxx.xml"));
-        } catch (BeanDefinitionStoreException e) {
+        } catch (Exception e) {
             return;
         }
         fail("expect BeanDefinitionException");

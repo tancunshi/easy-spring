@@ -23,7 +23,7 @@ public class LoadPackageTest {
             for (Resource resource : resources) {
                 System.out.println(resource.getDescription());
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             return;
         }
         fail();
