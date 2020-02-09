@@ -66,7 +66,7 @@ public class ConstructorResolver {
         try {
             return constructorToUse.newInstance(argsToUse);
         } catch (Exception e) {
-            throw new BeanCreationException(bd.getID() + "can't find a create instance using " + constructorToUse);
+            throw new BeanCreationException(bd.getID() + "can't find a create instance using " + constructorToUse , e);
         }
     }
 

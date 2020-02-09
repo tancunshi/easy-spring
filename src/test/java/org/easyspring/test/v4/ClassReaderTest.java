@@ -11,6 +11,7 @@ import org.easyspring.core.type.classreading.SimpleMetaDataReader;
 import org.junit.Test;
 import org.springframework.asm.ClassReader;
 
+import java.io.IOException;
 import java.util.Set;
 
 import static junit.framework.TestCase.*;
@@ -50,7 +51,7 @@ public class ClassReaderTest {
     }
 
     @Test
-    public void testSimpleReader(){
+    public void testSimpleReader() throws IOException {
         String annotationType = "org.easyspring.stereotype.Component";
         String className = "org.easyspring.test.entity.Person";
 

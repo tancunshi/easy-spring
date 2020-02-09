@@ -4,6 +4,7 @@ import org.easyspring.beans.PropertyValue;
 import org.easyspring.beans.SimpleTypeConverter;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.factory.BeanRegisterException;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
 import org.easyspring.util.ClassUtils;
 
@@ -27,6 +28,9 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
     }
 
     public void registerBeanDefinition(String beanId, BeanDefinition bd) {
+        if (this.beanDefinitionMap.get(beanId) != null){
+            throw new BeanRegisterException("The bean id "+beanId+" are repeated");
+        }
         this.beanDefinitionMap.put(beanId, bd);
     }
 

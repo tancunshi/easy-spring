@@ -29,4 +29,8 @@ public interface BeanDefinition {
     boolean hasConstructorArgumentValues();
 
     String getID();
+
+    void setId(String id);
+
+    void setBeanClassName(String beanClassName);
 }

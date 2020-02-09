@@ -63,8 +63,8 @@ public class XmlBeanDefinitionReader {
                     this.parseComponentElement(ele);
                 }
             }
-        } catch (Exception e) {
-            throw new BeanDefinitionStoreException("IOException parsing XML document wrong");
+        } catch (Throwable e) {
+            throw new BeanDefinitionStoreException("BeanDefinition store error",e);
         } finally {
             if (is != null) {
                 try {

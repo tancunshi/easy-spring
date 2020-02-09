@@ -1,23 +1,31 @@
 package org.easyspring.context.annotation;
 
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.factory.BeanDefinitionStoreException;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.support.GenericBeanDefinition;
 import org.easyspring.core.annotation.AnnotationAttributes;
 import org.easyspring.core.io.Resource;
 import org.easyspring.core.io.support.PackageResourceLoader;
 import org.easyspring.core.type.AnnotationMetaData;
+import org.easyspring.core.type.classreading.MetaDataReader;
 import org.easyspring.core.type.classreading.SimpleMetaDataReader;
+import org.easyspring.stereotype.Component;
 import org.easyspring.util.ClassUtils;
 import org.easyspring.util.StringUtils;
+
+import java.beans.Introspector;
+import java.io.IOException;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/**
+ * @author tancunshi
+ */
 public class ClassPathBeanDefinitionScanner {
 
     private final BeanDefinitionRegistry registry;
     private final PackageResourceLoader resourceLoader = new PackageResourceLoader();
-    private final String COMPONENT_ANNOTATION_TYPE = "org.easyspring.stereotype.Component";
 
     public ClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry){
         this.registry = registry;
@@ -34,32 +42,47 @@ public class ClassPathBeanDefinitionScanner {
         }
     }
 
-    public Set<BeanDefinition> findCandidateComponents(String basePackage){
+    private Set<BeanDefinition> findCandidateComponents(String basePackage){
         //Candidate，候选人；从包下找出被@Component修饰的class，并转换成BeanDefinition
-        Resource[] resources = this.resourceLoader.getResources(basePackage);
-        Set<BeanDefinition> bds = new LinkedHashSet<BeanDefinition>();
-        for (Resource resource : resources){
-            SimpleMetaDataReader reader = new SimpleMetaDataReader(resource);
-            AnnotationMetaData metaData = reader.getAnnotationMetaData();
-            if (!metaData.hasAnnotation(COMPONENT_ANNOTATION_TYPE)){
-                continue;
+        Set<BeanDefinition> candidates = new LinkedHashSet<BeanDefinition>();
+        try {
+            Resource[] resources = this.resourceLoader.getResources(basePackage);
+            for (Resource resource : resources){
+                MetaDataReader reader = new SimpleMetaDataReader(resource);
+                try {
+                    AnnotationMetaData metaData = reader.getAnnotationMetaData();
+
+                    if (metaData.hasAnnotation(Component.class.getName())){
+                        candidates.add(this.createComponentBeanDefinition(metaData));
+                    }
+
+                }
+                catch (Throwable ex){
+                    throw new BeanDefinitionStoreException(
+                            "Failed to read candidate component class: " + resource, ex);
+                }
             }
-
-            AnnotationAttributes attributes = metaData.getAnnotationAttributes(COMPONENT_ANNOTATION_TYPE);
-
-            //判断Component注解是否存在value
-            String className = metaData.getClassName();
-            String id = ClassUtils.getShortName(className);
-            if (attributes.containsKey("value")){
-                id = attributes.getString("value");
-            }
-
-            //现有的问题，bean的命名问题
-            BeanDefinition bd = new GenericBeanDefinition(id,className);
-            bds.add(bd);
         }
-        return bds;
+        catch (IOException e){
+            throw new BeanDefinitionStoreException("I/O failure during classpath scanning", e);
+        }
+        return candidates;
     }
 
+    private BeanDefinition createComponentBeanDefinition(AnnotationMetaData metaData){
+        AnnotationAttributes attributes = metaData.getAnnotationAttributes(Component.class.getName());
 
+        BeanDefinition beanDefinition = new ScannedGenericBeanDefinition(metaData);
+        String beanClassName = this.buildDefaultBeanName(beanDefinition);
+        if (attributes.containsKey("value")){
+            beanClassName = attributes.getString("value");
+        }
+        beanDefinition.setId(beanClassName);
+        return beanDefinition;
+    }
+
+    private String buildDefaultBeanName(BeanDefinition definition) {
+        String shortClassName = ClassUtils.getShortName(definition.getBeanClassName());
+        return Introspector.decapitalize(shortClassName);
+    }
 }

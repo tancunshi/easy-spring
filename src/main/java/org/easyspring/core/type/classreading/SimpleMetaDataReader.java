@@ -5,6 +5,7 @@ import org.easyspring.core.type.AnnotationMetaData;
 import org.easyspring.core.type.ClassMetaData;
 import org.springframework.asm.ClassReader;
 import java.io.BufferedInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -17,25 +18,20 @@ public class SimpleMetaDataReader implements MetaDataReader{
     private final ClassMetaData classMetaData;
     private final AnnotationMetaData annotationMetaData;
 
-    public SimpleMetaDataReader(Resource resource){
+    public SimpleMetaDataReader(Resource resource) throws IOException {
+        InputStream is = new BufferedInputStream(resource.getInputStream());
         try {
-            InputStream is = new BufferedInputStream(resource.getInputStream());
-            try {
-                ClassReader classReader = new ClassReader(is);;
+            ClassReader classReader = new ClassReader(is);;
 
-                AnnotationMetadataReadingVisitor visitor = new AnnotationMetadataReadingVisitor();
-                classReader.accept(visitor, true);
+            AnnotationMetadataReadingVisitor visitor = new AnnotationMetadataReadingVisitor();
+            classReader.accept(visitor, true);
 
-                this.annotationMetaData = visitor;
-                this.classMetaData = visitor;
-                this.resource = resource;
-            }
-            finally {
-                is.close();
-            }
+            this.annotationMetaData = visitor;
+            this.classMetaData = visitor;
+            this.resource = resource;
         }
-        catch (Exception e){
-            throw new RuntimeException(resource.getDescription()+" 获取元数据失败");
+        finally {
+            is.close();
         }
     }
 
