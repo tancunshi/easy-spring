@@ -16,6 +16,8 @@ import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -27,6 +29,8 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         implements ConfigurableBeanFactory, BeanDefinitionRegistry {
 
     private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
+    //ClassName到beanIds的映射
+    private final Map<String, List<String>> classBeanIdMap = new HashMap<String, List<String>>(64);
     private ClassLoader classLoader = null;
 
     public DefaultBeanFactory() {
@@ -34,9 +38,15 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 
     public void registerBeanDefinition(String beanId, BeanDefinition bd) {
         if (this.beanDefinitionMap.get(beanId) != null){
-            throw new BeanRegisterException("The bean id "+beanId+" are repeated");
+            throw new BeanRegisterException("The beanId " + beanId + " are repeated");
         }
         this.beanDefinitionMap.put(beanId, bd);
+        List<String> beanIds;
+        if ((beanIds = this.classBeanIdMap.get(bd.getBeanClassName())) == null){
+            beanIds = new ArrayList<String>();
+            this.classBeanIdMap.put(bd.getBeanClassName(),beanIds);
+        }
+        beanIds.add(beanId);
     }
 
     public BeanDefinition getBeanDefinition(String beanId) {
@@ -46,7 +56,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
     public Object getBean(String beanId) {
         BeanDefinition bd = this.beanDefinitionMap.get(beanId);
         if (bd == null) {
-            throw new BeanCreationException("Bean Definition not exist");
+            throw new BeanCreationException("BeanDefinition not exist");
         }
 
         if (bd.isSingleton()) {
@@ -58,6 +68,20 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
             return bean;
         }
         return createBean(bd);
+    }
+
+    public Object getBean(Class<?> clazz){
+        String className = clazz.getName();
+        List<String> beanIds = this.classBeanIdMap.get(className);
+        if (beanIds == null || beanIds.size() == 0){
+            throw new BeanCreationException("Not Found class " + className + " BeanDefinition");
+        }
+        else if (beanIds.size() > 1){
+            throw new BeanCreationException("The Container have many " + className + " entity");
+        }
+        else {
+            return this.getBean(beanIds.get(0));
+        }
     }
 
     private Object createBean(BeanDefinition bd) {
@@ -87,18 +111,24 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
             Autowired annotation = null;
             if (( annotation = field.getAnnotation(Autowired.class) ) != null){
 
-                String refBeanName = annotation.value();
-                if (!StringUtils.hasLength(refBeanName)){
-                    refBeanName = field.getName();
-                }
+                boolean required = annotation.required();
 
-                RuntimeBeanReference ref = new RuntimeBeanReference(refBeanName);
+                RuntimeBeanReference ref = new RuntimeBeanReference(field.getName());
                 PropertyValue propValue = new PropertyValue(field.getName(),ref);
                 bd.getPropertyValues().add(propValue);
 
-                Object refBean = this.getBean(refBeanName);
-                field.setAccessible(true);
-                field.set(bean,refBean);
+                try {
+                    Object refBean = this.getBean(field.getType());
+                    field.setAccessible(true);
+                    field.set(bean,refBean);
+                }
+                catch (BeanCreationException e){
+                    if (required){
+                        throw new BeanCreationException(
+                                "Field " + field.getName() + " of " + beanClass + " is required , but field is not found in container",e);
+                    }
+                }
+
             }
         }
     }

@@ -11,5 +11,4 @@ import java.lang.annotation.*;
 public @interface Autowired {
 
     boolean required() default true;
-    String value() default "";
 }

@@ -9,6 +9,8 @@ public class School {
     private String schoolName;
     @Autowired
     private SchoolMaster schoolMaster;
+    @Autowired(required = false)
+    private Dog dog;
 
     public String getSchoolName() {
         return schoolName;

@@ -44,7 +44,7 @@ public class ClassPathBeanDefinitionScanner {
     }
 
     private Set<BeanDefinition> findCandidateComponents(String basePackage){
-        //Candidate，候选人；从包下找出被@Component修饰的class，并转换成BeanDefinition
+        //Candidate，候选人；从包下找出被@Component修饰的class，并转换成BeanDefinition3
         Set<BeanDefinition> candidates = new LinkedHashSet<BeanDefinition>();
         try {
             Resource[] resources = this.resourceLoader.getResources(basePackage);
