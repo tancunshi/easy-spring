@@ -59,6 +59,7 @@ public abstract class ClassUtils {
     public static ClassLoader getDefaultClassLoader() {
         ClassLoader cl = null;
         try {
+            //破坏双亲委派模式，每个线程上下文中都放有一个SystemClassLoader
             cl = Thread.currentThread().getContextClassLoader();
         } catch (Throwable ex) {
             // Cannot access thread context ClassLoader - falling back...

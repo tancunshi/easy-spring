@@ -5,12 +5,17 @@ import org.easyspring.beans.SimpleTypeConverter;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.BeanRegisterException;
+import org.easyspring.beans.factory.annotation.Autowired;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
+import org.easyspring.beans.factory.config.RuntimeBeanReference;
+import org.easyspring.context.annotation.ScannedGenericBeanDefinition;
 import org.easyspring.util.ClassUtils;
+import org.easyspring.util.StringUtils;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -63,8 +68,30 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
      */
     private Object createBean(BeanDefinition bd) {
         Object bean = this.instantiateBean(bd);
+        if (bd instanceof ScannedGenericBeanDefinition){
+            this.autowireProperties(bd,bean);
+        }
         this.populateBean(bd, bean);
         return bean;
+    }
+
+    private void autowireProperties(BeanDefinition bd,Object bean)  {
+        Class beanClass = bean.getClass();
+        Field[] fields = beanClass.getDeclaredFields();
+        for (Field field : fields){
+            Autowired annotation = null;
+            if (( annotation = field.getAnnotation(Autowired.class) ) != null){
+
+                String refBeanName = annotation.value();
+                if (!StringUtils.hasLength(refBeanName)){
+                    refBeanName = field.getName();
+                }
+                RuntimeBeanReference ref = new RuntimeBeanReference(refBeanName);
+                PropertyValue propValue = new PropertyValue(field.getName(),ref);
+                bd.getPropertyValues().add(propValue);
+
+            }
+        }
     }
 
     private Object instantiateBean(BeanDefinition bd) {

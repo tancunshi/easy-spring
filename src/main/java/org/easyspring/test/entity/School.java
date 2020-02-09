@@ -7,6 +7,7 @@ import org.easyspring.stereotype.Component;
  */
 @Component
 public class School {
+
     private String schoolName;
 
     public String getSchoolName() {

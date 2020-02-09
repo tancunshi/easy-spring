@@ -1,7 +1,5 @@
 package org.easyspring.util;
 
-import java.util.ArrayList;
-
 /**
  * @author spring source code
  */

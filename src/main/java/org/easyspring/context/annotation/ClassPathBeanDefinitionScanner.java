@@ -3,7 +3,6 @@ package org.easyspring.context.annotation;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.BeanDefinitionStoreException;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
-import org.easyspring.beans.factory.support.GenericBeanDefinition;
 import org.easyspring.core.annotation.AnnotationAttributes;
 import org.easyspring.core.io.Resource;
 import org.easyspring.core.io.support.PackageResourceLoader;

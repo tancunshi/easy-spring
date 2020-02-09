@@ -20,6 +20,8 @@ public class ApplicationContextTest {
         assertNotNull(person);
         School school = (School) context.getBean("school");
         assertNotNull(school);
+        assertNotNull(person.getSchool());
+        assertEquals(person.getSchool(),school);
     }
 }
  
