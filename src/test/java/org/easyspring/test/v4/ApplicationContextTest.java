@@ -22,6 +22,7 @@ public class ApplicationContextTest {
         assertNotNull(school);
         assertNotNull(person.getSchool());
         assertEquals(person.getSchool(),school);
+        assertNotNull(school.getSchoolMaster());
     }
 }
  

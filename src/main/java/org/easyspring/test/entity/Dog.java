@@ -1,8 +1,6 @@
 package org.easyspring.test.entity;
 
-/**
- * @author tancunshi
- */
+
 public class Dog {
     private String dogName;
     private Integer dogAge;

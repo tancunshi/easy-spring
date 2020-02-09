@@ -60,22 +60,27 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         return createBean(bd);
     }
 
-    /**
-     * 原先的createBean只是简单的反射创建Bean，
-     * 现在额外多了一个设置属性值得功能，
-     * 所以重构了createBean，
-     * 拆解成两个方法
-     */
     private Object createBean(BeanDefinition bd) {
         Object bean = this.instantiateBean(bd);
-        if (bd instanceof ScannedGenericBeanDefinition){
-            this.autowireProperties(bd,bean);
+
+        try {
+            if (bd instanceof ScannedGenericBeanDefinition){
+                //autowired 注入，直接反射field注入
+                this.resolveDependency(bd,bean);
+            }else if (bd instanceof GenericBeanDefinition){
+                //setter 注入，反射setter方法注入
+                this.populateBean(bd, bean);
+            }
         }
-        this.populateBean(bd, bean);
+        catch (Throwable e){
+            throw new BeanCreationException("bean create error",e);
+        }
+
         return bean;
     }
 
-    private void autowireProperties(BeanDefinition bd,Object bean)  {
+    private void resolveDependency(BeanDefinition bd,Object bean) throws IllegalAccessException {
+        //目前的问题，只能注入到Field中
         Class beanClass = bean.getClass();
         Field[] fields = beanClass.getDeclaredFields();
         for (Field field : fields){
@@ -86,10 +91,14 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
                 if (!StringUtils.hasLength(refBeanName)){
                     refBeanName = field.getName();
                 }
+
                 RuntimeBeanReference ref = new RuntimeBeanReference(refBeanName);
                 PropertyValue propValue = new PropertyValue(field.getName(),ref);
                 bd.getPropertyValues().add(propValue);
 
+                Object refBean = this.getBean(refBeanName);
+                field.setAccessible(true);
+                field.set(bean,refBean);
             }
         }
     }
@@ -116,6 +125,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
      * BeanUtils.setProperty进行注入
      */
     private void populateBean(BeanDefinition bd, Object bean) {
+        //通过setter注入，要求必须要有setter方法
         List<PropertyValue> pvs = bd.getPropertyValues();
         if (pvs == null || pvs.isEmpty()) {
             return;

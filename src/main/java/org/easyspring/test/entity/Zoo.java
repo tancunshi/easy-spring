@@ -1,8 +1,5 @@
 package org.easyspring.test.entity;
 
-/**
- * @author tancunshi
- */
 public class Zoo {
     private String zooName;
     private Dog dog;
