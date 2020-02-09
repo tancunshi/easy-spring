@@ -3,6 +3,7 @@ package org.easyspring.context.annotation;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.BeanDefinitionStoreException;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
+import org.easyspring.beans.factory.support.BeanNameGenerator;
 import org.easyspring.core.annotation.AnnotationAttributes;
 import org.easyspring.core.io.Resource;
 import org.easyspring.core.io.support.PackageResourceLoader;
@@ -25,6 +26,7 @@ public class ClassPathBeanDefinitionScanner {
 
     private final BeanDefinitionRegistry registry;
     private final PackageResourceLoader resourceLoader = new PackageResourceLoader();
+    private final BeanNameGenerator beanNameGenerator = new AnnotationBeanNameGenerator();
 
     public ClassPathBeanDefinitionScanner(BeanDefinitionRegistry registry){
         this.registry = registry;
@@ -69,19 +71,9 @@ public class ClassPathBeanDefinitionScanner {
     }
 
     private BeanDefinition createComponentBeanDefinition(AnnotationMetaData metaData){
-        AnnotationAttributes attributes = metaData.getAnnotationAttributes(Component.class.getName());
-
         BeanDefinition beanDefinition = new ScannedGenericBeanDefinition(metaData);
-        String beanClassName = this.buildDefaultBeanName(beanDefinition);
-        if (attributes.containsKey("value")){
-            beanClassName = attributes.getString("value");
-        }
-        beanDefinition.setId(beanClassName);
+        beanDefinition.setId(beanNameGenerator.generateBeanName(beanDefinition));
         return beanDefinition;
     }
 
-    private String buildDefaultBeanName(BeanDefinition definition) {
-        String shortClassName = ClassUtils.getShortName(definition.getBeanClassName());
-        return Introspector.decapitalize(shortClassName);
-    }
 }
