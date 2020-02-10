@@ -1,11 +1,9 @@
 package org.easyspring.beans.factory.config;
 
-import org.easyspring.beans.factory.BeanFactory;
-
 /**
  * @author tancunshi
  */
-public interface ConfigurableBeanFactory extends BeanFactory {
+public interface ConfigurableBeanFactory extends AutowireCapableBeanFactory {
     void setClassLoader(ClassLoader classLoader);
 
     ClassLoader getClassLoader();

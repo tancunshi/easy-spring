@@ -7,6 +7,7 @@ import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.BeanRegisterException;
 import org.easyspring.beans.factory.annotation.Autowired;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
+import org.easyspring.beans.factory.config.DependencyDescriptor;
 import org.easyspring.beans.factory.config.RuntimeBeanReference;
 import org.easyspring.context.annotation.ScannedGenericBeanDefinition;
 import org.easyspring.util.ClassUtils;
@@ -70,7 +71,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         return createBean(bd);
     }
 
-    public Object getBean(Class<?> clazz){
+    private Object getBean(Class<?> clazz){
         String className = clazz.getName();
         List<String> beanIds = this.classBeanIdMap.get(className);
         if (beanIds == null || beanIds.size() == 0){
@@ -90,7 +91,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         try {
             if (bd instanceof ScannedGenericBeanDefinition){
                 //autowired 注入，直接反射field注入
-                this.resolveDependency(bd,bean);
+                this.autowireBean(bd,bean);
             }else if (bd instanceof GenericBeanDefinition){
                 //setter 注入，反射setter方法注入
                 this.populateBean(bd, bean);
@@ -103,7 +104,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         return bean;
     }
 
-    private void resolveDependency(BeanDefinition bd,Object bean) throws IllegalAccessException {
+    private void autowireBean(BeanDefinition bd,Object bean) throws IllegalAccessException {
         //目前的问题，只能注入到Field中
         Class beanClass = bean.getClass();
         Field[] fields = beanClass.getDeclaredFields();
@@ -190,5 +191,10 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 
     public ClassLoader getClassLoader() {
         return classLoader == null ? ClassUtils.getDefaultClassLoader() : this.classLoader;
+    }
+
+    public Object resolveDependency(DependencyDescriptor descriptor) {
+        Class<?> typeToMath = descriptor.getDependencyType();
+        return this.getBean(typeToMath);
     }
 }

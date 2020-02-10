@@ -1,5 +1,6 @@
 package org.easyspring.context.support;
 
+import org.easyspring.beans.factory.config.DependencyDescriptor;
 import org.easyspring.context.ApplicationContext;
 import org.easyspring.core.io.ClassPathResource;
 import org.easyspring.core.io.Resource;

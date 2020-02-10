@@ -4,7 +4,6 @@ import org.easyspring.core.io.Resource;
 import org.easyspring.core.io.support.PackageResourceLoader;
 import org.junit.Test;
 import static junit.framework.TestCase.*;
-import java.io.IOException;
 
 public class LoadPackageTest {
 

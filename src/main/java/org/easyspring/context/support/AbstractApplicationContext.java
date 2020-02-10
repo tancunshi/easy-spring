@@ -1,5 +1,6 @@
 package org.easyspring.context.support;
 
+import org.easyspring.beans.factory.config.DependencyDescriptor;
 import org.easyspring.beans.factory.support.DefaultBeanFactory;
 import org.easyspring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.easyspring.context.ApplicationContext;
@@ -25,8 +26,8 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         return factory.getBean(beanId);
     }
 
-    public Object getBean(Class<?> clazz){
-        return factory.getBean(clazz);
+    public Object resolveDependency(DependencyDescriptor descriptor) {
+        return factory.resolveDependency(descriptor);
     }
 
     protected abstract Resource getResourceByPath(String path);

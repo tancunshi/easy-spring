@@ -13,7 +13,9 @@ import org.junit.runners.Suite;
         ApplicationContextTest.class,
         LoadPackageTest.class,
         AnnotationAttributeTest.class,
-        ClassReaderTest.class
+        ClassReaderTest.class,
+        DependencyDescriptorTest.class,
+        InjectionMetadataTest.class
 })
 public class AllTestCaseRunnerV4 {
 
