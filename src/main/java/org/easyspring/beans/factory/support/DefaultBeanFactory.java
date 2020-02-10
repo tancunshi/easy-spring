@@ -6,6 +6,9 @@ import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.BeanRegisterException;
 import org.easyspring.beans.factory.annotation.Autowired;
+import org.easyspring.beans.factory.annotation.AutowiredFieldElement;
+import org.easyspring.beans.factory.annotation.InjectionElement;
+import org.easyspring.beans.factory.annotation.InjectionMetadata;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
 import org.easyspring.beans.factory.config.DependencyDescriptor;
 import org.easyspring.beans.factory.config.RuntimeBeanReference;
@@ -17,10 +20,7 @@ import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -91,7 +91,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         try {
             if (bd instanceof ScannedGenericBeanDefinition){
                 //autowired 注入，直接反射field注入
-                this.autowireBean(bd,bean);
+                this.autowireBean(bean);
             }else if (bd instanceof GenericBeanDefinition){
                 //setter 注入，反射setter方法注入
                 this.populateBean(bd, bean);
@@ -104,34 +104,24 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         return bean;
     }
 
-    private void autowireBean(BeanDefinition bd,Object bean) throws IllegalAccessException {
-        //目前的问题，只能注入到Field中
-        Class beanClass = bean.getClass();
-        Field[] fields = beanClass.getDeclaredFields();
-        for (Field field : fields){
+    private void autowireBean(Object target) {
+
+        Class beanClass = target.getClass();
+        LinkedList<InjectionElement> elements = new LinkedList<InjectionElement>();
+
+        for (Field field : beanClass.getDeclaredFields()){
             Autowired annotation = null;
             if (( annotation = field.getAnnotation(Autowired.class) ) != null){
 
                 boolean required = annotation.required();
-
-                RuntimeBeanReference ref = new RuntimeBeanReference(field.getName());
-                PropertyValue propValue = new PropertyValue(field.getName(),ref);
-                bd.getPropertyValues().add(propValue);
-
-                try {
-                    Object refBean = this.getBean(field.getType());
-                    field.setAccessible(true);
-                    field.set(bean,refBean);
-                }
-                catch (BeanCreationException e){
-                    if (required){
-                        throw new BeanCreationException(
-                                "Field " + field.getName() + " of " + beanClass + " is required , but field is not found in container",e);
-                    }
-                }
+                InjectionElement element = new AutowiredFieldElement(field,required,this);
+                elements.add(element);
 
             }
         }
+
+        InjectionElement metadata = new InjectionMetadata(elements);
+        metadata.inject(target);
     }
 
     private Object instantiateBean(BeanDefinition bd) {

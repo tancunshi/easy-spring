@@ -1,6 +1,5 @@
 package org.easyspring.test.entity;
 
-
 public class Dog {
     private String dogName;
     private Integer dogAge;

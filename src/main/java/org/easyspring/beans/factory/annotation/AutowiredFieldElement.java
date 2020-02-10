@@ -27,8 +27,8 @@ public class AutowiredFieldElement extends AbstractInjectionElement {
         //target是被注入的目标对象
         Field field = this.getField();
         try {
-            DependencyDescriptor desc = new DependencyDescriptor(field,this.required);
-            Object value = factory.resolveDependency(desc);
+            DependencyDescriptor dependency = new DependencyDescriptor(field,this.required);
+            Object value = this.resolveDependency(dependency);
             if (value != null){
                 ReflectionUtils.makeAccessible(field);
                 field.set(target,value);
@@ -37,5 +37,17 @@ public class AutowiredFieldElement extends AbstractInjectionElement {
         catch (Throwable ex){
             throw new BeanCreationException("Could not autowire field: " + field, ex);
         }
+    }
+
+    private Object resolveDependency(DependencyDescriptor dependency){
+        try {
+            return factory.resolveDependency(dependency);
+        }
+        catch (BeanCreationException dependencyNotFoundException){
+            if (dependency.isRequired()){
+                throw dependencyNotFoundException;
+            }
+        }
+        return null;
     }
 }

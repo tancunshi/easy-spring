@@ -1,7 +1,6 @@
 package org.easyspring.beans.factory.config;
 
 import org.easyspring.util.Assert;
-
 import java.lang.reflect.Field;
 
 /**

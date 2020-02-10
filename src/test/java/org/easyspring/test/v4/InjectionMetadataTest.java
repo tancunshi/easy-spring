@@ -29,7 +29,7 @@ public class InjectionMetadataTest {
         InjectionElement fieldElement = new AutowiredFieldElement(field,true,factory);
         elements.add(fieldElement);
 
-        InjectionMetadata metadata = new InjectionMetadata(elements);
+        InjectionElement metadata = new InjectionMetadata(elements);
         metadata.inject(person);
 
         assertNotNull(person.getSchool());

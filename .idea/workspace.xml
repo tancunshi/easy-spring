@@ -5,40 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="167f5e66-bf58-4a13-8e84-bb83716329e9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AbstractInjectionElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AutowiredFieldElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/InjectionElement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/InjectionMetadata.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/AutowireCapableBeanFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/DependencyDescriptor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/util/ReflectionUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/DependencyDescriptorTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/InjectionMetadataTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AbstractInjectionElement.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AutowiredFieldElement.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/InjectionElement.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/InjectionMetadata.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/AutowireCapableBeanFactory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/DependencyDescriptor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/org/easyspring/util/ReflectionUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/DependencyDescriptorTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/InjectionMetadataTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/BeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/BeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/ConfigurableBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/ConfigurableBeanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AutowiredFieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AutowiredFieldElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/DependencyDescriptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/DependencyDescriptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/AbstractApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/AbstractApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/ClassPathXmlApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/ClassPathXmlApplicationContext.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/AllTestCaseRunnerV4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/LoadPackageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/LoadPackageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/BeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/BeanFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/ConfigurableBeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/ConfigurableBeanFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/test/entity/Dog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/test/entity/Dog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/InjectionMetadataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v4/InjectionMetadataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AbstractInjectionElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AbstractInjectionElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AutowiredFieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AutowiredFieldElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/DependencyDescriptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/DependencyDescriptor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/AbstractApplicationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/AbstractApplicationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/ClassPathXmlApplicationContext.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/ClassPathXmlApplicationContext.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/AllTestCaseRunnerV4.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/AllTestCaseRunnerV4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/LoadPackageTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/LoadPackageTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/InjectionMetadataTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/InjectionMetadataTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +113,7 @@
       <select />
     </treeState>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AllTestCaseRunnerV0">
     <configuration name="AllTestCaseRunnerV0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="easy-spring" />
       <extension name="coverage">
@@ -152,9 +129,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ApplicationContextTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="easy-spring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.easyspring.test.v4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.easyspring.test.v4" />
+      <option name="MAIN_CLASS_NAME" value="org.easyspring.test.v4.ApplicationContextTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.AllTestCaseRunnerV0" />
+        <item itemvalue="JUnit.ApplicationContextTest" />
       </list>
     </recent_temporary>
   </component>
@@ -210,7 +203,7 @@
       <workItem from="1581124715093" duration="42722000" />
       <workItem from="1581205681663" duration="34840000" />
       <workItem from="1581297562988" duration="2306000" />
-      <workItem from="1581316691203" duration="11046000" />
+      <workItem from="1581316691203" duration="14697000" />
     </task>
     <servers />
   </component>
@@ -281,46 +274,46 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1581299928352" />
-    <state width="1493" height="281" key="GridCell.Tab.0.bottom" timestamp="1581325040877">
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1581332806860">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581325040877" />
-    <state width="1493" height="281" key="GridCell.Tab.0.center" timestamp="1581325040877">
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581332806860" />
+    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1581332806860">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581325040877" />
-    <state width="1493" height="281" key="GridCell.Tab.0.left" timestamp="1581325040877">
+    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581332806860" />
+    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1581332806860">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581325040877" />
-    <state width="1493" height="281" key="GridCell.Tab.0.right" timestamp="1581325040877">
+    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581332806860" />
+    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1581332806860">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581325040877" />
-    <state width="1493" height="156" key="GridCell.Tab.1.bottom" timestamp="1581249232440">
+    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581332806860" />
+    <state width="1493" height="156" key="GridCell.Tab.1.bottom" timestamp="1581330411301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="156" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581249232440" />
-    <state width="1493" height="156" key="GridCell.Tab.1.center" timestamp="1581249232440">
+    <state width="1493" height="156" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581330411301" />
+    <state width="1493" height="156" key="GridCell.Tab.1.center" timestamp="1581330411301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="156" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581249232440" />
-    <state width="1493" height="156" key="GridCell.Tab.1.left" timestamp="1581249232440">
+    <state width="1493" height="156" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581330411301" />
+    <state width="1493" height="156" key="GridCell.Tab.1.left" timestamp="1581330411301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="156" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581249232440" />
-    <state width="1493" height="156" key="GridCell.Tab.1.right" timestamp="1581249232440">
+    <state width="1493" height="156" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581330411301" />
+    <state width="1493" height="156" key="GridCell.Tab.1.right" timestamp="1581330411301">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="156" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581249232440" />
+    <state width="1493" height="156" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581330411301" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1581237234839">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581237234839" />
-    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1581326715774">
+    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1581332591721">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581326715774" />
+    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581332591721" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/easyspring$ClassReaderTest.ic" NAME="ClassReaderTest Coverage Results" MODIFIED="1581143888247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
