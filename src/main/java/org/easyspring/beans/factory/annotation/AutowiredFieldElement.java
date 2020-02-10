@@ -28,7 +28,7 @@ public class AutowiredFieldElement extends AbstractInjectionElement {
         Field field = this.getField();
         try {
             DependencyDescriptor dependency = new DependencyDescriptor(field,this.required);
-            Object value = this.resolveDependency(dependency);
+            Object value = super.resolveDependency(dependency);
             if (value != null){
                 ReflectionUtils.makeAccessible(field);
                 field.set(target,value);
@@ -39,15 +39,4 @@ public class AutowiredFieldElement extends AbstractInjectionElement {
         }
     }
 
-    private Object resolveDependency(DependencyDescriptor dependency){
-        try {
-            return factory.resolveDependency(dependency);
-        }
-        catch (BeanCreationException dependencyNotFoundException){
-            if (dependency.isRequired()){
-                throw dependencyNotFoundException;
-            }
-        }
-        return null;
-    }
 }
