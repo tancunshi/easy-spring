@@ -20,6 +20,7 @@ import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -89,39 +90,13 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         Object bean = this.instantiateBean(bd);
 
         try {
-            if (bd instanceof ScannedGenericBeanDefinition){
-                //autowired 注入，直接反射field注入
-                this.autowireBean(bean);
-            }else if (bd instanceof GenericBeanDefinition){
-                //setter 注入，反射setter方法注入
-                this.populateBean(bd, bean);
-            }
+            this.populateBean(bd, bean);
         }
         catch (Throwable e){
             throw new BeanCreationException("bean create error",e);
         }
 
         return bean;
-    }
-
-    private void autowireBean(Object target) {
-
-        Class beanClass = target.getClass();
-        LinkedList<InjectionElement> elements = new LinkedList<InjectionElement>();
-
-        for (Field field : beanClass.getDeclaredFields()){
-            Autowired annotation = null;
-            if (( annotation = field.getAnnotation(Autowired.class) ) != null){
-
-                boolean required = annotation.required();
-                InjectionElement element = new AutowiredFieldElement(field,required,this);
-                elements.add(element);
-
-            }
-        }
-
-        InjectionElement metadata = new InjectionMetadata(elements);
-        metadata.inject(target);
     }
 
     private Object instantiateBean(BeanDefinition bd) {
@@ -141,12 +116,31 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         }
     }
 
-    /**
-     * 这里还可以直接使用common-beanutils下的
-     * BeanUtils.setProperty进行注入
-     */
+    private void autowireBean(Object target) {
+
+        Class beanClass = target.getClass();
+        LinkedList<InjectionElement> elements = new LinkedList<InjectionElement>();
+
+        for (Field field : beanClass.getDeclaredFields()){
+            Autowired annotation = null;
+            if (( annotation = field.getAnnotation(Autowired.class) ) != null){
+
+                if (!Modifier.isStatic(field.getModifiers())){
+                    boolean required = annotation.required();
+                    InjectionElement element = new AutowiredFieldElement(field,required,this);
+                    elements.add(element);
+                }
+            }
+        }
+
+        InjectionElement metadata = new InjectionMetadata(elements);
+        metadata.inject(target);
+    }
+
     private void populateBean(BeanDefinition bd, Object bean) {
-        //通过setter注入，要求必须要有setter方法
+        //可以扩展成前置处理
+        this.autowireBean(bean);
+
         List<PropertyValue> pvs = bd.getPropertyValues();
         if (pvs == null || pvs.isEmpty()) {
             return;
