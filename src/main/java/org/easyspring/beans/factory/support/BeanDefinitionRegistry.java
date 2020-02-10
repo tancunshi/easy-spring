@@ -6,7 +6,7 @@ import org.easyspring.beans.BeanDefinition;
  * @author tancunshi
  */
 public interface BeanDefinitionRegistry {
-    public BeanDefinition getBeanDefinition(String beanId);
+    BeanDefinition getBeanDefinition(String beanId);
 
-    public void registerBeanDefinition(String beanId, BeanDefinition bd);
+    void registerBeanDefinition(String beanId, BeanDefinition bd);
 }

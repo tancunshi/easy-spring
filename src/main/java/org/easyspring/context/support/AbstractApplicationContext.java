@@ -25,6 +25,10 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         return factory.getBean(beanId);
     }
 
+    public Object getBean(Class<?> clazz){
+        return factory.getBean(clazz);
+    }
+
     protected abstract Resource getResourceByPath(String path);
 
     public void setClassLoader(ClassLoader classLoader) {
