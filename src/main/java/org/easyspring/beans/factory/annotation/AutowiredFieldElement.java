@@ -5,6 +5,8 @@ import org.easyspring.beans.factory.config.AutowireCapableBeanFactory;
 import org.easyspring.beans.factory.config.DependencyDescriptor;
 import org.easyspring.beans.factory.support.DefaultBeanFactory;
 import org.easyspring.util.ReflectionUtils;
+
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Member;
 
@@ -14,23 +16,16 @@ import java.lang.reflect.Member;
  */
 public class AutowiredFieldElement extends AbstractAutowiredInjectionElement {
 
-    boolean required;
-
-    public AutowiredFieldElement(Field field, boolean required, AutowireCapableBeanFactory factory) {
-        super(field,factory);
-        this.required = required;
-    }
-
-    public Field getField(){
-        return (Field)this.member;
+    public AutowiredFieldElement(Member field, AutowireCapableBeanFactory factory, Annotation annotation) {
+        super(field,factory,annotation);
     }
 
     @Override
     public void inject(Object target) {
-        //target是被注入的目标对象
+        Autowired annotation = this.getAnnotation();
         Field field = this.getField();
         try {
-            DependencyDescriptor dependency = new DependencyDescriptor(field,this.required);
+            DependencyDescriptor dependency = new DependencyDescriptor(field,annotation.required());
             Object value = super.resolveDependency(dependency);
             if (value != null){
                 ReflectionUtils.makeAccessible(field);
@@ -40,6 +35,14 @@ public class AutowiredFieldElement extends AbstractAutowiredInjectionElement {
         catch (Throwable ex){
             throw new BeanCreationException("Could not autowire field: " + field, ex);
         }
+    }
+
+    private Autowired getAnnotation(){
+        return (Autowired) annotation;
+    }
+
+    private Field getField() {
+        return (Field)this.member;
     }
 
 }

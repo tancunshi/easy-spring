@@ -3,6 +3,7 @@ package org.easyspring.beans.factory.annotation;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.factory.config.AutowireCapableBeanFactory;
 import org.easyspring.beans.factory.config.DependencyDescriptor;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Member;
 
 /**
@@ -10,12 +11,14 @@ import java.lang.reflect.Member;
  */
 public abstract class AbstractAutowiredInjectionElement implements InjectionElement{
 
+    protected Annotation annotation;
     protected Member member;
     protected AutowireCapableBeanFactory factory;
 
-    AbstractAutowiredInjectionElement(Member member,AutowireCapableBeanFactory factory){
+    AbstractAutowiredInjectionElement(Member member,AutowireCapableBeanFactory factory,Annotation annotation){
         this.member = member;
         this.factory = factory;
+        this.annotation = annotation;
     }
 
     protected Object resolveDependency(DependencyDescriptor dependency){

@@ -18,6 +18,9 @@ public class ApplicationContextTest {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("petstore-v4.xml");
         Person person = (Person) context.getBean("user");
         assertNotNull(person);
+        assertEquals(person.name,"tancunshi");
+        assertEquals(person.age,20);
+        assertEquals(person.male,true);
         School school = (School) context.getBean("school");
         assertNotNull(school);
         assertNotNull(person.getSchool());

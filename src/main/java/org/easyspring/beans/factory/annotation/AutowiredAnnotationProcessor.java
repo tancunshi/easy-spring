@@ -4,6 +4,8 @@ import org.easyspring.beans.BeansException;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.factory.config.AutowireCapableBeanFactory;
 import org.easyspring.beans.factory.config.InstantiationAwareBeanPostProcessor;
+import org.easyspring.core.annotation.AnnotationUtils;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
@@ -21,37 +23,36 @@ public class AutowiredAnnotationProcessor implements InstantiationAwareBeanPostP
     private AutowireCapableBeanFactory beanFactory;
     private final Set<Class<? extends Annotation>> autowiredAnnotationTypes =
             new LinkedHashSet<Class<? extends Annotation>>();
-
     public AutowiredAnnotationProcessor(){
         this.autowiredAnnotationTypes.add(Autowired.class);
-        //this.autowiredAnnotationTypes.add(Value.class);
+        this.autowiredAnnotationTypes.add(Value.class);
     }
 
     public InjectionElement buildAutowiringMetadata(Class<?> clazz){
-
         Class<?> target = clazz;
         LinkedList<InjectionElement> elements = new LinkedList<InjectionElement>();
+        InjectionElementBuilder builder = new InjectionElementBuilder(beanFactory);
         while (target != null && target != Object.class){
             //Object 的super 为null
             for (Field field : target.getDeclaredFields()) {
-                Autowired annotation = null;
-                if ((annotation = field.getAnnotation(Autowired.class)) != null) {
 
-                    if (!Modifier.isStatic(field.getModifiers())) {
-                        boolean required = annotation.required();
-                        elements.add(new AutowiredFieldElement(field, required,this.beanFactory));
-                    }
+                Annotation annotation = this.findAutowiredAnnotation(field);
+                if (annotation != null && !Modifier.isStatic(field.getModifiers())) {
+                    elements.add(builder.addAnnotation(annotation)
+                            .addMemory(field)
+                            .build()
+                    );
                 }
             }
 
             for (Method method : target.getDeclaredMethods()){
-                Autowired annotation = null;
-                if ((annotation = method.getAnnotation(Autowired.class)) != null){
 
-                    if (!Modifier.isStatic(method.getModifiers())){
-                        boolean required = annotation.required();
-                        elements.add(new AutowiredMethodElement(method,required,this.beanFactory));
-                    }
+                Annotation annotation = this.findAutowiredAnnotation(method);
+                if (annotation != null && !Modifier.isStatic(method.getModifiers())) {
+                    elements.add(builder.addAnnotation(annotation)
+                            .addMemory(method)
+                            .build()
+                    );
                 }
             }
             target = target.getSuperclass();
@@ -70,11 +71,13 @@ public class AutowiredAnnotationProcessor implements InstantiationAwareBeanPostP
         }
     }
 
-    protected boolean determineRequiredStatus(Annotation ann) {
-        return false;
-    }
-
     private Annotation findAutowiredAnnotation(AccessibleObject ao) {
+        for (Class<? extends Annotation> type : this.autowiredAnnotationTypes) {
+            Annotation ann = AnnotationUtils.getAnnotation(ao, type);
+            if (ann != null) {
+                return ann;
+            }
+        }
         return null;
     }
 

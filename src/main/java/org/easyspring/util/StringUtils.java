@@ -49,4 +49,32 @@ public abstract class StringUtils {
         String[] spiltStr = str.split(token);
         return spiltStr;
     }
+
+    public static Object transferStringToObject(String string,Class<?> clazz){
+        if (clazz == byte.class || clazz == Byte.class){
+            return Byte.parseByte(string);
+        }
+        if (clazz == short.class || clazz == Short.class){
+            return Short.parseShort(string);
+        }
+        if (clazz == int.class || clazz == Integer.class){
+            return Integer.parseInt(string);
+        }
+        if (clazz == long.class || clazz == Long.class){
+            return Long.parseLong(string);
+        }
+        if (clazz == double.class || clazz == Double.class){
+            return Double.parseDouble(string);
+        }
+        if (clazz == float.class || clazz == Float.class){
+            return Float.parseFloat(string);
+        }
+        if (clazz == boolean.class || clazz == Boolean.class){
+            return Boolean.parseBoolean(string);
+        }
+        if (clazz == String.class){
+            return string;
+        }
+        throw new RuntimeException("cannot parse this " + clazz.getName() +" type");
+    }
 }
