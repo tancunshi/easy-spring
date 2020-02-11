@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="167f5e66-bf58-4a13-8e84-bb83716329e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AutowiredAnnotationProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/Value.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/BeanPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/InstantiationAwareBeanPostProcessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/core/annotation/AnnotationUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/BeanCreationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/BeanCreationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/Autowired.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/Autowired.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AutowiredFieldElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AutowiredFieldElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/InjectionMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/InjectionMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/ConfigurableBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/config/ConfigurableBeanFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/support/DefaultBeanFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AbstractInjectionElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AbstractInjectionElement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AutowiredFieldElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AutowiredFieldElement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/context/ApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/ApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/AbstractApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/AbstractApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/ClassPathXmlApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/context/support/ClassPathXmlApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/ConfigurableBeanFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/ConfigurableBeanFactory.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,9 +48,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="AnnotationType" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -78,9 +90,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\project\easy-spring\src\main\resources\lib" />
-      <recent name="D:\workspace\easy-spring\src\main\resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.easyspring.beans.factory.annotation" />
+      <recent name="org.easyspring.beans.factory.config" />
+      <recent name="org.easyspring.core.type" />
+      <recent name="org.easyspring.beans.factory.support" />
+      <recent name="org.easyspring.beans" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="org.easyspring.test" />
@@ -93,12 +108,9 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.easyspring.test.v4" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="org.easyspring.beans.factory.annotation" />
-      <recent name="org.easyspring.beans.factory.config" />
-      <recent name="org.easyspring.core.type" />
-      <recent name="org.easyspring.beans.factory.support" />
-      <recent name="org.easyspring.beans" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\project\easy-spring\src\main\resources\lib" />
+      <recent name="D:\workspace\easy-spring\src\main\resources" />
     </key>
   </component>
   <component name="RestServicesNavigator">
@@ -197,7 +209,9 @@
       <workItem from="1581124715093" duration="42722000" />
       <workItem from="1581205681663" duration="34840000" />
       <workItem from="1581297562988" duration="2306000" />
-      <workItem from="1581316691203" duration="19235000" />
+      <workItem from="1581316691203" duration="22670000" />
+      <workItem from="1581381909401" duration="40000" />
+      <workItem from="1581382088301" duration="9947000" />
     </task>
     <servers />
   </component>
@@ -244,10 +258,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824@0.0.1536.824" timestamp="1581151887943" />
-    <state x="611" y="192" key="#com.intellij.ide.util.MemberChooser" timestamp="1581322161697">
+    <state x="611" y="192" key="#com.intellij.ide.util.MemberChooser" timestamp="1581391486369">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="611" y="192" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581322161697" />
+    <state x="611" y="192" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1581391486369" />
     <state x="849" y="222" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1581321218352">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -264,50 +278,54 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="338" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1581161320468" />
-    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1581338135297">
+    <state x="549" y="168" key="FileChooserDialogImpl" timestamp="1581387371761">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1581338135297" />
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1581339351412">
+    <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1581387371761" />
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom" timestamp="1581392180639">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581339351412" />
-    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1581339351412">
+    <state width="1493" height="211" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581392180639" />
+    <state width="1493" height="211" key="GridCell.Tab.0.center" timestamp="1581392180638">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581339351412" />
-    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1581339351412">
+    <state width="1493" height="211" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581392180638" />
+    <state width="1493" height="211" key="GridCell.Tab.0.left" timestamp="1581392180638">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581339351412" />
-    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1581339351412">
+    <state width="1493" height="211" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581392180638" />
+    <state width="1493" height="211" key="GridCell.Tab.0.right" timestamp="1581392180638">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581339351412" />
-    <state width="1493" height="156" key="GridCell.Tab.1.bottom" timestamp="1581330411301">
+    <state width="1493" height="211" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581392180638" />
+    <state width="1493" height="156" key="GridCell.Tab.1.bottom" timestamp="1581343161388">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="156" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581330411301" />
-    <state width="1493" height="156" key="GridCell.Tab.1.center" timestamp="1581330411301">
+    <state width="1493" height="156" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581343161388" />
+    <state width="1493" height="156" key="GridCell.Tab.1.center" timestamp="1581343161387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="156" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581330411301" />
-    <state width="1493" height="156" key="GridCell.Tab.1.left" timestamp="1581330411301">
+    <state width="1493" height="156" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1581343161387" />
+    <state width="1493" height="156" key="GridCell.Tab.1.left" timestamp="1581343161387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="156" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581330411301" />
-    <state width="1493" height="156" key="GridCell.Tab.1.right" timestamp="1581330411301">
+    <state width="1493" height="156" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1581343161387" />
+    <state width="1493" height="156" key="GridCell.Tab.1.right" timestamp="1581343161388">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="156" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581330411301" />
+    <state width="1493" height="156" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1581343161388" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1581237234839">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581237234839" />
-    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1581337868766">
+    <state x="511" y="40" key="refactoring.ChangeSignatureDialog" timestamp="1581390947880">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581337868766" />
+    <state x="511" y="40" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1581390947880" />
+    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1581391948651">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581391948651" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/easyspring$ClassReaderTest.ic" NAME="ClassReaderTest Coverage Results" MODIFIED="1581143888247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

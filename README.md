@@ -14,7 +14,7 @@ ASM 提供了更为现代的编程模型。对于 ASM 来说，Java class 被描
 
 #### 用到的设计模式
 
-1.组合模式
+##### 1. 组合模式
 
 组合模式（Composite Pattern），又叫部分整体模式，是用于把一组相似的对象当作一个单一的对象。组合模式依据树形结构来组合对象，用来表示部分以及整体层次。
 
@@ -24,7 +24,7 @@ ASM 提供了更为现代的编程模型。对于 ASM 来说，Java class 被描
 于是对target（目标对象）的需要被注入的 Metadata（元数据）进行了抽象，抽象接口为InjectionElement，实现类有AutowiredFieldElement，
 AutowiredMethodElement（还没实现）。一个target有多个Metadata需要进行依赖注入，所以有了InjectionMetadata进行整体注入
 
-2.观察者模式
+##### 2. 观察者模式
 
 当一个对象被修改时，则会自动通知它的依赖对象。观察者模式属于行为型模式。
 

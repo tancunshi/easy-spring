@@ -1,6 +1,7 @@
 package org.easyspring.beans.factory.annotation;
 
 import org.easyspring.beans.factory.BeanCreationException;
+import org.easyspring.beans.factory.config.AutowireCapableBeanFactory;
 import org.easyspring.beans.factory.config.DependencyDescriptor;
 import org.easyspring.beans.factory.support.DefaultBeanFactory;
 import org.easyspring.util.ReflectionUtils;
@@ -14,8 +15,9 @@ public class AutowiredFieldElement extends AbstractInjectionElement {
 
     boolean required;
 
-    public AutowiredFieldElement(Field field, boolean b, DefaultBeanFactory factory) {
+    public AutowiredFieldElement(Field field, boolean required, AutowireCapableBeanFactory factory) {
         super(field,factory);
+        this.required = required;
     }
 
     public Field getField(){
