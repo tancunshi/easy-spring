@@ -4,7 +4,7 @@ import org.easyspring.beans.factory.annotation.Autowired;
 import org.easyspring.stereotype.Component;
 
 @Component
-public class SchoolMaster {
+public class SchoolMaster extends Teacher{
     private String name;
     private Car car;
 
@@ -19,5 +19,9 @@ public class SchoolMaster {
 
     public Car getCar(){
         return this.car;
+    }
+
+    public Student getStudent(){
+        return super.student;
     }
 }

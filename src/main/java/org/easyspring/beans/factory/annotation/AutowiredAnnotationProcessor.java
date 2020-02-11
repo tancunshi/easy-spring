@@ -29,27 +29,32 @@ public class AutowiredAnnotationProcessor implements InstantiationAwareBeanPostP
 
     public InjectionElement buildAutowiringMetadata(Class<?> clazz){
 
+        Class<?> target = clazz;
         LinkedList<InjectionElement> elements = new LinkedList<InjectionElement>();
-        for (Field field : clazz.getDeclaredFields()) {
-            Autowired annotation = null;
-            if ((annotation = field.getAnnotation(Autowired.class)) != null) {
+        while (target != null && target != Object.class){
+            //Object 的super 为null
+            for (Field field : target.getDeclaredFields()) {
+                Autowired annotation = null;
+                if ((annotation = field.getAnnotation(Autowired.class)) != null) {
 
-                if (!Modifier.isStatic(field.getModifiers())) {
-                    boolean required = annotation.required();
-                    elements.add(new AutowiredFieldElement(field, required,this.beanFactory));
+                    if (!Modifier.isStatic(field.getModifiers())) {
+                        boolean required = annotation.required();
+                        elements.add(new AutowiredFieldElement(field, required,this.beanFactory));
+                    }
                 }
             }
-        }
 
-        for (Method method : clazz.getDeclaredMethods()){
-            Autowired annotation = null;
-            if ((annotation = method.getAnnotation(Autowired.class)) != null){
+            for (Method method : target.getDeclaredMethods()){
+                Autowired annotation = null;
+                if ((annotation = method.getAnnotation(Autowired.class)) != null){
 
-                if (!Modifier.isStatic(method.getModifiers())){
-                    boolean required = annotation.required();
-                    elements.add(new AutowiredMethodElement(method,required,this.beanFactory));
+                    if (!Modifier.isStatic(method.getModifiers())){
+                        boolean required = annotation.required();
+                        elements.add(new AutowiredMethodElement(method,required,this.beanFactory));
+                    }
                 }
             }
+            target = target.getSuperclass();
         }
 
         return new InjectionMetadata(elements);
