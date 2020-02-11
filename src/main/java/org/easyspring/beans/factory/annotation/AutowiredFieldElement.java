@@ -6,12 +6,13 @@ import org.easyspring.beans.factory.config.DependencyDescriptor;
 import org.easyspring.beans.factory.support.DefaultBeanFactory;
 import org.easyspring.util.ReflectionUtils;
 import java.lang.reflect.Field;
+import java.lang.reflect.Member;
 
 /**
- * 注入target的Metadata的抽象
+ * 注入target的Field Metadata的抽象
  * @author tancunshi
  */
-public class AutowiredFieldElement extends AbstractInjectionElement {
+public class AutowiredFieldElement extends AbstractAutowiredInjectionElement {
 
     boolean required;
 

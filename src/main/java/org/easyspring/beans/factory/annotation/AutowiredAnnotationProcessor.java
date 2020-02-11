@@ -7,6 +7,7 @@ import org.easyspring.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -36,6 +37,17 @@ public class AutowiredAnnotationProcessor implements InstantiationAwareBeanPostP
                 if (!Modifier.isStatic(field.getModifiers())) {
                     boolean required = annotation.required();
                     elements.add(new AutowiredFieldElement(field, required,this.beanFactory));
+                }
+            }
+        }
+
+        for (Method method : clazz.getDeclaredMethods()){
+            Autowired annotation = null;
+            if ((annotation = method.getAnnotation(Autowired.class)) != null){
+
+                if (!Modifier.isStatic(method.getModifiers())){
+                    boolean required = annotation.required();
+                    elements.add(new AutowiredMethodElement(method,required,this.beanFactory));
                 }
             }
         }

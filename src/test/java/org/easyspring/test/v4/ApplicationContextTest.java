@@ -23,6 +23,7 @@ public class ApplicationContextTest {
         assertNotNull(person.getSchool());
         assertEquals(person.getSchool(),school);
         assertNotNull(school.getSchoolMaster());
+        assertNotNull(school.getSchoolMaster().getCar());
     }
 }
  

@@ -8,12 +8,12 @@ import java.lang.reflect.Member;
 /**
  * @author tancunshi
  */
-public abstract class AbstractInjectionElement implements InjectionElement{
-    protected Member member;
+public abstract class AbstractAutowiredInjectionElement implements InjectionElement{
 
+    protected Member member;
     protected AutowireCapableBeanFactory factory;
 
-    AbstractInjectionElement(Member member,AutowireCapableBeanFactory factory){
+    AbstractAutowiredInjectionElement(Member member,AutowireCapableBeanFactory factory){
         this.member = member;
         this.factory = factory;
     }
