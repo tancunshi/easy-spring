@@ -1,5 +1,6 @@
 # easy-spring
-手写个简易的spring
+
+简易版本spring，很多地方和spring源码并不一样
 
 #### easy-spring 使用的外部依赖
 **dom4j**  
@@ -31,3 +32,12 @@ AutowiredMethodElement（还没实现）。一个target有多个Metadata需要�
 **涉及的类**：spring-asm 相关的类
 
 **场景描述**：读取类时，如果发现类被@Component修饰，通知观察者
+
+###### 3.建造者模式
+
+建造者模式（Builder Pattern）使用多个简单的对象一步一步构建成一个复杂的对象。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
+
+**涉及的类**：InjectionElementBuilder
+
+**场景描述**：剥离建造过程，隐藏具体实现
+

@@ -16,8 +16,12 @@ public class InjectionElementBuilder {
     private Member member;
     private InjectionElement injectionElement;
 
-    public InjectionElementBuilder(AutowireCapableBeanFactory factory){
+    private InjectionElementBuilder(AutowireCapableBeanFactory factory){
         this.factory = factory;
+    }
+
+    public static InjectionElementBuilder builder(AutowireCapableBeanFactory factory){
+        return new InjectionElementBuilder(factory);
     }
 
     public AnnotationInjectionElementBuilder addAnnotation(Annotation annotation){

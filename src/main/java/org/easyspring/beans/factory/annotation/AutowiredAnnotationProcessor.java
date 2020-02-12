@@ -31,14 +31,15 @@ public class AutowiredAnnotationProcessor implements InstantiationAwareBeanPostP
     public InjectionElement buildAutowiringMetadata(Class<?> clazz){
         Class<?> target = clazz;
         LinkedList<InjectionElement> elements = new LinkedList<InjectionElement>();
-        InjectionElementBuilder builder = new InjectionElementBuilder(beanFactory);
         while (target != null && target != Object.class){
             //Object 的super 为null
             for (Field field : target.getDeclaredFields()) {
 
                 Annotation annotation = this.findAutowiredAnnotation(field);
                 if (annotation != null && !Modifier.isStatic(field.getModifiers())) {
-                    elements.add(builder.addAnnotation(annotation)
+                    elements.add(InjectionElementBuilder
+                            .builder(this.beanFactory)
+                            .addAnnotation(annotation)
                             .addMemory(field)
                             .build()
                     );
@@ -49,7 +50,9 @@ public class AutowiredAnnotationProcessor implements InstantiationAwareBeanPostP
 
                 Annotation annotation = this.findAutowiredAnnotation(method);
                 if (annotation != null && !Modifier.isStatic(method.getModifiers())) {
-                    elements.add(builder.addAnnotation(annotation)
+                    elements.add(InjectionElementBuilder
+                            .builder(this.beanFactory)
+                            .addAnnotation(annotation)
                             .addMemory(method)
                             .build()
                     );
