@@ -13,6 +13,7 @@
       <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v5/AllTestCaseRunnerV5.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v5/ApplicationContextTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v0/AllTestCaseRunnerV0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v0/AllTestCaseRunnerV0.java" afterDir="false" />
@@ -120,6 +121,8 @@
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/InjectionMetadataTest$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/InjectionMetadataTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/LoadPackageTest.class" beforeDir="false" />
+=======
+>>>>>>> 3f0793888f6e967c95478c0f51de2c40ed389525
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -297,8 +300,12 @@
       <workItem from="1581382088301" duration="17000000" />
       <workItem from="1581420666693" duration="92000" />
       <workItem from="1581420798567" duration="14828000" />
+<<<<<<< HEAD
       <workItem from="1581475563056" duration="903000" />
       <workItem from="1581823776303" duration="4340000" />
+=======
+      <workItem from="1581475563056" duration="2366000" />
+>>>>>>> 3f0793888f6e967c95478c0f51de2c40ed389525
     </task>
     <servers />
   </component>
@@ -373,6 +380,7 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1581402275494" />
+<<<<<<< HEAD
     <state width="1493" height="197" key="GridCell.Tab.0.bottom" timestamp="1581827331567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -389,6 +397,24 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="197" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581827331567" />
+=======
+    <state width="1493" height="301" key="GridCell.Tab.0.bottom" timestamp="1581476698286">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="301" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581476698286" />
+    <state width="1493" height="301" key="GridCell.Tab.0.center" timestamp="1581476698286">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="301" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581476698286" />
+    <state width="1493" height="301" key="GridCell.Tab.0.left" timestamp="1581476698285">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="301" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581476698285" />
+    <state width="1493" height="301" key="GridCell.Tab.0.right" timestamp="1581476698286">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="301" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581476698286" />
+>>>>>>> 3f0793888f6e967c95478c0f51de2c40ed389525
     <state width="1493" height="165" key="GridCell.Tab.1.bottom" timestamp="1581435640313">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
