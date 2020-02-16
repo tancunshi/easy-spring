@@ -9,7 +9,8 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        ApplicationContextTest.class
+        //ApplicationContextTest.class,
+        PointcutTest.class
 })
 public class AllTestCaseRunnerV5 {
 }

@@ -16,7 +16,8 @@ ASM 提供了更为现代的编程模型。对于 ASM 来说，Java class 被描
 **aspectJ**
 
 AspectJ是一个面向切面的框架，它扩展了Java语言。AspectJ定义了AOP语法，它有一个专门的编译器用来生成遵守Java字节编码规范的Class文件。
-需要注意的是，Spring不是通过静态编译时，增强字节码来实现aop的，只是使用了AspectJ的一些核心类。
+需要注意的是，Spring不是通过静态编译时，增强字节码来实现aop的。
+AspectJ提供了静态编译时，增强字节码的实现，但是spring并没有使用它的实现，而是使用了它用来实现aop的一些面向对象设计。
 Spring的aop是动态运行时，生成代理类实现的。有两种方式，一种是JDK代理，另一种是CGLib代理。
 
 #### 用到的设计模式
