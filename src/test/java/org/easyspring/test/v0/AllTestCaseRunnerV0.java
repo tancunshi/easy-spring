@@ -4,6 +4,7 @@ import org.easyspring.test.v1.AllTestCaseRunnerV1;
 import org.easyspring.test.v2.AllTestCaseRunnerV2;
 import org.easyspring.test.v3.AllTestCaseRunnerV3;
 import org.easyspring.test.v4.AllTestCaseRunnerV4;
+import org.easyspring.test.v5.AllTestCaseRunnerV5;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -16,7 +17,8 @@ import org.junit.runners.Suite;
         AllTestCaseRunnerV1.class,
         AllTestCaseRunnerV2.class,
         AllTestCaseRunnerV3.class,
-        AllTestCaseRunnerV4.class
+        AllTestCaseRunnerV4.class,
+        AllTestCaseRunnerV5.class
 })
 public class AllTestCaseRunnerV0 {
 }

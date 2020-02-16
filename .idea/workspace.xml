@@ -5,10 +5,121 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="167f5e66-bf58-4a13-8e84-bb83716329e9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/test/aop/Controller.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/test/aop/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/tx/TransactionManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/util/MessageTracker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/petstore-v5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v5/AllTestCaseRunnerV5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v5/ApplicationContextTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AutowiredAnnotationProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/AutowiredAnnotationProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/InjectionElementBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/easyspring/beans/factory/annotation/InjectionElementBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v0/AllTestCaseRunnerV0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/easyspring/test/v0/AllTestCaseRunnerV0.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/easy-spring.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/BeanDefinition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/BeansException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/ConstructorArgument$ValueHolder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/ConstructorArgument.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/PropertyValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/SimpleTypeConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/TypeConverter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/TypeMismatchException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/AnnotationInjectionElementBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/BeanCreationException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/BeanDefinitionStoreException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/BeanFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/BeanRegisterException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AbstractAutowiredInjectionElement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AnnotatedBeanDefinition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/Autowired.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AutowiredAnnotationProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AutowiredFieldElement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/AutowiredMethodElement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/InjectionElement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/InjectionElementBuilder$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/InjectionElementBuilder$AutowiredInjectionElementBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/InjectionElementBuilder$ValueInjectionElementBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/InjectionElementBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/InjectionMetadata.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/Value.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/annotation/ValueInjectionFieldElement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/AutowireCapableBeanFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/BeanPostProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/ConfigurableBeanFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/DependencyDescriptor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/InstantiationAwareBeanPostProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/RuntimeBeanReference.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/SingletonBeanRegistry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/config/TypedStringValue.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/BeanDefinitionRegistry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/BeanDefinitionValueResolver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/BeanNameGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/ConstructorResolver.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultBeanFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/DefaultSingletonBeanRegistry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/support/GenericBeanDefinition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/factory/xml/XmlBeanDefinitionReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/propertyeditors/CustomBooleanEditor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/beans/propertyeditors/CustomNumberEditor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/ApplicationContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/annotation/AnnotationBeanNameGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/annotation/ClassPathBeanDefinitionScanner.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/annotation/ScannedGenericBeanDefinition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/AbstractApplicationContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/ClassPathXmlApplicationContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/context/support/FileSystemXmlApplicationContext.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/annotation/AnnotationAttributes.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/annotation/AnnotationUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/ClassPathResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/FileSystemResource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/Resource.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/io/support/PackageResourceLoader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/AnnotationMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/ClassMetaData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/asm/AbstractAnnotationVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/asm/AbstractClassVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/classreading/AnnotationAttributesReadingVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/classreading/AnnotationMetadataReadingVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/classreading/ClassMetadataReadingVisitor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/classreading/MetaDataReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/core/type/classreading/SimpleMetaDataReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/stereotype/Component.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/Car.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/Dog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/PetStore.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/School.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/SchoolMaster.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/Student.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/Teacher.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/test/entity/Zoo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/util/Assert.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/util/ClassUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/util/NumberUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/util/ReflectionUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/easyspring/util/StringUtils.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/petstore-v1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/petstore-v2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/petstore-v3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/petstore-v4.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/easy-spring.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v0/AllTestCaseRunnerV0.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v1/AllTestCaseRunnerV1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v1/ApplicationContextTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v1/BeanFactoryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v2/AllTestCaseRunnerV2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v2/BeanDefinitionTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v3/AllTestCaseRunnerV3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v3/ApplicationContextTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/AllTestCaseRunnerV4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/AnnotationAttributeTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/ApplicationContextTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/ClassReaderTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/DependencyDescriptorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/InjectionMetadataTest$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/InjectionMetadataTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/org/easyspring/test/v4/LoadPackageTest.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,13 +147,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -186,6 +298,7 @@
       <workItem from="1581420666693" duration="92000" />
       <workItem from="1581420798567" duration="14828000" />
       <workItem from="1581475563056" duration="903000" />
+      <workItem from="1581823776303" duration="4340000" />
     </task>
     <servers />
   </component>
@@ -260,22 +373,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1581402275494" />
-    <state width="1493" height="165" key="GridCell.Tab.0.bottom" timestamp="1581435640313">
+    <state width="1493" height="197" key="GridCell.Tab.0.bottom" timestamp="1581827331567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581435640313" />
-    <state width="1493" height="165" key="GridCell.Tab.0.center" timestamp="1581435640313">
+    <state width="1493" height="197" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1581827331567" />
+    <state width="1493" height="197" key="GridCell.Tab.0.center" timestamp="1581827331567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581435640313" />
-    <state width="1493" height="165" key="GridCell.Tab.0.left" timestamp="1581435640313">
+    <state width="1493" height="197" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1581827331567" />
+    <state width="1493" height="197" key="GridCell.Tab.0.left" timestamp="1581827331567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581435640313" />
-    <state width="1493" height="165" key="GridCell.Tab.0.right" timestamp="1581435640313">
+    <state width="1493" height="197" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1581827331567" />
+    <state width="1493" height="197" key="GridCell.Tab.0.right" timestamp="1581827331567">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="165" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581435640313" />
+    <state width="1493" height="197" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1581827331567" />
     <state width="1493" height="165" key="GridCell.Tab.1.bottom" timestamp="1581435640313">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -296,10 +409,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1581237234839" />
-    <state x="562" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581420813233">
+    <state x="562" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1581824801455">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="562" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1581420813233" />
+    <state x="562" y="330" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1581824801455" />
     <state x="93" y="93" width="1350" height="638" key="dock-window-1" timestamp="1581423907542">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -308,10 +421,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="40" key="refactoring.ChangeSignatureDialog/0.0.1536.824@0.0.1536.824" timestamp="1581390947880" />
-    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1581435001827">
+    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1581825922018">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581435001827" />
+    <state x="426" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1581825922018" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/easyspring$ClassReaderTest.ic" NAME="ClassReaderTest Coverage Results" MODIFIED="1581143888247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
