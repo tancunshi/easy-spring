@@ -10,7 +10,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         //ApplicationContextTest.class,
-        PointcutTest.class
+        PointcutTest.class,
+        MethodLocatingFactoryTest.class
 })
 public class AllTestCaseRunnerV5 {
 }

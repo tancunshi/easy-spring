@@ -5,6 +5,7 @@ import org.easyspring.beans.SimpleTypeConverter;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.BeanRegisterException;
+import org.easyspring.beans.factory.NoSuchBeanDefinitionException;
 import org.easyspring.beans.factory.annotation.Autowired;
 import org.easyspring.beans.factory.annotation.AutowiredFieldElement;
 import org.easyspring.beans.factory.annotation.InjectionElement;
@@ -77,6 +78,24 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
             return bean;
         }
         return createBean(bd);
+    }
+
+    public Class<?> getType(String beanId) {
+        if (!StringUtils.hasText(beanId)){
+            throw new IllegalArgumentException("Property 'beanId' is required");
+        }
+
+        BeanDefinition bd = this.getBeanDefinition(beanId);
+        if (bd == null){
+            throw new NoSuchBeanDefinitionException(beanId);
+        }
+
+        try {
+            Class<?> clazz = Class.forName(bd.getBeanClassName());
+            return clazz;
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException("class " + bd.getBeanClassName() + "not found", e);
+        }
     }
 
     private Object getBean(Class<?> clazz){

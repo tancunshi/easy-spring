@@ -46,6 +46,10 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         return this.classLoader == null ? ClassUtils.getDefaultClassLoader() : this.classLoader;
     }
 
+    public Class<?> getType(String beanId) {
+        return this.factory.getType(beanId);
+    }
+
     protected void registerBeanPostProcessors(ConfigurableBeanFactory beanFactory) {
 
         AutowiredAnnotationProcessor postProcessor = new AutowiredAnnotationProcessor();
