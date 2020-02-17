@@ -11,7 +11,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
         //ApplicationContextTest.class,
         PointcutTest.class,
-        MethodLocatingFactoryTest.class
+        MethodLocatingFactoryTest.class,
+        ReflectiveMethodInvocationTest.class
 })
 public class AllTestCaseRunnerV5 {
 }

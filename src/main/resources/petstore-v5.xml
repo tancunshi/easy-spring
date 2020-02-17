@@ -18,7 +18,7 @@
             <!--指定pointcut-->
             <aop:pointcut id="placeOrder"
                           expression="execution(* org.easyspring.test.aop.*.sayHello(..))"/>
-            <aop:before pointcut-ref="placeOrder" method="start"/><!--织入策略：before-->
+            <aop:before pointcut-ref="placeOrder" method="start"/><!--advice-->
             <aop:after-returning pointcut-ref="placeOrder" method="commit"/>
             <aop:after-throwing pointcut-ref="placeOrder" method="rollback"/>
         </aop:aspect>

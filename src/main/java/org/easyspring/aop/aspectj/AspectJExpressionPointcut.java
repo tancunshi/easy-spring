@@ -42,18 +42,19 @@ public class AspectJExpressionPointcut implements Pointcut, MethodMatcher {
     public AspectJExpressionPointcut(){
 
     }
-    public MethodMatcher getMethodMatcher() {
 
+    public MethodMatcher getMethodMatcher() {
         return this;
     }
 
     public String getExpression() {
-
         return this.expression;
     }
+
     public void setExpression(String expression){
         this.expression = expression;
     }
+
     public boolean matches(Method method) {
 
         checkReadyToMatch();
