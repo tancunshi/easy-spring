@@ -5,9 +5,7 @@ import org.easyspring.aop.aspectj.AspectJExpressionPointcut;
 import org.easyspring.test.aop.Controller;
 import org.easyspring.test.aop.Service;
 import org.junit.Test;
-
 import java.lang.reflect.Method;
-
 import static junit.framework.TestCase.*;
 
 public class PointcutTest {

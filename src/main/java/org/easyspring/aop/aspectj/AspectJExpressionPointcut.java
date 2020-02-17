@@ -10,6 +10,9 @@ import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * @author tancunshi
+ */
 public class AspectJExpressionPointcut implements Pointcut, MethodMatcher {
 
     //使用AspectJ中的关于aop的抽象
@@ -39,18 +42,19 @@ public class AspectJExpressionPointcut implements Pointcut, MethodMatcher {
     public AspectJExpressionPointcut(){
 
     }
-    public MethodMatcher getMethodMatcher() {
 
+    public MethodMatcher getMethodMatcher() {
         return this;
     }
 
     public String getExpression() {
-
         return this.expression;
     }
+
     public void setExpression(String expression){
         this.expression = expression;
     }
+
     public boolean matches(Method method) {
 
         checkReadyToMatch();
