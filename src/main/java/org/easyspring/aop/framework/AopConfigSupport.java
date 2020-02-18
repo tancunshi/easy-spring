@@ -1,10 +1,7 @@
 package org.easyspring.aop.framework;
 
-import org.aopalliance.intercept.Interceptor;
-import org.aopalliance.intercept.MethodInterceptor;
 import org.easyspring.aop.Advice;
 import org.easyspring.aop.Pointcut;
-
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,12 +21,12 @@ public class AopConfigSupport implements AopConfig{
         this.advices.add(advice);
     }
 
-    public List<Advice> getAdvice() {
+    public List<Advice> getAdvices() {
         return this.advices;
     }
 
-    public List<MethodInterceptor> getAdvice(Method method) {
-        List<MethodInterceptor> result = new ArrayList<MethodInterceptor>();
+    public List<Advice> getAdvice(Method method) {
+        List<Advice> result = new ArrayList<Advice>();
         for (Advice advice: advices){
             Pointcut pointcut = advice.getPointcut();
             if (pointcut.getMethodMatcher().matches(method)){

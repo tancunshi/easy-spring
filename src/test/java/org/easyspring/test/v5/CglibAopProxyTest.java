@@ -43,7 +43,10 @@ public class CglibAopProxyTest {
         CglibProxyFactory proxyFactory = new CglibProxyFactory(config);
         Controller controller = (Controller) proxyFactory.getProxy();
         controller.sayHello();
-
         Assert.assertEquals(Arrays.asList("start tx","hello","commit tx"), MessageTracker.getTracks());
+
+        MessageTracker.clear();
+        controller.toString();
+        Assert.assertEquals(Arrays.asList(), MessageTracker.getTracks());
     }
 }
