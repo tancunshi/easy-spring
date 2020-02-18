@@ -4,11 +4,17 @@ import org.easyspring.context.ApplicationContext;
 import org.easyspring.context.support.ClassPathXmlApplicationContext;
 import org.easyspring.test.aop.Controller;
 import org.easyspring.util.MessageTracker;
+import org.junit.Before;
 import org.junit.Test;
 import java.util.Arrays;
 import static junit.framework.TestCase.*;
 
 public class ApplicationContextTest {
+
+    @Before
+    public void clear(){
+        MessageTracker.clear();
+    }
 
     @Test
     public void testSayHello(){

@@ -25,6 +25,10 @@ Spring的aop是动态运行时，生成代理类实现的。有两种方式，�
 
 aopalliance 是Java AOP标准。
 
+**CDLib**
+
+
+
 #### 用到的设计模式
 
 ##### 1. 组合模式
@@ -35,7 +39,7 @@ aopalliance 是Java AOP标准。
 
 **场景描述**：在实现Autowired功能时，考虑到Autowired能过作用在Field，Method，Constructor等上。
 于是对target（目标对象）的需要被注入的 Metadata（元数据）进行了抽象，抽象接口为InjectionElement，实现类有AutowiredFieldElement，
-AutowiredMethodElement（还没实现）。一个target有多个Metadata需要进行依赖注入，所以有了InjectionMetadata进行整体注入
+AutowiredMethodElement。一个target有多个Metadata需要进行依赖注入，所以有了InjectionMetadata进行整体注入
 
 ##### 2. 观察者模式
 

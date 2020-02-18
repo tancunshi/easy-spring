@@ -12,7 +12,9 @@ import org.junit.runners.Suite;
         //ApplicationContextTest.class,
         PointcutTest.class,
         MethodLocatingFactoryTest.class,
-        ReflectiveMethodInvocationTest.class
+        ReflectiveMethodInvocationTest.class,
+        CGLibTest.class,
+        CglibAopProxyTest.class
 })
 public class AllTestCaseRunnerV5 {
 }

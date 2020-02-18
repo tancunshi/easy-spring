@@ -4,6 +4,10 @@ import org.easyspring.aop.Advice;
 import org.easyspring.aop.Pointcut;
 import java.lang.reflect.Method;
 
+/**
+ * Advice是Aspect织入JoinPoint的策略，分别是在方法前织入，方法后织入，方法抛出异常时织入
+ * @author tancunshi
+ */
 public abstract class AbstractAspectJAdvice implements Advice {
 
     protected AspectJExpressionPointcut pointcut;

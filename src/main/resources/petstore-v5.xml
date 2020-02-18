@@ -13,7 +13,7 @@
 
     <bean id="tx" class="org.easyspring.tx.TransactionManager"/>
 
-    <aop:config>
+    <aop:config><!--aop config-->
         <aop:aspect ref="tx"><!--指定aspect-->
             <!--指定pointcut-->
             <aop:pointcut id="placeOrder"
