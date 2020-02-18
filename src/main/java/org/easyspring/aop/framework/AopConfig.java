@@ -14,8 +14,8 @@ public interface AopConfig {
     boolean isProxyTargetClass();
     Class<?>[] getProxiedInterfaces();
     boolean isInterfaceProxied(Class<?> clazz);
-    List<Advice> getAdvice();
+    List<Advice> getAdvices();
     void addAdvice(Advice advice);
-    List<MethodInterceptor> getAdvice(Method method);
+    List<Advice> getAdvice(Method method);
     void setTargetObject(Object object);
 }
