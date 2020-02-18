@@ -26,10 +26,10 @@ public class ReflectiveMethodInvocationTest {
 
     @Before
     public void setUp() throws Exception{
+        MessageTracker.clear();
         controller = new Controller();
         tx = new TransactionManager();
 
-        MessageTracker.clear();
         beforeAdvice = new AspectJBeforeAdvice(
                 TransactionManager.class.getMethod("start"), tx, null
         );

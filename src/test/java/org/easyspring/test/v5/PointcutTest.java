@@ -12,8 +12,7 @@ public class PointcutTest {
     @Test
     public void testPointcut() throws Exception{
         String expression = "execution(* org.easyspring.test.aop.*.sayHello(..))";
-        AspectJExpressionPointcut pc = new AspectJExpressionPointcut();
-        pc.setExpression(expression);
+        AspectJExpressionPointcut pc = new AspectJExpressionPointcut(expression);
 
         MethodMatcher matcher = pc.getMethodMatcher();
         Class<?> targetClass = Controller.class;

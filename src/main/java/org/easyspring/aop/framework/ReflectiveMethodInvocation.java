@@ -2,24 +2,26 @@ package org.easyspring.aop.framework;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
-import org.easyspring.test.aop.Controller;
-
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Method;
 import java.util.List;
 
+/**
+ * 一个JoinPoint = targetObject + targetMethod
+ * 一个ReflectiveMethodInvocation用于存放一个JoinPoint的所有Advice，并依次调用Advice
+ */
 public class ReflectiveMethodInvocation implements MethodInvocation {
 
-    protected final Object targetObject;
+    protected final Object object;
     protected final Method targetMethod;
     protected final Object[] arguments;
 
     protected final List<MethodInterceptor> interceptors;
     private int currentInterceptorIndex = -1;
 
-    public ReflectiveMethodInvocation(Object targetObject, Method targetMethod,
+    public ReflectiveMethodInvocation(Object object, Method targetMethod,
                                       Object[] arguments, List<MethodInterceptor> interceptors) {
-        this.targetObject = targetObject;
+        this.object = object;
         this.targetMethod = targetMethod;
         this.arguments = arguments;
         this.interceptors = interceptors;
@@ -35,12 +37,12 @@ public class ReflectiveMethodInvocation implements MethodInvocation {
     }
 
     protected Object invokeJoinPoint() throws Throwable{
-        //调用织入点方法
-        return this.targetMethod.invoke(this.targetObject,this.arguments);
+        //调用JoinPoint方法
+        return this.targetMethod.invoke(this.object,this.arguments);
     }
 
     public Object getThis() {
-        return this.targetObject;
+        return this.object;
     }
 
     public AccessibleObject getStaticPart() {
