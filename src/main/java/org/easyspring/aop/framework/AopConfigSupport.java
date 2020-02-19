@@ -58,6 +58,12 @@ public class AopConfigSupport implements AopConfig{
         return false;
     }
 
+    public void addInterfaces(Class<?>[] classes){
+        for (Class<?> clazz: classes){
+            this.addInterface(clazz);
+        }
+    }
+
     public void addInterface(Class<?> clazz){
         //JDK代理，添加接口
         if (!clazz.isInterface()){

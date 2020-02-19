@@ -16,12 +16,11 @@ import java.util.List;
  * @author tancunshi
  */
 public abstract class AbstractApplicationContext implements ApplicationContext {
-    private DefaultBeanFactory factory = null;
+    private final DefaultBeanFactory factory;
     private ClassLoader classLoader = null;
 
     public AbstractApplicationContext(String configFile) {
         factory = new DefaultBeanFactory();
-        factory.setClassLoader(this.getClassLoader());
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
         Resource resource = this.getResourceByPath(configFile);
         reader.loadBeanDefinition(resource);
@@ -39,11 +38,12 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     protected abstract Resource getResourceByPath(String path);
 
     public void setClassLoader(ClassLoader classLoader) {
+        this.factory.setClassLoader(classLoader);
         this.classLoader = classLoader;
     }
 
-    protected ClassLoader getClassLoader() {
-        return this.classLoader == null ? ClassUtils.getDefaultClassLoader() : this.classLoader;
+    public ClassLoader getClassLoader(){
+        return classLoader == null ? ClassUtils.getDefaultClassLoader() : this.classLoader;
     }
 
     public Class<?> getType(String beanId) {

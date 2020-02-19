@@ -3,9 +3,6 @@ package org.easyspring.util;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author spring source code
- */
 public abstract class ClassUtils {
     /**
      * The package separator character: '.'

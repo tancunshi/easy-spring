@@ -18,4 +18,6 @@ public interface AopConfig {
     void addAdvice(Advice advice);
     List<Advice> getAdvice(Method method);
     void setTargetObject(Object object);
+    void addInterfaces(Class<?>[] classes);
+    void addInterface(Class<?> clazz);
 }

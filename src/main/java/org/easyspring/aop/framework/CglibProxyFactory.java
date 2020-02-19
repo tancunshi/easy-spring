@@ -17,7 +17,6 @@ import java.util.List;
 public class CglibProxyFactory implements AopProxyFactory{
 
     private final int AOP_PROXY = 0;
-    private final int NO_PROXY = 1;
     private final AopConfig config;
 
     public CglibProxyFactory(AopConfig config) {
@@ -40,8 +39,8 @@ public class CglibProxyFactory implements AopProxyFactory{
         //不对构造器拦截
         enhancer.setInterceptDuringConstruction(false);
 
-        Callback[] callbacks = new Callback[]{new DynamicAdvisedInterceptor(this.config), NoOp.INSTANCE};
-        enhancer.setCallbackFilter(new ProxyCallbackFilter(this.config));
+        Callback[] callbacks = new Callback[]{new DynamicAdvisedInterceptor(this.config)};
+        enhancer.setCallbackFilter(new ProxyCallbackFilter());
         enhancer.setCallbacks(callbacks);
 
         return enhancer.create();
@@ -60,11 +59,10 @@ public class CglibProxyFactory implements AopProxyFactory{
             Object targetObject = this.config.getTargetObject();
 
             if (chains.isEmpty()){
-                return targetMethod.invoke(targetMethod,args);
+                return targetMethod.invoke(targetObject,args);
             }
 
-            List<MethodInterceptor> interceptors = new ArrayList<MethodInterceptor>();
-            interceptors.addAll(chains);
+            List<MethodInterceptor> interceptors = new ArrayList<MethodInterceptor>(chains);
 
             //两种写法
 
@@ -84,18 +82,9 @@ public class CglibProxyFactory implements AopProxyFactory{
 
     private class ProxyCallbackFilter implements CallbackFilter{
 
-        private final AopConfig config;
-
-        public ProxyCallbackFilter(AopConfig config){
-            this.config = config;
-        }
-
         public int accept(Method method) {
-            //如果method不符合任意PointcutExpression，则不被代理
-            if (this.config.getAdvice(method).size() > 0){
-                return AOP_PROXY;
-            }
-            return NO_PROXY;
+            //代理所有的方法，但是如果该方法没有任何的Advice，则直接invoke该方法
+            return AOP_PROXY;
         }
     }
 }
