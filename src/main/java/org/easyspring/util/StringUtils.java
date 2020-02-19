@@ -1,8 +1,5 @@
 package org.easyspring.util;
 
-/**
- * @author spring source code
- */
 public abstract class StringUtils {
     public static boolean hasLength(String str) {
         return hasLength((CharSequence) str);

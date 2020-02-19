@@ -1,12 +1,13 @@
-package org.easyspring.test.v5;
+package org.easyspring.test.v6;
 
 import org.easyspring.aop.aspectj.AspectJAfterReturningAdvice;
 import org.easyspring.aop.aspectj.AspectJBeforeAdvice;
 import org.easyspring.aop.aspectj.AspectJExpressionPointcut;
 import org.easyspring.aop.framework.AopConfig;
 import org.easyspring.aop.framework.AopConfigSupport;
-import org.easyspring.aop.framework.CglibProxyFactory;
-import org.easyspring.test.aop.Controller;
+import org.easyspring.aop.framework.JdkProxyFactory;
+import org.easyspring.test.aop.Animal;
+import org.easyspring.test.aop.Bird;
 import org.easyspring.tx.TransactionManager;
 import org.easyspring.util.MessageTracker;
 import org.junit.Assert;
@@ -14,7 +15,7 @@ import org.junit.Before;
 import org.junit.Test;
 import java.util.Arrays;
 
-public class CglibAopProxyTest {
+public class JdkAopProxyTest {
     private static AspectJAfterReturningAdvice afterReturningAdvice = null;
     private static AspectJBeforeAdvice beforeAdvice = null;
     private static AspectJExpressionPointcut pointcut = null;
@@ -26,7 +27,7 @@ public class CglibAopProxyTest {
         MessageTracker.clear();
 
         tx = new TransactionManager();
-        String expression = "execution(* org.easyspring.test.aop.*.sayHello(..))";
+        String expression = "execution(* org.easyspring.test.aop.*.eat(..))";
         pointcut = new AspectJExpressionPointcut(expression);
 
         beforeAdvice = new AspectJBeforeAdvice(TransactionManager.class.getMethod("start"),tx,pointcut);
@@ -34,20 +35,16 @@ public class CglibAopProxyTest {
     }
 
     @Test
-    public void testGetProxy(){
-        AopConfig config = new AopConfigSupport();
-        config.addAdvice(beforeAdvice);
+    public void jdkProxy(){
+        AopConfigSupport config = new AopConfigSupport();
+        config.setTargetObject(new Bird());
         config.addAdvice(afterReturningAdvice);
-        config.setTargetObject(new Controller());
+        config.addAdvice(beforeAdvice);
+        config.addInterfaces(Bird.class.getInterfaces());
 
-        CglibProxyFactory proxyFactory = new CglibProxyFactory(config);
-        Controller controller = (Controller) proxyFactory.getProxy();
-        controller.sayHello();
-        Assert.assertEquals(Arrays.asList("start tx","hello","commit tx"), MessageTracker.getTracks());
-
-        MessageTracker.clear();
-        controller.toString();
-        config.toString();
-        Assert.assertEquals(Arrays.asList(), MessageTracker.getTracks());
+        JdkProxyFactory factory = new JdkProxyFactory(config);
+        Animal bird = (Animal) factory.getProxy();
+        bird.eat();
+        Assert.assertEquals(Arrays.asList("start tx","bird eat","commit tx"), MessageTracker.getTracks());
     }
 }
