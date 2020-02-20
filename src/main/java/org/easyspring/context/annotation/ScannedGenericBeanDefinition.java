@@ -12,8 +12,7 @@ public class ScannedGenericBeanDefinition extends GenericBeanDefinition implemen
     private final AnnotationMetaData metaData;
 
     public ScannedGenericBeanDefinition(AnnotationMetaData metaData) {
-        //beanClassName是BeanDefinition中重要的属性，必不可少。构造器中参数都是不可或缺的参数，否则一般通过set注入
-        super.setBeanClassName(metaData.getClassName());
+        super(metaData.getClassName());
         this.metaData = metaData;
     }
 
