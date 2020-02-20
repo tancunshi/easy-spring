@@ -3,6 +3,7 @@ package org.easyspring.beans.factory.xml;
 import org.dom4j.Document;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
+import org.easyspring.aop.config.ConfigBeanDefinitionParser;
 import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.PropertyValue;
 import org.easyspring.beans.factory.BeanDefinitionStoreException;
@@ -31,9 +32,11 @@ public class XmlBeanDefinitionReader {
     private static final String VALUE_ATTRIBUTE = "value";
     private static final String PROPERTY_NAME_ATTRIBUTE = "name";
     private static final String CONSTRUCTOR_ARGS_ELEMENT = "constructor-arg";
+    private static final String BASE_PACKAGE_ATTRIBUTE = "base-package";
+    //namespace uri
     private static final String BEANS_NAMESPACE_URI = "http://www.springframework.org/schema/beans";
     private static final String CONTEXT_NAMESPACE_URI = "http://www.springframework.org/schema/context";
-    private static final String BASE_PACKAGE_ATTRIBUTE = "base-package";
+    public static final String AOP_NAMESPACE_URI = "http://www.springframework.org/schema/aop";
 
     private BeanDefinitionRegistry registry;
 
@@ -62,6 +65,10 @@ public class XmlBeanDefinitionReader {
                     //context命名空间的元素节点
                     this.parseComponentElement(ele);
                 }
+                else if (this.isAopNamespace(namespaceUri)){
+                    //aop命名空间的元素节点
+                    this.parseAopElement(ele);
+                }
             }
         } catch (Throwable e) {
             throw new BeanDefinitionStoreException("BeanDefinition store error",e);
@@ -74,6 +81,12 @@ public class XmlBeanDefinitionReader {
                 }
             }
         }
+    }
+
+    private void parseAopElement(Element ele){
+        //parse逻辑复杂，涉及多种节点，所以单独写了个parser
+        ConfigBeanDefinitionParser parser = new ConfigBeanDefinitionParser();
+        parser.parse(ele,this.registry);
     }
 
     private void parseComponentElement(Element ele){
@@ -147,5 +160,9 @@ public class XmlBeanDefinitionReader {
 
     private boolean isContextNamespace(String namespaceUri){
         return (!StringUtils.hasLength(namespaceUri) || CONTEXT_NAMESPACE_URI.equals(namespaceUri));
+    }
+
+    private boolean isAopNamespace(String namespaceUri){
+        return (!StringUtils.hasLength(namespaceUri) || AOP_NAMESPACE_URI.equals(namespaceUri));
     }
 }
