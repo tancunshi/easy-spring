@@ -12,6 +12,6 @@ public class Controller {
 
     public void sayHello(){
         MessageTracker.addTrack("hello");
+        //throw new RuntimeException("测试afterThrowingAdvice");
     }
-
 }

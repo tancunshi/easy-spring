@@ -24,6 +24,10 @@ public abstract class AbstractAspectJAdvice implements Advice {
         adviceMethod.invoke(adviceObject);
     }
 
+    public Object invokeAdviceMethod(Object[] args) throws Throwable{
+        return adviceMethod.invoke(adviceObject,args);
+    }
+
     public Pointcut getPointcut(){
         return this.pointcut;
     }
