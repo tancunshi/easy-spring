@@ -42,6 +42,9 @@ public class ConfigBeanDefinitionParser {
 
     private void parseAspect(Element aspectElement, BeanDefinitionRegistry registry){
 
+        String aspectRef = aspectElement.attributeValue(REF);
+        registry.getBeanDefinition(aspectRef).setSynthetic(true);
+
         List<Element> elements = aspectElement.elements();
         //获得pointcut，advice元素节点
         for (int i = 0; i < elements.size(); i++){
@@ -49,7 +52,7 @@ public class ConfigBeanDefinitionParser {
             //如果是advice元素节点
             if (this.isAdviceNode(element)){
                 //解析advice，并注册BeanDefinition
-                this.parseAdvice(aspectElement.attributeValue(REF), element, registry);
+                this.parseAdvice(aspectRef, element, registry);
             }
         }
 
