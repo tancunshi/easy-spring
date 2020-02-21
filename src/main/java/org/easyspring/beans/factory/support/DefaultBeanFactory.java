@@ -7,12 +7,7 @@ import org.easyspring.beans.BeanDefinition;
 import org.easyspring.beans.factory.BeanFactoryAware;
 import org.easyspring.beans.factory.BeanRegisterException;
 import org.easyspring.beans.factory.NoSuchBeanDefinitionException;
-import org.easyspring.beans.factory.annotation.Autowired;
-import org.easyspring.beans.factory.annotation.AutowiredFieldElement;
-import org.easyspring.beans.factory.annotation.InjectionElement;
-import org.easyspring.beans.factory.annotation.InjectionMetadata;
 import org.easyspring.beans.factory.config.*;
-import org.easyspring.context.annotation.ScannedGenericBeanDefinition;
 import org.easyspring.util.Assert;
 import org.easyspring.util.ClassUtils;
 import org.easyspring.util.StringUtils;
@@ -20,21 +15,21 @@ import org.easyspring.util.StringUtils;
 import java.beans.BeanInfo;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author tancunshi
  */
-public class DefaultBeanFactory extends AbstractBeanFactory implements BeanDefinitionRegistry {
+public class DefaultBeanFactory extends AbstractBeanFactory
+        implements BeanDefinitionRegistry {
 
     private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
     //ClassName到beanIds的映射
     private final Map<String, List<String>> classBeanIdMap = new HashMap<String, List<String>>(64);
     private List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
     private ClassLoader classLoader = null;
+    private List<String> syntheticBeanIds = new ArrayList<>();
 
     public DefaultBeanFactory() {
     }

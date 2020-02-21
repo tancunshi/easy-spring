@@ -43,7 +43,6 @@ public class ConfigBeanDefinitionParser {
     private void parseAspect(Element aspectElement, BeanDefinitionRegistry registry){
 
         String aspectRef = aspectElement.attributeValue(REF);
-        registry.getBeanDefinition(aspectRef).setSynthetic(true);
 
         List<Element> elements = aspectElement.elements();
         //获得pointcut，advice元素节点
