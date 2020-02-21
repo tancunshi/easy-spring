@@ -16,7 +16,11 @@ public class ConstructorArgument {
         return argumentValues;
     }
 
-    public void addArgumentValues(ValueHolder vh) {
+    public void addArgumentValue(Object value){
+        this.argumentValues.add(new ValueHolder(value));
+    }
+
+    public void addArgumentValue(ValueHolder vh) {
         argumentValues.add(vh);
     }
 
@@ -29,7 +33,7 @@ public class ConstructorArgument {
     }
 
     /**
-     * 简易版构造器注入，constructor-arg暂时只支持value和ref
+     * value可以是RuntimeBeanReference,TypedStringValue。或者是其它类型，关键看parser逻辑
      */
     public static class ValueHolder {
         private Object value;

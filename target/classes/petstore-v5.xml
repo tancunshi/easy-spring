@@ -13,8 +13,8 @@
 
     <bean id="tx" class="org.easyspring.tx.TransactionManager"/>
 
-    <!--
-    <aop:config>&lt;!&ndash;aop config&ndash;&gt;
+
+    <!--<aop:config>&lt;!&ndash;aop config&ndash;&gt;
         <aop:aspect ref="tx">&lt;!&ndash;指定aspect&ndash;&gt;
             &lt;!&ndash;指定pointcut&ndash;&gt;
             <aop:pointcut id="pointcut"
@@ -23,7 +23,6 @@
             <aop:after-returning pointcut-ref="pointcut" method="commit"/>
             <aop:after-throwing pointcut-ref="pointcut" method="rollback"/>
         </aop:aspect>
-    </aop:config>
-    -->
+    </aop:config>-->
 
 </beans>

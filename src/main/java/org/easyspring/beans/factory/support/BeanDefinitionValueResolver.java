@@ -19,7 +19,8 @@ public class BeanDefinitionValueResolver {
         } else if (value instanceof TypedStringValue) {
             return ((TypedStringValue) value).getValue();
         } else {
-            throw new RuntimeException("the value " + value + " has not implemented");
+            //其余类型不进行转换，维持原类型
+            return value;
         }
     }
 }

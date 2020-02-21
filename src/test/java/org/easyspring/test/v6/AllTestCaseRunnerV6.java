@@ -6,7 +6,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         JDKProxyTest.class,
-        JdkAopProxyTest.class
+        JdkAopProxyTest.class,
+        BeanDefinitionReaderTest.class
 })
 public class AllTestCaseRunnerV6 {
 }

@@ -115,7 +115,7 @@ public class XmlBeanDefinitionReader {
             Element consElem = (Element) iter.next();
             Object consValue = this.parsePropertyValue(consElem, null);
             ValueHolder vh = new ValueHolder(consValue);
-            bd.getConstructorArgument().addArgumentValues(vh);
+            bd.getConstructorArgument().addArgumentValue(vh);
         }
     }
 

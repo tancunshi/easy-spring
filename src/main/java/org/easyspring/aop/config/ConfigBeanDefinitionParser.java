@@ -3,11 +3,14 @@ package org.easyspring.aop.config;
 import org.dom4j.Element;
 import org.easyspring.aop.aspectj.*;
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.ConstructorArgument;
 import org.easyspring.beans.PropertyValue;
+import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.factory.config.RuntimeBeanReference;
 import org.easyspring.beans.factory.support.BeanDefinitionReaderUtils;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.support.GenericBeanDefinition;
+import org.easyspring.util.StringUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,80 +30,99 @@ public class ConfigBeanDefinitionParser {
     private static final String ASPECT_NAME_PROPERTY = "aspectName";
 
     public void parse(Element ele, BeanDefinitionRegistry registry) {
+        //ele为元素节点 config
         List<Element> elements = ele.elements();
         for (Element element: elements){
-            String localName = element.getName();
-            if (ASPECT.equals(localName)){
-                //如果是Aspect元素节点
+            //如果是aspect元素节点
+            if (ASPECT.equals(element.getName())){
+                //解析aspect元素节点
                 this.parseAspect(element,registry);
             }
         }
     }
 
-    /**
-     * 解析Aspect，创建advice的BeanDefinition
-     */
     private void parseAspect(Element aspectElement, BeanDefinitionRegistry registry){
-
-        //aspectId 一般情况是不存在的
-        String aspectId = aspectElement.attributeValue(ID);
-        String aspectName = aspectElement.attributeValue(REF);
-
-        List<BeanDefinition> beanDefinitions = new ArrayList<BeanDefinition>();
-        List<RuntimeBeanReference> beanReferences = new ArrayList<RuntimeBeanReference>();
-        beanReferences.add(new RuntimeBeanReference(aspectName));
 
         List<Element> elements = aspectElement.elements();
         //获得pointcut，advice元素节点
         for (int i = 0; i < elements.size(); i++){
             Element element = elements.get(i);
-            if (isAdviceNode(element)){
-                if (this.isAdviceNode(element)){
-                    GenericBeanDefinition advisorDefinition =
-                            this.parseAdvice(aspectName, i, aspectElement, element, registry, beanDefinitions, beanReferences);
-                    beanDefinitions.add(advisorDefinition);
-                }
+            //如果是advice元素节点
+            if (this.isAdviceNode(element)){
+                //解析advice，并注册BeanDefinition
+                this.parseAdvice(aspectElement.attributeValue(REF), element, registry);
             }
         }
 
+        //获得aspect元素节点下的pointcut元素节点
         List<Element> pointcuts = aspectElement.elements(POINTCUT);
         for (Element pointcutElement: pointcuts){
+            //解析pointcut元素节点，并对pointcutBeanDefinition进行注册
             this.parsePointcut(pointcutElement, registry);
         }
     }
 
-    private GenericBeanDefinition parseAdvice(
-            String aspectName, int order, Element aspectElement, Element adviceElement,
-            BeanDefinitionRegistry registry, List<BeanDefinition> beanDefinitions,
-            List<RuntimeBeanReference> beanReferences) {
+    private void parseAdvice(String aspectBeanId, Element adviceElement, BeanDefinitionRegistry registry) {
 
-        //MethodLocatingFactory 用于定位并获得Method
+        //MethodLocatingFactory 定位method，这里是用来定位aspectMethod
         GenericBeanDefinition methodFactoryDef = new GenericBeanDefinition(MethodLocatingFactory.class);
-        methodFactoryDef.getPropertyValues().add(new PropertyValue("targetBeanName", aspectName));
+        methodFactoryDef.getPropertyValues().add(new PropertyValue("beanId", aspectBeanId));
         methodFactoryDef.getPropertyValues().add(new PropertyValue("methodName",adviceElement.attributeValue("method")));
         methodFactoryDef.setSynthetic(true);
 
-        //AspectInstanceFactory 从IOC容器中获得Aspect
+        //AspectInstanceFactory 根据aspectBeanName获得aspectBean实例
         GenericBeanDefinition aspectFactoryDef = new GenericBeanDefinition(AspectInstanceFactory.class);
-        aspectFactoryDef.getPropertyValues().add(new PropertyValue("aspectBeanName", aspectName));
+        aspectFactoryDef.getPropertyValues().add(new PropertyValue("aspectBeanId", aspectBeanId));
         aspectFactoryDef.setSynthetic(true);
 
         GenericBeanDefinition adviceDef = this.createAdviceDefinition(
-                adviceElement, registry, aspectName, order, methodFactoryDef, aspectFactoryDef,
-                beanDefinitions, beanReferences );
+                adviceElement, aspectBeanId, methodFactoryDef, aspectFactoryDef);
         adviceDef.setSynthetic(true);
 
+        //注册advice BeanDefinition
         BeanDefinitionReaderUtils.registerWithGeneratedName(adviceDef, registry);
-        return adviceDef;
     }
 
     private GenericBeanDefinition createAdviceDefinition(
-            Element adviceElement, BeanDefinitionRegistry registry, String aspectName,
-            int order, GenericBeanDefinition methodFactoryDef, GenericBeanDefinition aspectFactoryDef,
-            List<BeanDefinition> beanDefinitions, List<RuntimeBeanReference> beanReferences) {
+            Element adviceElement, String aspectName, GenericBeanDefinition methodFactoryDef,
+            GenericBeanDefinition aspectFactoryDef) {
+        //获得advice实现类，并创建BeanDefinition
         GenericBeanDefinition adviceDefinition = new GenericBeanDefinition(this.getAdviceClass(adviceElement));
+        adviceDefinition.getPropertyValues().add(new PropertyValue(ASPECT_NAME_PROPERTY, aspectName));
 
-        return null;
+        //提供两种用于创建advice的构造器
+        ConstructorArgument argument = adviceDefinition.getConstructorArgument();
+        argument.addArgumentValue(methodFactoryDef);
+        Object pointcut = this.parsePointcutProperty(adviceElement);
+        if (pointcut instanceof BeanDefinition){
+            argument.addArgumentValue(pointcut);
+        }
+        else if (pointcut instanceof String){
+            RuntimeBeanReference pointRef = new RuntimeBeanReference((String) pointcut);
+            argument.addArgumentValue(pointRef);
+        }
+        argument.addArgumentValue(aspectFactoryDef);
+        return adviceDefinition;
+    }
+
+    private Object parsePointcutProperty(Element adviceElement) {
+        //advice节点中有两种方式定义pointcut，一种是指定元素节点pointcut = "* org.easyspring.test.aop.*.sayHello(..))"
+        //另一种是指定元素节点point-ref="pointcutBeanId"
+        if (!StringUtils.hasLength(adviceElement.attributeValue(POINTCUT)) &&
+                !StringUtils.hasLength(adviceElement.attributeValue(POINTCUT_INF))) {
+            return null;
+        }
+        else if (adviceElement.attribute(POINTCUT) != null){
+            String expression = adviceElement.attributeValue(POINTCUT);
+            GenericBeanDefinition pointcutDefinition = this.createPointcutDefinition(expression);
+            return pointcutDefinition;
+        }
+        else if (adviceElement.attribute(POINTCUT_INF) != null){
+            String pointcutRef = adviceElement.attributeValue(POINTCUT_INF);
+            return pointcutRef;
+        }else {
+            return null;
+        }
     }
 
     private Class<?> getAdviceClass(Element adviceElement) {
@@ -126,7 +148,16 @@ public class ConfigBeanDefinitionParser {
     }
 
     private void parsePointcut(Element pointcutElement, BeanDefinitionRegistry registry) {
-
+        String id = pointcutElement.attributeValue(ID);
+        String expression = pointcutElement.attributeValue(EXPRESSION);
+        GenericBeanDefinition pointcutBeanDefinition = this.createPointcutDefinition(expression);;
+        String pointcutBeanName = id;
+        if (StringUtils.hasLength(pointcutBeanName)) {
+            registry.registerBeanDefinition(pointcutBeanName, pointcutBeanDefinition);
+        }
+        else {
+            throw new BeanCreationException("pointcut beanId not exist");
+        }
     }
 
     private boolean isAdviceNode(Element element) {
@@ -141,5 +172,12 @@ public class ConfigBeanDefinitionParser {
         return false;
     }
 
-
+    private GenericBeanDefinition createPointcutDefinition(String expression) {
+        GenericBeanDefinition beanDefinition = new GenericBeanDefinition(AspectJExpressionPointcut.class);
+        //设置score = protoType
+        beanDefinition.setScope(BeanDefinition.SCOPE_PROTOTYPE);
+        beanDefinition.setSynthetic(true);
+        beanDefinition.getPropertyValues().add(new PropertyValue(EXPRESSION, expression));
+        return beanDefinition;
+    }
 }
