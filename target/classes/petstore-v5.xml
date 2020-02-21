@@ -23,5 +23,4 @@
             <aop:after-throwing pointcut-ref="pointcut" method="rollback"/>
         </aop:aspect>
     </aop:config>
-
 </beans>

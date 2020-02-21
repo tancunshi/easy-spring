@@ -33,6 +33,7 @@ public class AutowiredFieldElement extends AbstractAutowiredInjectionElement {
             }
         }
         catch (Throwable ex){
+            ex.printStackTrace();
             throw new BeanCreationException("Could not autowire field: " + field, ex);
         }
     }

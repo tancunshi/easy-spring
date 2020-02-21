@@ -13,6 +13,7 @@ import org.easyspring.beans.factory.annotation.InjectionElement;
 import org.easyspring.beans.factory.annotation.InjectionMetadata;
 import org.easyspring.beans.factory.config.*;
 import org.easyspring.context.annotation.ScannedGenericBeanDefinition;
+import org.easyspring.util.Assert;
 import org.easyspring.util.ClassUtils;
 import org.easyspring.util.StringUtils;
 
@@ -98,6 +99,19 @@ public class DefaultBeanFactory extends AbstractBeanFactory implements BeanDefin
         }
     }
 
+    @Override
+    public List<Object> getBeansByType(Class<?> clazz) {
+        Assert.notNull(clazz,"Class must be exist");
+        List<Object> result = new ArrayList<>();
+        for (Map.Entry<String,BeanDefinition> entry: beanDefinitionMap.entrySet()){
+            BeanDefinition bd = entry.getValue();
+            if (clazz.isAssignableFrom(bd.getClazz())){
+                result.add(this.getBean(entry.getKey()));
+            }
+        }
+        return result;
+    }
+
     private Object getBean(Class<?> clazz){
         String className = clazz.getName();
         List<String> beanIds = this.classBeanIdMap.get(className);
@@ -117,13 +131,10 @@ public class DefaultBeanFactory extends AbstractBeanFactory implements BeanDefin
         Object bean = this.instantiateBean(bd);
         //属性注入，包括setter注入和autowired
         this.populateBean(bd, bean);
-
-        //aware注入
-        bean = initializeBean(bd,bean);
-
-        //beanPostProcessor 预初始化
-        //初始化方法
-        //beanPostProcessor 初始化后
+        //进行aware注入
+        this.invokeAwareMethods(bean);
+        //初始化，初始化完成就可以被使用了，这里拿到的可能是初始化完成之后产生的代理对象
+        bean = this.initializeBean(bd,bean);
         return bean;
     }
 
@@ -180,10 +191,26 @@ public class DefaultBeanFactory extends AbstractBeanFactory implements BeanDefin
     }
 
     protected Object initializeBean(BeanDefinition bd, Object bean)  {
-        invokeAwareMethods(bean);
+        //postProcessor beforeInitializationBean
         //Todo，对Bean做初始化
-        //创建代理
+        if(!bd.isSynthetic()){
+            //如果是合成bean，没有必要进行后续处理，比如advice，pointcut
+            //在afterInitializationBean中生成代理对象并返回，偷梁换柱
+            return applyBeanPostProcessorsAfterInitialization(bean,bd.getID());
+        }
         return bean;
+    }
+
+    private Object applyBeanPostProcessorsAfterInitialization(Object bean, String beanId) {
+        //postProcessor afterInitializationBean
+        Object result = bean;
+        for (BeanPostProcessor beanPostProcessor: getBeanPostProcessors()){
+            result = beanPostProcessor.afterInitialization(result, beanId);
+            if (result == null) {
+                return null;
+            }
+        }
+        return result;
     }
 
     private void invokeAwareMethods(final Object bean) {

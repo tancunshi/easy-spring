@@ -33,4 +33,12 @@ public interface BeanDefinition {
     void setId(String id);
 
     void setBeanClassName(String beanClassName);
+
+    boolean isSynthetic();
+
+    Class<?> getClazz();
+
+    void setClazz(Class<?> clazz);
+
+    void setSynthetic(boolean isSynthetic);
 }

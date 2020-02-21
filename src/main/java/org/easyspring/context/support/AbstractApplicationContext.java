@@ -1,5 +1,6 @@
 package org.easyspring.context.support;
 
+import org.easyspring.aop.aspectj.AspectJAutoProxyCreator;
 import org.easyspring.beans.factory.annotation.AutowiredAnnotationProcessor;
 import org.easyspring.beans.factory.config.BeanPostProcessor;
 import org.easyspring.beans.factory.config.ConfigurableBeanFactory;
@@ -55,5 +56,14 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         AutowiredAnnotationProcessor postProcessor = new AutowiredAnnotationProcessor();
         postProcessor.setBeanFactory(beanFactory);
         beanFactory.addBeanPostProcessor(postProcessor);
+
+        AspectJAutoProxyCreator proxyCreator = new AspectJAutoProxyCreator();
+        proxyCreator.setBeanFactory(beanFactory);
+        beanFactory.addBeanPostProcessor(proxyCreator);
+    }
+
+    @Override
+    public List<Object> getBeansByType(Class<?> clazz) {
+        return null;
     }
 }
