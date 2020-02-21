@@ -11,7 +11,7 @@
     <context:component-scan
         base-package="org.easyspring.test.aop"/>
 
-    <bean id="tx" class="org.easyspring.tx.TransactionManager"/>
+    <bean id="tx" isSynthetic="true" class="org.easyspring.tx.TransactionManager"/>
 
     <aop:config><!--aop config-->
         <aop:aspect ref="tx"><!--指定aspect-->
@@ -21,6 +21,12 @@
             <aop:before pointcut-ref="pointcut" method="start"/><!--advice-->
             <aop:after-returning pointcut-ref="pointcut" method="commit"/>
             <aop:after-throwing pointcut-ref="pointcut" method="rollback"/>
+
+            <aop:pointcut id="pointcut-2"
+                          expression="execution(* org.easyspring.test.aop.*.eat(..))"/>
+            <aop:before pointcut-ref="pointcut-2" method="start"/>
+            <aop:after-returning pointcut-ref="pointcut-2" method="commit"/>
+            <aop:after pointcut-ref="pointcut-2" method="after"/>
         </aop:aspect>
     </aop:config>
 </beans>

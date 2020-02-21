@@ -33,6 +33,7 @@ public class XmlBeanDefinitionReader {
     private static final String PROPERTY_NAME_ATTRIBUTE = "name";
     private static final String CONSTRUCTOR_ARGS_ELEMENT = "constructor-arg";
     private static final String BASE_PACKAGE_ATTRIBUTE = "base-package";
+    private static final String IS_SYNtHETIC = "isSynthetic";
     //namespace uri
     private static final String BEANS_NAMESPACE_URI = "http://www.springframework.org/schema/beans";
     private static final String CONTEXT_NAMESPACE_URI = "http://www.springframework.org/schema/context";
@@ -102,6 +103,9 @@ public class XmlBeanDefinitionReader {
         BeanDefinition bd = new GenericBeanDefinition(beanId, beanClassName);
         if (ele.attributeValue(SCOPE_ATTRIBUTE) != null) {
             bd.setScope(ele.attributeValue(SCOPE_ATTRIBUTE));
+        }
+        if (ele.attributeValue(IS_SYNtHETIC) != null){
+            bd.setSynthetic(Boolean.valueOf(ele.attributeValue(IS_SYNtHETIC)));
         }
         this.parseConstructorElement(ele, bd);
         this.parsePropertyElement(ele, bd);
