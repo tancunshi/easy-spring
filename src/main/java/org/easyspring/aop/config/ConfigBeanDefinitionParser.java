@@ -11,7 +11,6 @@ import org.easyspring.beans.factory.support.BeanDefinitionReaderUtils;
 import org.easyspring.beans.factory.support.BeanDefinitionRegistry;
 import org.easyspring.beans.factory.support.GenericBeanDefinition;
 import org.easyspring.util.StringUtils;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigBeanDefinitionParser {
@@ -94,10 +93,12 @@ public class ConfigBeanDefinitionParser {
         ConstructorArgument argument = adviceDefinition.getConstructorArgument();
         argument.addArgumentValue(methodFactoryDef);
         Object pointcut = this.parsePointcutProperty(adviceElement);
+        //如果advice元素节点中包含属性节点pointcut，返回BeanDefinition
         if (pointcut instanceof BeanDefinition){
             argument.addArgumentValue(pointcut);
         }
         else if (pointcut instanceof String){
+            //已将pointcut元素节点转化为BeanDefinition，注册进容器中，所以返回RuntimeBeanReference
             RuntimeBeanReference pointRef = new RuntimeBeanReference((String) pointcut);
             argument.addArgumentValue(pointRef);
         }
@@ -106,8 +107,8 @@ public class ConfigBeanDefinitionParser {
     }
 
     private Object parsePointcutProperty(Element adviceElement) {
-        //advice节点中有两种方式定义pointcut，一种是指定元素节点pointcut = "* org.easyspring.test.aop.*.sayHello(..))"
-        //另一种是指定元素节点point-ref="pointcutBeanId"
+        //advice节点中有两种方式定义pointcut，一种是指定属性节点pointcut = "* org.easyspring.test.aop.*.sayHello(..))"
+        //另一种是指定属性节点point-ref="pointcutBeanId"
         if (!StringUtils.hasLength(adviceElement.attributeValue(POINTCUT)) &&
                 !StringUtils.hasLength(adviceElement.attributeValue(POINTCUT_INF))) {
             return null;

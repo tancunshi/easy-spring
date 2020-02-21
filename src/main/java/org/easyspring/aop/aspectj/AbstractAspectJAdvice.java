@@ -2,6 +2,8 @@ package org.easyspring.aop.aspectj;
 
 import org.easyspring.aop.Advice;
 import org.easyspring.aop.Pointcut;
+import org.easyspring.aop.config.AspectInstanceFactory;
+
 import java.lang.reflect.Method;
 
 /**
@@ -10,13 +12,14 @@ import java.lang.reflect.Method;
  */
 public abstract class AbstractAspectJAdvice implements Advice {
 
-    protected AspectJExpressionPointcut pointcut;
     protected Method adviceMethod;
     protected Object adviceObject;
+    protected AspectJExpressionPointcut pointcut;
 
-    public AbstractAspectJAdvice(Method adviceMethod,Object adviceObject,AspectJExpressionPointcut pointcut){
+    public AbstractAspectJAdvice(Method adviceMethod, AspectInstanceFactory adviceObjectFactory,
+                                 AspectJExpressionPointcut pointcut){
         this.adviceMethod = adviceMethod;
-        this.adviceObject = adviceObject;
+        this.adviceObject = adviceObjectFactory.getAspectInstance();
         this.pointcut = pointcut;
     }
 
