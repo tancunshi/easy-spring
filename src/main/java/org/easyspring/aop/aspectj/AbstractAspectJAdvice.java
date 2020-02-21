@@ -38,4 +38,8 @@ public abstract class AbstractAspectJAdvice implements Advice {
     public Method getAdviceMethod(){
         return this.adviceMethod;
     }
+
+    public Object getAdviceObject() {
+        return adviceObject;
+    }
 }

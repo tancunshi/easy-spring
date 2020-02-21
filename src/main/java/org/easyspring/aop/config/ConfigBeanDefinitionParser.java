@@ -92,6 +92,8 @@ public class ConfigBeanDefinitionParser {
         //提供两种用于创建advice的构造器
         ConstructorArgument argument = adviceDefinition.getConstructorArgument();
         argument.addArgumentValue(methodFactoryDef);
+        argument.addArgumentValue(aspectFactoryDef);
+
         Object pointcut = this.parsePointcutProperty(adviceElement);
         //如果advice元素节点中包含属性节点pointcut，返回BeanDefinition
         if (pointcut instanceof BeanDefinition){
@@ -102,7 +104,6 @@ public class ConfigBeanDefinitionParser {
             RuntimeBeanReference pointRef = new RuntimeBeanReference((String) pointcut);
             argument.addArgumentValue(pointRef);
         }
-        argument.addArgumentValue(aspectFactoryDef);
         return adviceDefinition;
     }
 
