@@ -12,7 +12,10 @@ public class MethodLocatingFactoryTest {
     @Test
     public void locationMethod(){
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("petstore-v5.xml");
-        MethodLocatingFactory factory = new MethodLocatingFactory("controller","sayHello",applicationContext);
+        MethodLocatingFactory factory = new MethodLocatingFactory();
+        factory.setBeanId("controller");
+        factory.setMethodName("sayHello");
+        factory.setBeanFactory(applicationContext);
 
         try {
             Method method = factory.getObject();

@@ -3,6 +3,7 @@ package org.easyspring.test.v6;
 import org.easyspring.aop.aspectj.AspectJAfterReturningAdvice;
 import org.easyspring.aop.aspectj.AspectJBeforeAdvice;
 import org.easyspring.aop.aspectj.AspectJExpressionPointcut;
+import org.easyspring.aop.config.AspectInstanceFactory;
 import org.easyspring.aop.framework.AopConfig;
 import org.easyspring.aop.framework.AopConfigSupport;
 import org.easyspring.aop.framework.JdkProxyFactory;
@@ -19,19 +20,27 @@ public class JdkAopProxyTest {
     private static AspectJAfterReturningAdvice afterReturningAdvice = null;
     private static AspectJBeforeAdvice beforeAdvice = null;
     private static AspectJExpressionPointcut pointcut = null;
-
-    private TransactionManager tx;
+    private AspectInstanceFactory aspectInstanceFactory = new AspectInstanceFactory(){
+        private TransactionManager manager = null;
+        @Override
+        public Object getAspectInstance() {
+            if (manager == null){
+                manager = new TransactionManager();
+            }
+            return manager;
+        }
+    };
 
     @Before
     public void init() throws Throwable{
         MessageTracker.clear();
 
-        tx = new TransactionManager();
         String expression = "execution(* org.easyspring.test.aop.*.eat(..))";
         pointcut = new AspectJExpressionPointcut(expression);
-
-        beforeAdvice = new AspectJBeforeAdvice(TransactionManager.class.getMethod("start"),tx,pointcut);
-        afterReturningAdvice = new AspectJAfterReturningAdvice(TransactionManager.class.getMethod("commit"),tx,pointcut);
+        beforeAdvice = new AspectJBeforeAdvice(TransactionManager.class.getMethod("start"),
+                aspectInstanceFactory,pointcut);
+        afterReturningAdvice = new AspectJAfterReturningAdvice(TransactionManager.class.getMethod("commit"),
+                aspectInstanceFactory,pointcut);
     }
 
     @Test

@@ -13,17 +13,15 @@
 
     <bean id="tx" class="org.easyspring.tx.TransactionManager"/>
 
-    <!--
-    <aop:config>&lt;!&ndash;aop config&ndash;&gt;
-        <aop:aspect ref="tx">&lt;!&ndash;指定aspect&ndash;&gt;
-            &lt;!&ndash;指定pointcut&ndash;&gt;
+    <aop:config><!--aop config-->
+        <aop:aspect ref="tx"><!--指定aspect-->
+            <!--指定pointcut-->
             <aop:pointcut id="pointcut"
                           expression="execution(* org.easyspring.test.aop.*.sayHello(..))"/>
-            <aop:before pointcut-ref="pointcut" method="start"/>&lt;!&ndash;advice&ndash;&gt;
+            <aop:before pointcut-ref="pointcut" method="start"/><!--advice-->
             <aop:after-returning pointcut-ref="pointcut" method="commit"/>
             <aop:after-throwing pointcut-ref="pointcut" method="rollback"/>
         </aop:aspect>
     </aop:config>
-    -->
 
 </beans>

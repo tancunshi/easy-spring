@@ -49,10 +49,7 @@ public class ConstructorResolver {
             BeanDefinitionValueResolver resolver = new BeanDefinitionValueResolver(factory);
             SimpleTypeConverter converter = new SimpleTypeConverter();
             boolean result = valueMatchType(cags.getArgumentValues(),
-                    parameterTypes,
-                    resolver,
-                    converter,
-                    argsToUse);
+                    parameterTypes, resolver, converter, argsToUse);
 
             if (result) {
                 constructorToUse = condidates[i];

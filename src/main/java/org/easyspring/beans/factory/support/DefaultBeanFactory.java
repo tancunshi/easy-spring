@@ -4,6 +4,7 @@ import org.easyspring.beans.PropertyValue;
 import org.easyspring.beans.SimpleTypeConverter;
 import org.easyspring.beans.factory.BeanCreationException;
 import org.easyspring.beans.BeanDefinition;
+import org.easyspring.beans.factory.BeanFactoryAware;
 import org.easyspring.beans.factory.BeanRegisterException;
 import org.easyspring.beans.factory.NoSuchBeanDefinitionException;
 import org.easyspring.beans.factory.annotation.Autowired;
@@ -26,8 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author tancunshi
  */
-public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
-        implements ConfigurableBeanFactory, BeanDefinitionRegistry {
+public class DefaultBeanFactory extends AbstractBeanFactory implements BeanDefinitionRegistry {
 
     private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
     //ClassName到beanIds的映射
@@ -112,13 +112,14 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         }
     }
 
-    private Object createBean(BeanDefinition bd) {
+    protected Object createBean(BeanDefinition bd) {
         //bean的生命周期，创建和装配流程
         Object bean = this.instantiateBean(bd);
         //属性注入，包括setter注入和autowired
         this.populateBean(bd, bean);
 
         //aware注入
+        bean = initializeBean(bd,bean);
 
         //beanPostProcessor 预初始化
         //初始化方法
@@ -178,6 +179,18 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
         }
     }
 
+    protected Object initializeBean(BeanDefinition bd, Object bean)  {
+        invokeAwareMethods(bean);
+        //Todo，对Bean做初始化
+        //创建代理
+        return bean;
+    }
+
+    private void invokeAwareMethods(final Object bean) {
+        if (bean instanceof BeanFactoryAware) {
+            ((BeanFactoryAware) bean).setBeanFactory(this);
+        }
+    }
 
     public void setClassLoader(ClassLoader classLoader) {
         this.classLoader = classLoader;

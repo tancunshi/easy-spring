@@ -3,6 +3,7 @@ package org.easyspring.test.v5;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.easyspring.aop.aspectj.*;
+import org.easyspring.aop.config.AspectInstanceFactory;
 import org.easyspring.aop.framework.ReflectiveMethodInvocation;
 import org.easyspring.test.aop.Controller;
 import org.easyspring.tx.TransactionManager;
@@ -21,32 +22,45 @@ public class ReflectiveMethodInvocationTest {
     private AspectJAfterThrowingAdvice afterThrowingAdvice = null;
     private AspectJAroundAdvice aroundAdvice = null;
     private Controller controller = null;
-    private TransactionManager tx;
+    private AspectInstanceFactory aspectInstanceFactory = new AspectInstanceFactory(){
+        private TransactionManager manager = null;
+        @Override
+        public Object getAspectInstance() {
+            if (manager == null){
+                manager = new TransactionManager();
+            }
+            return manager;
+        }
+    };
 
     @Before
     public void setUp() throws Exception{
         MessageTracker.clear();
         controller = new Controller();
-        tx = new TransactionManager();
 
         beforeAdvice = new AspectJBeforeAdvice(
-                TransactionManager.class.getMethod("start"), tx, null
+                TransactionManager.class.getMethod("start"),
+                aspectInstanceFactory, null
         );
 
         afterAdvice = new AspectJAfterAdvice(
-                TransactionManager.class.getMethod("after"), tx, null
+                TransactionManager.class.getMethod("after"),
+                aspectInstanceFactory, null
         );
 
         afterReturningAdvice = new AspectJAfterReturningAdvice(
-                TransactionManager.class.getMethod("commit"), tx, null
+                TransactionManager.class.getMethod("commit"),
+                aspectInstanceFactory, null
         );
 
         afterThrowingAdvice = new AspectJAfterThrowingAdvice(
-                TransactionManager.class.getMethod("rollback"), tx, null
+                TransactionManager.class.getMethod("rollback"),
+                aspectInstanceFactory, null
         );
 
         aroundAdvice = new AspectJAroundAdvice(
-                TransactionManager.class.getMethod("around", MethodInvocation.class), tx, null
+                TransactionManager.class.getMethod("around", MethodInvocation.class),
+                aspectInstanceFactory, null
         );
     }
 
