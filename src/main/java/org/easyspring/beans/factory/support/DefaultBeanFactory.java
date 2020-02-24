@@ -29,7 +29,6 @@ public class DefaultBeanFactory extends AbstractBeanFactory
     private final Map<String, List<String>> classBeanIdMap = new HashMap<String, List<String>>(64);
     private List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
     private ClassLoader classLoader = null;
-    private List<String> syntheticBeanIds = new ArrayList<>();
 
     public DefaultBeanFactory() {
     }
